@@ -20,15 +20,18 @@
       return '<a class="picon" href="' + esc(p.links[l[0]]) + '" target="_blank" rel="noopener" aria-label="' + esc(p.name) + " — " + l[2] + '"><i class="ti ' + l[1] + '" aria-hidden="true"></i></a>';
     }).join("");
     var date = fmt(p.deploy && p.deploy.lastDeployed) || fmt(p.repoInfo && p.repoInfo.lastCommitDate);
+    var slug = encodeURIComponent(p.slug || "");
     return '' +
-      '<div class="pc" style="animation-delay:' + (i * 55) + 'ms">' +
+      '<div class="pc" data-slug="' + esc(p.slug || "") + '" style="animation-delay:' + (i * 55) + 'ms">' +
         '<div class="pglow" aria-hidden="true" style="background:' + grad + '"></div>' +
         '<div class="pb">' +
-          '<div class="pav" style="background:' + grad + '">' + esc(initials(p.name)) + "</div>" +
-          '<div class="pn">' + esc(p.name) + "</div>" +
-          '<div class="pcl">' + esc(p.client) + (p.type ? " · " + esc(p.type) : "") + "</div>" +
-          '<div class="pchips"><span class="sp"><span class="d" style="background:' + h[0] + '"></span>' + esc(STAGE[p.stage] || p.stage) + "</span></div>" +
-          '<div class="barwrap"><span class="bar"><i style="width:' + (p.progress || 0) + '%"></i></span><span class="pct">' + (p.progress == null ? "" : p.progress + "%") + "</span></div>" +
+          '<a class="pcgo" href="/project.html?slug=' + slug + '" aria-label="Open ' + esc(p.name) + '">' +
+            '<div class="pav" style="background:' + grad + '">' + esc(initials(p.name)) + "</div>" +
+            '<div class="pn">' + esc(p.name) + "</div>" +
+            '<div class="pcl">' + esc(p.client) + (p.type ? " · " + esc(p.type) : "") + "</div>" +
+            '<div class="pchips"><span class="sp"><span class="d" style="background:' + h[0] + '"></span>' + esc(STAGE[p.stage] || p.stage) + "</span></div>" +
+            '<div class="barwrap"><span class="bar"><i style="width:' + (p.progress || 0) + '%"></i></span><span class="pct">' + (p.progress == null ? "" : p.progress + "%") + "</span></div>" +
+          "</a>" +
           (links ? '<div class="pl">' + links + "</div>" : "") +
           (date ? '<div class="pfoot">updated ' + date + "</div>" : "") +
         "</div>" +
@@ -41,7 +44,8 @@
     s.id = "ah-proj-style";
     s.textContent =
       "[data-projects-grid]{display:flex!important;flex-wrap:wrap;justify-content:center;gap:14px}" +
-      "[data-projects-grid] .pc{position:relative;flex:0 0 236px;max-width:236px;border-radius:18px;overflow:hidden;text-align:center;cursor:default;animation:ah-cardin .55s cubic-bezier(.34,1.56,.64,1) both}" +
+      "[data-projects-grid] .pc{position:relative;flex:0 0 236px;max-width:236px;border-radius:18px;overflow:hidden;text-align:center;cursor:pointer;animation:ah-cardin .55s cubic-bezier(.34,1.56,.64,1) both}" +
+      "[data-projects-grid] .pc .pcgo{display:block;text-decoration:none;color:inherit}" +
       "[data-projects-grid] .pc .pglow{position:absolute;top:-12px;left:0;right:0;height:100px;opacity:.20;filter:blur(26px);pointer-events:none}" +
       "[data-projects-grid] .pc .pb{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:22px 18px 18px}" +
       "[data-projects-grid] .pc .pav{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font:600 15px 'Inter',system-ui,sans-serif;color:#fff;letter-spacing:.02em;border:1px solid rgba(255,255,255,.22);box-shadow:0 10px 22px -8px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.3)}" +
@@ -73,7 +77,14 @@
       .then(function (data) {
         var ps = (data.projects || []).filter(function (p) { return !p.hidden; });
         var html = ps.map(card).join("");
-        grids.forEach(function (g) { g.innerHTML = html; });
+        grids.forEach(function (g) {
+          g.innerHTML = html;
+          g.addEventListener("click", function (ev) {
+            if (ev.target.closest("a")) return;
+            var c = ev.target.closest(".pc[data-slug]");
+            if (c && c.getAttribute("data-slug")) location.href = "/project.html?slug=" + encodeURIComponent(c.getAttribute("data-slug"));
+          });
+        });
       })
       .catch(function () {
         grids.forEach(function (g) { g.innerHTML = '<p style="width:100%;text-align:center;color:var(--tx3);font-size:13px">Could not load projects.</p>'; });
