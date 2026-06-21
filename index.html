@@ -64,7 +64,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .intro{font-size:16px;color:var(--tx2);max-width:620px;margin:18px 0 44px;line-height:1.6}
 
 .nav{position:sticky;top:0;z-index:50;border-bottom:1px solid transparent;transition:background-color .3s var(--ease-out),backdrop-filter .3s,border-color .3s}
-.nav.solid{background:rgba(8,8,11,.72);backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);border-bottom:1px solid var(--line)}
+.nav.solid{background:rgba(8,8,11,.86);backdrop-filter:blur(16px) saturate(120%);-webkit-backdrop-filter:blur(16px) saturate(120%);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:1160px;margin:0 auto;height:64px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:transform .3s var(--ease-out)}
 .nav.solid .nav-inner{transform:scale(.985)}
 .nlinks{display:flex;gap:4px}
@@ -124,9 +124,6 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .tag.ok{color:#6ee7b7;border-color:rgba(52,211,153,.3)}
 .bar{height:5px;border-radius:999px;background:rgba(255,255,255,.08);margin-top:11px;overflow:hidden}
 .bar i{display:block;height:100%;border-radius:999px;background:var(--grad-soft)}
-.float{position:absolute;z-index:3;box-shadow:0 18px 50px -18px rgba(0,0,0,.8)}
-.float.a{top:-16px;right:34px}
-.float.b{bottom:34px;left:-14px}
 
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;transition:transform .4s var(--spring),border-color .3s}
@@ -148,7 +145,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .fmeta span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--tx3);border:1px solid var(--line);border-radius:999px;padding:3px 8px}
 
 .flow-rail{position:relative;margin-top:30px}
-.flow-track{position:absolute;left:0;right:0;top:50%;height:2px;background:var(--line2);transform:translateY(-50%);border-radius:2px;overflow:hidden}
+.flow-track{position:absolute;left:0;right:0;top:7.5px;height:2px;background:var(--line2);transform:translateY(-50%);border-radius:2px;overflow:hidden}
 .flow-fill{height:100%;width:100%;background:linear-gradient(90deg,var(--lime),#8b7cff 55%,var(--accent));transform:scaleX(0);transform-origin:left}
 .flow-nodes{position:relative;display:flex;justify-content:space-between;gap:8px}
 .flow-node{display:flex;flex-direction:column;align-items:center;gap:12px;flex:1;min-width:0}
@@ -299,8 +296,6 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
         <div class="hr"><span class="hi"><i class="ti ti-rocket"></i></span><div><div class="htt">Staging deploy</div><div class="hss">vercel · 12 min ago</div></div><span class="tag ok">Ready</span></div>
       </div>
     </div>
-    <span class="pill stage float a"><i class="ti ti-palette"></i>Design approved</span>
-    <span class="chip go float b"><i class="ti ti-world"></i>Live site</span>
   </div>
 </section>
 
