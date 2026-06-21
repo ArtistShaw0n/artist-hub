@@ -378,7 +378,7 @@ html.jsd .r.in{opacity:1;transform:none}
     if(rm)return;
     var SEL='.stat,.pc,.chip,.ib,.cta,.tab,.pill';
     function ripple(el,x,y,reach){var rip=document.createElement('span');rip.className='lg-ripple';rip.style.left=x+'px';rip.style.top=y+'px';rip.style.setProperty('--rs',Math.ceil(reach/9)+1);el.appendChild(rip);requestAnimationFrame(function(){rip.classList.add('run');});rip.addEventListener('animationend',function(){rip.remove();});}
-    root.addEventListener('pointerdown',function(e){if(e.button!==undefined&&e.button!==0)return;var el=e.target.closest(SEL);if(!el||!root.contains(el))return;el.classList.add('is-pressed');var r=el.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;var reach=Math.max(Math.hypot(x,y),Math.hypot(r.width-x,y),Math.hypot(x,r.height-y),Math.hypot(r.width-x,r.height-y));ripple(el,x,y,reach);});
+    root.addEventListener('pointerdown',function(e){if(e.button!==undefined&&e.button!==0)return;var el=e.target.closest(SEL);if(!el||!root.contains(el))return;el.classList.add('is-pressed');});
     function release(){var els=root.querySelectorAll('.is-pressed');for(var i=0;i<els.length;i++)els[i].classList.remove('is-pressed');}
     root.addEventListener('pointerup',release);root.addEventListener('pointercancel',release);root.addEventListener('pointerleave',release);
   }
@@ -460,7 +460,7 @@ html.jsd .r.in{opacity:1;transform:none}
     liquidGroup(root.querySelector('.nlinks'),'nav');
     liquidGroup(root.querySelector('.iconset'),'icons');
     liquidGroup(root.querySelector('[role="tablist"]'),'tab');
-    press(); cardFX(); hubFX(); tooltips(); wireToasts();
+    press(); tooltips(); wireToasts();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })();
