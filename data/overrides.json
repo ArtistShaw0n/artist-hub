@@ -1,3 +1,60 @@
 {
-  "_readme": "Per-project manual edits that WIN over synced/inferred fields and survive re-sync. Key = project slug. Example: \"bangla-zoom\": { \"stage\": \"development\", \"health\": \"at_risk\", \"progress\": 40, \"name\": \"Bangla Zoom (v2)\", \"hidden\": false }"
+  "_readme": "Per-project manual edits that WIN over synced/inferred fields and survive re-sync. Key = project slug. Live fields (last commit, deploy state, open PRs) are NOT set here so they stay auto-fresh. Set hidden:true to drop a card.",
+  "ignite-traders": {
+    "name": "Ignite Traders",
+    "type": "E-commerce",
+    "summary": "Protective wear & safety supply storefront for pharmaceutical production units",
+    "stage": "maintenance",
+    "progress": 100,
+    "coverGradient": "linear-gradient(135deg,#f97316,#b91c1c)"
+  },
+  "onnorokom-erp": {
+    "name": "Onnorokom ERP",
+    "type": "ERP",
+    "summary": "Enterprise resource planning platform for Onnorokom, shipped to production",
+    "stage": "launch",
+    "progress": 90,
+    "coverGradient": "linear-gradient(135deg,#0f2027,#2c5364)"
+  },
+  "onnorokom-hris": {
+    "name": "Onnorokom HRIS",
+    "type": "HRIS",
+    "summary": "HR information system — employee, attendance and HR operations management",
+    "stage": "launch",
+    "progress": 88,
+    "coverGradient": "linear-gradient(135deg,#4f46e5,#7c3aed,#d946ef)"
+  },
+  "udvash-unmesh-e-commerce": {
+    "name": "Udvash–Unmesh E-Commerce",
+    "type": "E-commerce",
+    "summary": "TypeScript e-commerce storefront for Udvash–Unmesh, with Google + Facebook login",
+    "stage": "development",
+    "progress": 65,
+    "coverGradient": "linear-gradient(135deg,#0f766e,#14b8a6)"
+  },
+  "udvash-unmesh-student-portal": {
+    "name": "Udvash–Unmesh Design System",
+    "type": "Design system",
+    "summary": "Next.js 16 + Tailwind v4 design system built 1:1 from the Figma source",
+    "stage": "launch",
+    "progress": 90,
+    "coverGradient": "linear-gradient(135deg,#1e3a8a,#06b6d4)",
+    "links": { "docs": "https://udvash-ds.vercel.app" }
+  },
+  "udvash-ds-storybook": {
+    "name": "Udvash Design System — Storybook",
+    "type": "Design system",
+    "summary": "Storybook-hosted UI component library for the Udvash–Unmesh design system",
+    "stage": "maintenance",
+    "progress": 100,
+    "coverGradient": "linear-gradient(135deg,#ff4785,#6f2cff)"
+  },
+  "bangla-zoom": {
+    "name": "Bangla Zoom",
+    "type": "Wireframes",
+    "summary": "Wireframe prototype for a Bangla-localized Zoom-style video conferencing app",
+    "stage": "design",
+    "progress": 25,
+    "coverGradient": "linear-gradient(135deg,#6366f1,#22d3ee)"
+  }
 }
