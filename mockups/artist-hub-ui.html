@@ -136,12 +136,27 @@ html.jsd .r.in{opacity:1;transform:none}
   .seclbl{padding:30px 16px 12px}.grid{padding:0 16px}.hub{margin:0 16px}
   .st{min-width:56px}
 }
+/* ===== iOS 26 Liquid Glass pass ===== */
+.nav{background:rgba(10,10,13,.5);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%)}
+.stat,.pc,.hub{background:rgba(255,255,255,.055)!important;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border-color:rgba(255,255,255,.12)!important;box-shadow:0 10px 30px -12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.22);position:relative;transition:transform .5s cubic-bezier(.34,1.56,.64,1),background .35s ease,box-shadow .4s ease,border-color .3s ease}
+.stat:hover,.pc:hover{background:rgba(255,255,255,.1)!important;box-shadow:0 20px 44px -14px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.28);transform:translateY(-5px) scale(1.012);border-color:rgba(255,255,255,.2)!important}
+.stat::after,.pc::after,.hub::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(130% 90% at 22% 0%,rgba(255,255,255,.1),transparent 52%);pointer-events:none;z-index:0}
+.stat>*,.hub>*{position:relative;z-index:1}
+.pc .cov,.pc .pb{position:relative;z-index:1}
+.chip,.ib{background:rgba(255,255,255,.055)!important;backdrop-filter:blur(12px) saturate(150%);-webkit-backdrop-filter:blur(12px) saturate(150%);border-color:rgba(255,255,255,.14)!important;transition:transform .45s cubic-bezier(.34,1.56,.64,1),background .3s ease,color .25s ease,border-color .3s ease}
+.chip:hover,.ib:hover{background:rgba(255,255,255,.12)!important;transform:translateY(-2px);border-color:rgba(255,255,255,.22)!important}
+.cta{transition:transform .45s cubic-bezier(.34,1.56,.64,1),filter .25s ease}
+.cta:active{transform:scale(.95)}
+.pill{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%)}
+
 @media (prefers-reduced-motion:reduce){
   html.jsd .r{opacity:1;transform:none}
   .glow{animation:none}
   .stat,.pc,.chip{transition:none}
   .badge,.badge::after{transition:none}
   .badge-ios,.badge-ios::before{transition:none}
+  .ib,.cta{transition:none}
+  .stat:hover,.pc:hover,.chip:hover,.ib:hover,.badge-ios:hover{transform:none}
 }
 </style>
 </head>
