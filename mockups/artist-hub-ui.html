@@ -11,6 +11,7 @@ html,body{margin:0;background:#08080b}
 body{padding:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .ah{--bg:#08080b;--card:#141419;--card2:#1b1b22;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.16);--tx:#f4f4f6;--tx2:#a3a3ae;--tx3:#6b6b78;--violet:#8b5cf6;--lime:#d6ff4f;--spring:cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;background:var(--bg);color:var(--tx);line-height:1.5;width:100%;min-height:100vh}
 .ah *{box-sizing:border-box}
+.ah .inner{position:relative;z-index:1;max-width:1160px;margin:0 auto}
 .ah .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
 .ah .ga{width:480px;height:480px;background:radial-gradient(circle,#7c5cff,transparent 70%);opacity:.45;top:-200px;left:-150px;animation:fa 15s ease-in-out infinite}
 .ah .gb{width:440px;height:440px;background:radial-gradient(circle,#2dd4bf,transparent 70%);opacity:.3;top:30px;right:-190px;animation:fb 19s ease-in-out infinite}
@@ -103,6 +104,7 @@ body{padding:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:a
 <body>
 <div class="ah">
 <div class="glow ga"></div><div class="glow gb"></div>
+<div class="inner">
 
 <nav class="nav">
   <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
@@ -230,6 +232,7 @@ body{padding:0;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:a
 </div>
 
 <div class="foot r">MOCKUP · UI LANGUAGE FOLLOWS MOTION.DEV · CONTENT IS ARTIST HUB</div>
+</div>
 </div>
 <script>
 (function(){
