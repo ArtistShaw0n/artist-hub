@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artist Hub — every project, one home</title>
+<meta name="description" content="Artist Hub — a single source of truth for every website & app project, from planning to live: docs, Figma, repos, dev & live links, assets, tasks and clients in one place.">
+<meta name="theme-color" content="#08080b">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Artist Hub — every project, one home">
+<meta property="og:description" content="Manage every web & app project end-to-end in one place — from brief to live.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://artist-hub.vercel.app">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css');
+html,body{margin:0;background:#050507}
+body{padding:24px;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.ah{--bg:#08080b;--card:#141419;--card2:#1b1b22;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.16);--tx:#f4f4f6;--tx2:#a3a3ae;--tx3:#6b6b78;--violet:#8b5cf6;--lime:#d6ff4f;--spring:cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:var(--bg);color:var(--tx);line-height:1.5;max-width:1160px;margin:0 auto}
+.ah *{box-sizing:border-box}
+.ah .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.ah .ga{width:480px;height:480px;background:radial-gradient(circle,#7c5cff,transparent 70%);opacity:.45;top:-200px;left:-150px;animation:fa 15s ease-in-out infinite}
+.ah .gb{width:440px;height:440px;background:radial-gradient(circle,#2dd4bf,transparent 70%);opacity:.3;top:30px;right:-190px;animation:fb 19s ease-in-out infinite}
+@keyframes fa{50%{transform:translate(40px,30px)}}
+@keyframes fb{50%{transform:translate(-30px,40px)}}
+.ah .nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 24px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ah .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:16px;letter-spacing:-.02em}
+.ah .logo{width:27px;height:27px;border-radius:8px;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:grid;place-items:center;color:#fff;font-size:15px}
+.ah .nlinks{display:flex;gap:4px}
+.ah .nlink{font-size:13px;color:var(--tx2);padding:7px 11px;border-radius:9px;text-decoration:none;transition:.25s}
+.ah .nlink:hover{color:var(--tx);background:rgba(255,255,255,.05)}
+.ah .nlink.on{color:var(--tx);background:rgba(255,255,255,.07)}
+.ah .nright{display:flex;align-items:center;gap:9px}
+.ah .ib{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:transparent;color:var(--tx2);display:grid;place-items:center;cursor:pointer;transition:.25s;font-size:17px}
+.ah .ib:hover{color:var(--tx);border-color:var(--line2);background:rgba(255,255,255,.04)}
+.ah .cta{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:#0b0b0d;background:var(--lime);border:none;padding:9px 14px;border-radius:999px;cursor:pointer;transition:transform .4s var(--spring),filter .25s}
+.ah .cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.ah .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#ec4899);display:grid;place-items:center;color:#1a1a1a;font-weight:600;font-size:12px}
+.ah .hero{position:relative;z-index:1;padding:54px 24px 8px}
+.ah .eye{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:var(--tx3);margin:0 0 16px;display:flex;align-items:center;gap:10px}
+.ah .eye::before{content:"";width:26px;height:1px;background:var(--line2)}
+.ah h1.h1{font-size:clamp(34px,5vw,58px);line-height:1.05;font-weight:600;letter-spacing:-.035em;margin:0;max-width:760px}
+.ah .grad{background:linear-gradient(100deg,#a78bfa,#ec4899 55%,#fbbf24);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ah .sub{font-size:16px;color:var(--tx2);max-width:520px;margin:20px 0 0;line-height:1.6}
+.ah .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;padding:34px 24px 6px;position:relative;z-index:1}
+.ah .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:transform .4s var(--spring),border-color .3s}
+.ah .stat:hover{transform:translateY(-4px);border-color:var(--line2)}
+.ah .num{font-size:30px;font-weight:600;letter-spacing:-.02em}
+.ah .slbl{font-size:12.5px;color:var(--tx2);margin-top:2px}
+.ah .slbl i{font-size:14px;vertical-align:-2px;margin-right:5px;color:var(--tx3)}
+.ah .seclbl{display:flex;align-items:baseline;gap:12px;padding:38px 24px 14px;position:relative;z-index:1}
+.ah .fig{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;color:var(--violet)}
+.ah .sect{font-size:18px;font-weight:600;letter-spacing:-.02em}
+.ah .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;padding:0 24px;position:relative;z-index:1}
+.ah .pc{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .45s var(--spring),border-color .3s}
+.ah .pc:hover{transform:translateY(-6px);border-color:var(--line2)}
+.ah .cov{height:78px;display:flex;align-items:flex-start;justify-content:space-between;padding:11px 12px}
+.ah .ptype{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.85)}
+.ah .hp{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.4);color:#fff;display:inline-flex;align-items:center;gap:5px}
+.ah .d{width:7px;height:7px;border-radius:50%}
+.ah .pb{padding:14px 15px 16px}
+.ah .pn{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.ah .pcl{font-size:12px;color:var(--tx2);margin-top:2px}
+.ah .pr{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+.ah .sp{font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 9px;border-radius:999px;border:1px solid var(--line2);color:var(--tx2)}
+.ah .pct{font-size:11.5px;color:var(--tx3)}
+.ah .bar{height:5px;border-radius:999px;background:rgba(255,255,255,.08);margin-top:11px;overflow:hidden}
+.ah .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#8b5cf6,#ec4899)}
+.ah .pl{display:flex;gap:9px;margin-top:13px;color:var(--tx3);font-size:16px;align-items:center}
+.ah .pc:hover .pl i{color:var(--tx2)}
+.ah .pl .due{margin-left:auto;font-size:11.5px;color:var(--tx3);display:inline-flex;align-items:center;gap:5px}
+.ah .hub{margin:0 24px;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative;z-index:1}
+.ah .ht{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ah .ht .pn{font-size:17px}
+.ah .pills{display:flex;gap:8px;flex-wrap:wrap}
+.ah .pill{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+.ah .pill.stage{background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.35)}
+.ah .pill.warn{background:rgba(251,191,36,.12);color:#fcd34d;border:1px solid rgba(251,191,36,.3)}
+.ah .lbar{display:flex;flex-wrap:wrap;gap:8px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ah .chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--tx2);background:var(--card2);border:1px solid var(--line);padding:8px 12px;border-radius:10px;cursor:pointer;transition:.25s}
+.ah .chip:hover{color:var(--tx);border-color:var(--line2);transform:translateY(-2px)}
+.ah .chip i{font-size:15px}
+.ah .chip.go{color:#0b0b0d;background:var(--lime);border-color:transparent}
+.ah .steps{display:flex;flex-wrap:wrap;gap:7px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.ah .st{flex:1;min-width:70px;display:flex;flex-direction:column;gap:7px}
+.ah .tk{height:4px;border-radius:999px;background:rgba(255,255,255,.08)}
+.ah .st.done .tk{background:linear-gradient(90deg,#7c3aed,#a78bfa)}
+.ah .st.cur .tk{background:var(--lime)}
+.ah .sl{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--tx3)}
+.ah .st.done .sl{color:var(--tx2)}
+.ah .st.cur .sl{color:var(--tx)}
+.ah .tabs{display:flex;gap:3px;padding:14px 20px 0;flex-wrap:wrap}
+.ah .tab{font-size:12.5px;color:var(--tx2);padding:8px 13px;border-radius:9px 9px 0 0;cursor:pointer;transition:.2s}
+.ah .tab:hover{color:var(--tx)}
+.ah .tab.on{color:var(--tx);background:var(--card2)}
+.ah .rows{padding:6px 20px 20px}
+.ah .hr{display:flex;align-items:center;gap:12px;padding:14px 2px;border-bottom:1px solid var(--line)}
+.ah .hr:last-child{border-bottom:none}
+.ah .hi{width:36px;height:36px;border-radius:10px;background:var(--card2);border:1px solid var(--line);display:grid;place-items:center;color:var(--tx2);font-size:17px;flex-shrink:0}
+.ah .htt{font-size:13.5px;font-weight:500}
+.ah .hss{font-size:12px;color:var(--tx3);margin-top:1px}
+.ah .tag{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--tx2);white-space:nowrap}
+.ah .tag.ok{color:#6ee7b7;border-color:rgba(52,211,153,.3)}
+.ah .foot{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--tx3);text-align:center;padding:28px 18px 18px;letter-spacing:.14em;position:relative;z-index:1}
+.ah .r{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s var(--spring)}
+.ah .r.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.ah .r{opacity:1;transform:none}.ah .glow{animation:none}}
+</style>
+</head>
+<body>
+<div class="ah">
+<div class="glow ga"></div><div class="glow gb"></div>
+
+<nav class="nav">
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+    <div class="brand"><span class="logo"><i class="ti ti-sparkles"></i></span>Artist Hub</div>
+    <div class="nlinks">
+      <a class="nlink on" href="#">Dashboard</a>
+      <a class="nlink" href="#">Projects</a>
+      <a class="nlink" href="#">Clients</a>
+      <a class="nlink" href="#">Calendar</a>
+    </div>
+  </div>
+  <div class="nright">
+    <button class="ib" aria-label="Search"><i class="ti ti-search"></i></button>
+    <button class="ib" aria-label="Notifications"><i class="ti ti-bell"></i></button>
+    <button class="cta"><i class="ti ti-plus"></i>New project</button>
+    <div class="av">RS</div>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="eye r">ARTIST HUB · STUDIO COMMAND CENTER</p>
+  <h1 class="h1 r">Every project, from brief to live — <span class="grad">one home.</span></h1>
+  <p class="sub r">Docs, Figma, repos, dev &amp; live links, assets — every project's whole story in one place, start to finish.</p>
+</header>
+
+<div class="stats">
+  <div class="stat r"><div class="num" data-to="7">0</div><div class="slbl"><i class="ti ti-folders"></i>Active projects</div></div>
+  <div class="stat r" style="transition-delay:.06s"><div class="num" data-to="3">0</div><div class="slbl"><i class="ti ti-palette"></i>In design</div></div>
+  <div class="stat r" style="transition-delay:.12s"><div class="num" data-to="2">0</div><div class="slbl"><i class="ti ti-rocket"></i>Launching this week</div></div>
+  <div class="stat r" style="transition-delay:.18s"><div class="num" data-to="1">0</div><div class="slbl"><i class="ti ti-alert-triangle"></i>At risk</div></div>
+</div>
+
+<div class="seclbl r"><span class="fig">FIG.01</span><span class="sect">Active projects</span></div>
+<div class="grid">
+
+  <div class="pc r">
+    <div class="cov" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)"><span class="ptype">WEBSITE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
+    <div class="pb"><div class="pn">Lumen Studio</div><div class="pcl">Lumen Inc.</div>
+      <div class="pr"><span class="sp">Design</span><span class="pct">62%</span></div>
+      <div class="bar"><i style="width:62%"></i></div>
+      <div class="pl"><i class="ti ti-brand-figma"></i><i class="ti ti-brand-github"></i><i class="ti ti-code"></i><span class="due"><i class="ti ti-calendar"></i>Jun 28</span></div>
+    </div>
+  </div>
+
+  <div class="pc r" style="transition-delay:.05s">
+    <div class="cov" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6)"><span class="ptype">MOBILE APP</span><span class="hp"><span class="d" style="background:#fbbf24"></span>At risk</span></div>
+    <div class="pb"><div class="pn">Nova Bank App</div><div class="pcl">Nova Financial</div>
+      <div class="pr"><span class="sp">Development</span><span class="pct">45%</span></div>
+      <div class="bar"><i style="width:45%"></i></div>
+      <div class="pl"><i class="ti ti-brand-figma"></i><i class="ti ti-brand-github"></i><i class="ti ti-code"></i><i class="ti ti-world"></i><span class="due"><i class="ti ti-calendar"></i>Jul 12</span></div>
+    </div>
+  </div>
+
+  <div class="pc r" style="transition-delay:.1s">
+    <div class="cov" style="background:linear-gradient(135deg,#0f766e,#14b8a6)"><span class="ptype">E-COMMERCE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
+    <div class="pb"><div class="pn">Verde Commerce</div><div class="pcl">Verde Co.</div>
+      <div class="pr"><span class="sp">QA / staging</span><span class="pct">80%</span></div>
+      <div class="bar"><i style="width:80%"></i></div>
+      <div class="pl"><i class="ti ti-brand-figma"></i><i class="ti ti-brand-github"></i><i class="ti ti-world"></i><span class="due"><i class="ti ti-calendar"></i>Jun 24</span></div>
+    </div>
+  </div>
+
+  <div class="pc r" style="transition-delay:.15s">
+    <div class="cov" style="background:linear-gradient(135deg,#92400e,#f59e0b)"><span class="ptype">LANDING PAGE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
+    <div class="pb"><div class="pn">Atlas Agency</div><div class="pcl">Atlas Group</div>
+      <div class="pr"><span class="sp">Planning</span><span class="pct">20%</span></div>
+      <div class="bar"><i style="width:20%"></i></div>
+      <div class="pl"><i class="ti ti-brand-figma"></i><i class="ti ti-file-text"></i><span class="due"><i class="ti ti-calendar"></i>Jul 02</span></div>
+    </div>
+  </div>
+
+  <div class="pc r" style="transition-delay:.2s">
+    <div class="cov" style="background:linear-gradient(135deg,#9d174d,#ec4899)"><span class="ptype">BRAND SITE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
+    <div class="pb"><div class="pn">Kite Studio</div><div class="pcl">Kite Labs</div>
+      <div class="pr"><span class="sp">Launch</span><span class="pct">95%</span></div>
+      <div class="bar"><i style="width:95%"></i></div>
+      <div class="pl"><i class="ti ti-brand-github"></i><i class="ti ti-world"></i><span class="due"><i class="ti ti-calendar"></i>Jun 22</span></div>
+    </div>
+  </div>
+
+  <div class="pc r" style="transition-delay:.25s">
+    <div class="cov" style="background:linear-gradient(135deg,#334155,#64748b)"><span class="ptype">WEB APP</span><span class="hp"><span class="d" style="background:#f87171"></span>Blocked</span></div>
+    <div class="pb"><div class="pn">Orbit SaaS</div><div class="pcl">Orbit Tech</div>
+      <div class="pr"><span class="sp">Maintenance</span><span class="pct">100%</span></div>
+      <div class="bar"><i style="width:100%"></i></div>
+      <div class="pl"><i class="ti ti-brand-github"></i><i class="ti ti-world"></i><span class="due"><i class="ti ti-infinity"></i>Ongoing</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="seclbl r"><span class="fig">FIG.02</span><span class="sect">Project hub</span></div>
+<div class="hub r">
+  <div class="ht">
+    <div><div class="pn">Nova Bank App</div><div class="pcl">Nova Financial · Mobile app</div></div>
+    <div class="pills"><span class="pill stage"><i class="ti ti-progress"></i>Development</span><span class="pill warn"><i class="ti ti-alert-triangle"></i>At risk</span></div>
+  </div>
+  <div class="lbar">
+    <span class="chip"><i class="ti ti-brand-figma"></i>Figma</span>
+    <span class="chip"><i class="ti ti-brand-github"></i>Repo</span>
+    <span class="chip"><i class="ti ti-code"></i>Dev</span>
+    <span class="chip"><i class="ti ti-flask"></i>Staging</span>
+    <span class="chip go"><i class="ti ti-world"></i>Live site</span>
+    <span class="chip"><i class="ti ti-file-text"></i>Docs</span>
+  </div>
+  <div class="steps">
+    <div class="st done"><div class="tk"></div><div class="sl">Lead</div></div>
+    <div class="st done"><div class="tk"></div><div class="sl">Planning</div></div>
+    <div class="st done"><div class="tk"></div><div class="sl">Proposal</div></div>
+    <div class="st done"><div class="tk"></div><div class="sl">Design</div></div>
+    <div class="st cur"><div class="tk"></div><div class="sl">Dev</div></div>
+    <div class="st"><div class="tk"></div><div class="sl">QA</div></div>
+    <div class="st"><div class="tk"></div><div class="sl">Launch</div></div>
+    <div class="st"><div class="tk"></div><div class="sl">Maint.</div></div>
+  </div>
+  <div class="tabs">
+    <span class="tab on">Overview</span><span class="tab">Design</span><span class="tab">Dev</span><span class="tab">Assets</span><span class="tab">Tasks</span><span class="tab">Activity</span>
+  </div>
+  <div class="rows">
+    <div class="hr"><span class="hi"><i class="ti ti-brand-figma"></i></span><div><div class="htt">Figma — UI kit v3</div><div class="hss">3 frames updated · 2h ago</div></div><span class="tag">Open</span></div>
+    <div class="hr"><span class="hi"><i class="ti ti-brand-github"></i></span><div><div class="htt">Repo — nova-app</div><div class="hss">main · 4 open PRs</div></div><span class="tag ok">CI passing</span></div>
+    <div class="hr"><span class="hi"><i class="ti ti-rocket"></i></span><div><div class="htt">Staging deploy</div><div class="hss">vercel · 12 min ago</div></div><span class="tag ok">Ready</span></div>
+    <div class="hr"><span class="hi"><i class="ti ti-checklist"></i></span><div><div class="htt">Open tasks</div><div class="hss">5 in progress · 2 in review</div></div><span class="tag">7 total</span></div>
+  </div>
+</div>
+
+<div class="foot r">MOCKUP · UI LANGUAGE FOLLOWS MOTION.DEV · CONTENT IS ARTIST HUB</div>
+</div>
+<script>
+(function(){
+  var root=document.querySelector('.ah');
+  function go(){
+    try{
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+      root.querySelectorAll('.r').forEach(function(el){io.observe(el)});
+    }catch(e){root.querySelectorAll('.r').forEach(function(el){el.classList.add('in')})}
+    setTimeout(function(){root.querySelectorAll('.r').forEach(function(el){el.classList.add('in')})},1600);
+    root.querySelectorAll('[data-to]').forEach(function(el){var to=+el.dataset.to,s=null,d=1000;function step(t){if(!s)s=t;var p=Math.min((t-s)/d,1);el.textContent=Math.round(p*to);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)});
+    root.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){root.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});t.classList.add('on')})});
+    root.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){})});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
+})();
+</script>
+</body>
+</html>
