@@ -182,6 +182,21 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .cta-band p{font-size:16px;color:var(--tx2);max-width:480px;margin:18px auto 30px;line-height:1.6}
 .cta-band .cglow{position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,#6d5efc,transparent 70%);opacity:.14;filter:blur(80px);bottom:-160px;left:50%;transform:translateX(-50%)}
 .cta-band .row{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;position:relative}
+.pc{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .4s var(--spring),border-color .3s;color:inherit}
+.pc:hover{transform:translateY(-6px);border-color:var(--line2)}
+.pc .cov{height:76px;display:flex;align-items:flex-start;justify-content:space-between;padding:11px 12px}
+.pc .ptype{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.9);text-shadow:0 1px 2px rgba(0,0,0,.55)}
+.pc .hp{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.45);color:#fff;display:inline-flex;align-items:center;gap:5px}
+.pc .d{width:7px;height:7px;border-radius:50%}
+.pc .pb{padding:14px 15px 16px}
+.pc .pn{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.pc .pcl{font-size:12px;color:var(--tx2);margin-top:2px}
+.pc .pr{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+.pc .sp{font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 9px;border-radius:999px;border:1px solid var(--line2);color:var(--tx2)}
+.pc .pct{font-size:11.5px;color:var(--tx3)}
+.pc .pl{display:flex;gap:9px;margin-top:13px;color:var(--tx3);font-size:16px;align-items:center}
+.pc:hover .pl i{color:var(--tx2)}
+.pc .pl .due{margin-left:auto;font-size:11.5px;color:var(--tx3);display:inline-flex;align-items:center;gap:5px}
 .txtlink{font-size:14px;color:var(--tx2);display:inline-flex;align-items:center;gap:6px;transition:.2s}
 .txtlink:hover{color:var(--tx)}
 
@@ -216,8 +231,8 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
   html{scroll-behavior:auto;scroll-padding-top:0}
   .glow,.flow-node.cur .dot,.mrq .track{animation:none}
   .flow-fill{transform:scaleX(1)}
-  .cta,.stat,.flow-card{transition:none!important}
-  .cta:hover,.stat:hover,.flow-card:hover{transform:none!important}
+  .cta,.stat,.flow-card,.pc{transition:none!important}
+  .cta:hover,.stat:hover,.flow-card:hover,.pc:hover{transform:none!important}
 }
 </style>
 </head>
@@ -232,7 +247,7 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
   <div class="nav-inner">
     <a class="brand" href="/"><svg class="logomark" width="24" height="24" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".85"><line x1="24" y1="24" x2="24" y2="11"/><line x1="24" y1="24" x2="11.5" y2="34.5"/><line x1="24" y1="24" x2="36.5" y2="34.5"/></g><circle cx="24" cy="11" r="3.4" fill="currentColor"/><circle cx="11.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="36.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>Artist Hub</a>
     <nav class="nlinks" aria-label="Primary">
-      <a class="nlink" href="#features">Features</a>
+      <a class="nlink" href="#projects">Projects</a>
       <a class="nlink" href="#flow">The flow</a>
       <a class="nlink" href="#integrations">Integrations</a>
     </nav>
@@ -243,7 +258,7 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
     </div>
   </div>
   <div class="navsheet" id="navsheet" hidden>
-    <a href="#features">Features</a>
+    <a href="#projects">Projects</a>
     <a href="#flow">The flow</a>
     <a href="#integrations">Integrations</a>
     <a href="/dashboard.html">Sign in</a>
@@ -313,45 +328,62 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
   </div>
 </section>
 
-<section class="sec" id="features" aria-labelledby="feat-h">
+<section class="sec" id="projects" aria-labelledby="proj-h">
   <div class="wrap">
     <div data-reveal>
       <div class="seclbl"><span class="fig">FIG.01</span></div>
-      <h2 class="sect" id="feat-h">Everything about a project, one hop away</h2>
-      <p class="intro">Artist Hub is the index of record — it typed-links and lightly syncs your real tools, then adds the thin layer of structure they're missing.</p>
+      <h2 class="sect" id="proj-h">Preview your projects at a glance</h2>
+      <p class="intro">Every project as a live card — stage, health, progress and links in one board. Click any card to open its hub.</p>
     </div>
     <div class="fgrid" data-stagger>
-      <article class="fcard wide" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-link" aria-hidden="true"></i></div>
-        <h3 class="fh">The typed-link hub</h3>
-        <p class="fb">One project page links straight to its Figma, repos, dev, staging, and live URLs — no more hunting across tabs.</p>
-        <div class="fmeta"><span>FIGMA</span><span>GITHUB</span><span>VERCEL</span></div>
-      </article>
-      <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-stack-2" aria-hidden="true"></i></div>
-        <h3 class="fh">8-stage tracker with gates</h3>
-        <p class="fb">Move from lead to maintenance through eight stages, each with a checkable gate that must clear before a project advances.</p>
-      </article>
-      <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-users" aria-hidden="true"></i></div>
-        <h3 class="fh">Client portal</h3>
-        <p class="fb">Share a clean, branded view where clients see only what they should — approvals and status, never your notes or credentials.</p>
-      </article>
-      <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-search" aria-hidden="true"></i></div>
-        <h3 class="fh">Search everything</h3>
-        <p class="fb">A global command bar jumps you to any project, doc, asset, or link in keystrokes.</p>
-      </article>
-      <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-lock" aria-hidden="true"></i></div>
-        <h3 class="fh">Credentials vault</h3>
-        <p class="fb">Encrypted, role-gated secrets live with the project they belong to and stay invisible to clients and viewers.</p>
-      </article>
-      <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-plug" aria-hidden="true"></i></div>
-        <h3 class="fh">Connected integrations</h3>
-        <p class="fb">Figma, GitHub, Drive, and Vercel stay where they are — Artist Hub links and syncs them so the hub is always current.</p>
-      </article>
+      <a class="pc" data-stagger-item href="/dashboard.html">
+        <div class="cov" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)"><span class="ptype">WEBSITE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
+        <div class="pb"><div class="pn">Lumen Studio</div><div class="pcl">Lumen Inc.</div>
+          <div class="pr"><span class="sp">Design</span><span class="pct">62%</span></div>
+          <div class="bar"><i style="width:62%"></i></div>
+          <div class="pl"><i class="ti ti-brand-figma" aria-hidden="true"></i><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-code" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jun 28</span></div>
+        </div>
+      </a>
+      <a class="pc" data-stagger-item href="/dashboard.html">
+        <div class="cov" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6)"><span class="ptype">MOBILE APP</span><span class="hp"><span class="d" style="background:#fbbf24"></span>At risk</span></div>
+        <div class="pb"><div class="pn">Nova Bank App</div><div class="pcl">Nova Financial</div>
+          <div class="pr"><span class="sp">Development</span><span class="pct">45%</span></div>
+          <div class="bar"><i style="width:45%"></i></div>
+          <div class="pl"><i class="ti ti-brand-figma" aria-hidden="true"></i><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-code" aria-hidden="true"></i><i class="ti ti-world" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jul 12</span></div>
+        </div>
+      </a>
+      <a class="pc" data-stagger-item href="/dashboard.html">
+        <div class="cov" style="background:linear-gradient(135deg,#0f766e,#14b8a6)"><span class="ptype">E-COMMERCE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
+        <div class="pb"><div class="pn">Verde Commerce</div><div class="pcl">Verde Co.</div>
+          <div class="pr"><span class="sp">QA / staging</span><span class="pct">80%</span></div>
+          <div class="bar"><i style="width:80%"></i></div>
+          <div class="pl"><i class="ti ti-brand-figma" aria-hidden="true"></i><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-world" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jun 24</span></div>
+        </div>
+      </a>
+      <a class="pc" data-stagger-item href="/dashboard.html">
+        <div class="cov" style="background:linear-gradient(135deg,#92400e,#f59e0b)"><span class="ptype">LANDING PAGE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
+        <div class="pb"><div class="pn">Atlas Agency</div><div class="pcl">Atlas Group</div>
+          <div class="pr"><span class="sp">Planning</span><span class="pct">20%</span></div>
+          <div class="bar"><i style="width:20%"></i></div>
+          <div class="pl"><i class="ti ti-brand-figma" aria-hidden="true"></i><i class="ti ti-file-text" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jul 02</span></div>
+        </div>
+      </a>
+      <a class="pc" data-stagger-item href="/dashboard.html">
+        <div class="cov" style="background:linear-gradient(135deg,#3730a3,#6d5efc)"><span class="ptype">BRAND SITE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
+        <div class="pb"><div class="pn">Kite Studio</div><div class="pcl">Kite Labs</div>
+          <div class="pr"><span class="sp">Launch</span><span class="pct">95%</span></div>
+          <div class="bar"><i style="width:95%"></i></div>
+          <div class="pl"><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-world" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jun 22</span></div>
+        </div>
+      </a>
+      <a class="pc" data-stagger-item href="/dashboard.html">
+        <div class="cov" style="background:linear-gradient(135deg,#334155,#64748b)"><span class="ptype">WEB APP</span><span class="hp"><span class="d" style="background:#f87171"></span>Blocked</span></div>
+        <div class="pb"><div class="pn">Orbit SaaS</div><div class="pcl">Orbit Tech</div>
+          <div class="pr"><span class="sp">Maintenance</span><span class="pct">100%</span></div>
+          <div class="bar"><i style="width:100%"></i></div>
+          <div class="pl"><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-world" aria-hidden="true"></i><span class="due"><i class="ti ti-infinity" aria-hidden="true"></i>Ongoing</span></div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -400,20 +432,6 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
   </div>
 </section>
 
-<section class="sec" aria-labelledby="cta-h">
-  <div class="wrap">
-    <div class="cta-band" data-reveal>
-      <div class="cglow" aria-hidden="true"></div>
-      <h2 id="cta-h">Give every project <span class="grad">one home.</span></h2>
-      <p>Stop stitching projects together from memory, email, and twelve open tabs. Set up your studio's command center and reach everything in two clicks.</p>
-      <div class="row">
-        <a class="cta lg" href="/dashboard.html">Open app <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-        <a class="txtlink" href="/dashboard.html">See a live project hub <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer class="lfoot">
@@ -427,7 +445,7 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
         <span class="ib dead" aria-hidden="true"><i class="ti ti-mail"></i></span>
       </div>
     </div>
-    <div class="fcol"><h5>Product</h5><a href="#features">Features</a><a href="#flow">The flow</a><a href="#integrations">Integrations</a><a href="/dashboard.html">Open app</a></div>
+    <div class="fcol"><h5>Product</h5><a href="#projects">Projects</a><a href="#flow">The flow</a><a href="#integrations">Integrations</a><a href="/dashboard.html">Open app</a></div>
     <div class="fcol"><h5>Lifecycle</h5><a href="#flow">Planning</a><a href="#flow">Design</a><a href="#flow">Development</a><a href="#flow">Launch &amp; care</a></div>
     <div class="fcol"><h5>Studio</h5><span class="fdead">About</span><span class="fdead">Roadmap</span><span class="fdead">Contact</span><span class="fdead">Status</span></div>
     <div class="fcol"><h5>Legal</h5><span class="fdead">Privacy</span><span class="fdead">Terms</span><span class="fdead">Security</span></div>
