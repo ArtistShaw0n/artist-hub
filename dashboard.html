@@ -232,6 +232,28 @@ html.jsd .r.in{opacity:1;transform:none}
   .ib,.cta{transition:none}
   .stat:hover,.pc:hover,.chip:hover,.ib:hover,.badge-ios:hover{transform:none}
 }
+
+/* ============================================================
+   CENTERED PREMIUM PASS (Atelier) — wins on source order.
+   .stat stays GLASS (background not redeclared). No new motion. ============================================================ */
+.ah .hero{text-align:center}
+.ah .eye{justify-content:center;display:inline-flex;align-items:center;gap:12px;width:100%;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--tx3);margin:0 0 22px}
+.ah .eye::before,.ah .eye::after{content:"";width:30px;height:1px;flex:none;background:linear-gradient(90deg,transparent,var(--line2))}
+.ah .eye::after{background:linear-gradient(90deg,var(--line2),transparent)}
+.ah .h1{font-size:clamp(38px,6vw,72px);line-height:1.03;font-weight:600;letter-spacing:-.04em;margin:0 auto;max-width:15ch;text-wrap:balance}
+.ah .sub{font-size:clamp(16px,1.5vw,18px);line-height:1.6;color:var(--tx2);max-width:58ch;margin:24px auto 0;text-wrap:pretty}
+.ah .stats{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;max-width:1080px;margin-inline:auto}
+.ah .stat{border-radius:18px;padding:26px 18px 22px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.ah .schip{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin:0 auto 14px;color:var(--accent-soft);font-size:20px;background:radial-gradient(120% 120% at 50% 0%,rgba(167,139,250,.20),rgba(109,94,252,.08));border:1px solid rgba(167,139,250,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 4px 12px -6px rgba(109,94,252,.5)}
+.ah .schip i{display:block;line-height:1}
+.ah .num{position:relative;display:inline-block;font-size:clamp(34px,4vw,40px);font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--tx);font-variant-numeric:tabular-nums;padding-bottom:12px}
+.ah .num::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:24px;height:2px;border-radius:2px;background:var(--grad);opacity:.9}
+.ah .slbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;line-height:1.4;color:var(--tx2);margin-top:12px;max-width:18ch}
+.ah .slbl i{display:none}
+.ah .seclbl{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:38px 24px 14px;text-align:center}
+.ah .fig{position:relative;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-soft);line-height:1;padding-bottom:12px}
+.ah .fig::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:22px;height:1px;background:var(--line2)}
+.ah .sect{font-size:clamp(18px,2vw,24px);font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--tx);margin:14px auto 0;max-width:22ch;text-align:center;text-wrap:balance}
 </style>
 </head>
 <body>
@@ -273,10 +295,10 @@ html.jsd .r.in{opacity:1;transform:none}
 </header>
 
 <div class="stats" data-counters>
-  <div class="stat r"><div class="num" data-to="7">0</div><div class="slbl"><i class="ti ti-folders" aria-hidden="true"></i>Active projects</div></div>
-  <div class="stat r" style="transition-delay:.06s"><div class="num" data-to="3">0</div><div class="slbl"><i class="ti ti-palette" aria-hidden="true"></i>In design</div></div>
-  <div class="stat r" style="transition-delay:.12s"><div class="num" data-to="2">0</div><div class="slbl"><i class="ti ti-rocket" aria-hidden="true"></i>Launching this week</div></div>
-  <div class="stat r" style="transition-delay:.18s"><div class="num" data-to="1">0</div><div class="slbl"><i class="ti ti-alert-triangle" aria-hidden="true"></i>At risk</div></div>
+  <div class="stat r"><span class="schip"><i class="ti ti-folders" aria-hidden="true"></i></span><div class="num" data-to="7">0</div><div class="slbl">Active projects</div></div>
+  <div class="stat r" style="transition-delay:.06s"><span class="schip"><i class="ti ti-palette" aria-hidden="true"></i></span><div class="num" data-to="3">0</div><div class="slbl">In design</div></div>
+  <div class="stat r" style="transition-delay:.12s"><span class="schip"><i class="ti ti-rocket" aria-hidden="true"></i></span><div class="num" data-to="2">0</div><div class="slbl">Launching this week</div></div>
+  <div class="stat r" style="transition-delay:.18s"><span class="schip"><i class="ti ti-alert-triangle" aria-hidden="true"></i></span><div class="num" data-to="1">0</div><div class="slbl">At risk</div></div>
 </div>
 
 <div class="seclbl r" id="projects"><span class="fig">FIG.01</span><h2 class="sect">Active projects</h2></div>

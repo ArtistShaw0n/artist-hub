@@ -234,6 +234,30 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
   .cta,.stat,.flow-card,.pc{transition:none!important}
   .cta:hover,.stat:hover,.flow-card:hover,.pc:hover{transform:none!important}
 }
+
+/* ============================================================
+   CENTERED PREMIUM PASS (Atelier) — matches dashboard system.
+   .stat is SOLID here (no glass). No new motion. ============================================================ */
+.ah .eye{justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--tx3);margin:0 0 22px;gap:12px}
+.ah .hero .eye::before{background:linear-gradient(90deg,transparent,var(--line2));width:30px}
+.ah .hero .eye::after{background:linear-gradient(90deg,var(--line2),transparent);width:30px}
+.ah .sub{max-width:58ch;text-wrap:pretty}
+.ah .stats{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;max-width:1080px;margin-inline:auto}
+.ah .stat{border-radius:18px;padding:26px 18px 22px;display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--card);border:1px solid var(--line)}
+.ah .stat:hover{transform:translateY(-4px);border-color:var(--line2)}
+.ah .schip{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin:0 auto 14px;color:var(--accent-soft);font-size:20px;background:radial-gradient(120% 120% at 50% 0%,rgba(167,139,250,.20),rgba(109,94,252,.08));border:1px solid rgba(167,139,250,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 4px 12px -6px rgba(109,94,252,.5)}
+.ah .schip i{display:block;line-height:1}
+.ah .num{position:relative;display:inline-block;font-size:clamp(34px,4vw,40px);font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--tx);font-variant-numeric:tabular-nums;min-width:1.2ch;padding-bottom:12px}
+.ah .num::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:24px;height:2px;border-radius:2px;background:var(--grad);opacity:.9}
+.ah .slbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;line-height:1.4;color:var(--tx2);margin-top:12px;max-width:18ch}
+.ah .slbl i{display:none}
+.ah .stat-cap{margin-top:26px}
+.ah .headblock{text-align:center;max-width:760px;margin-inline:auto}
+.ah .seclbl{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;margin:0 auto 14px;text-align:center}
+.ah .fig{position:relative;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-soft);line-height:1;padding-bottom:12px}
+.ah .fig::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:22px;height:1px;background:var(--line2)}
+.ah .sect{font-size:clamp(28px,3.6vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.1;color:var(--tx);margin:0 auto;max-width:18ch;text-align:center;text-wrap:balance}
+.ah .intro{font-size:clamp(16px,1.4vw,18px);line-height:1.65;color:var(--tx2);max-width:64ch;margin:18px auto 44px;text-align:center;text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -319,10 +343,10 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
 <section class="sec" style="padding-top:0" aria-label="At a glance">
   <div class="wrap">
     <div class="stats" data-stagger data-counters>
-      <div class="stat" data-stagger-item><div class="num" data-to="1">0</div><div class="slbl"><i class="ti ti-home" aria-hidden="true"></i>Home page per project</div></div>
-      <div class="stat" data-stagger-item><div class="num" data-to="2">0</div><div class="slbl"><i class="ti ti-pointer" aria-hidden="true"></i>Clicks to reach anything</div></div>
-      <div class="stat" data-stagger-item><div class="num" data-to="8">0</div><div class="slbl"><i class="ti ti-stack-2" aria-hidden="true"></i>Lifecycle stages, gated</div></div>
-      <div class="stat" data-stagger-item><div class="num" data-to="0">0</div><div class="slbl"><i class="ti ti-plug-off" aria-hidden="true"></i>Tools to replace</div></div>
+      <div class="stat" data-stagger-item><span class="schip"><i class="ti ti-home" aria-hidden="true"></i></span><div class="num" data-to="1">0</div><div class="slbl">Home page per project</div></div>
+      <div class="stat" data-stagger-item><span class="schip"><i class="ti ti-pointer" aria-hidden="true"></i></span><div class="num" data-to="2">0</div><div class="slbl">Clicks to reach anything</div></div>
+      <div class="stat" data-stagger-item><span class="schip"><i class="ti ti-stack-2" aria-hidden="true"></i></span><div class="num" data-to="8">0</div><div class="slbl">Lifecycle stages, gated</div></div>
+      <div class="stat" data-stagger-item><span class="schip"><i class="ti ti-plug-off" aria-hidden="true"></i></span><div class="num" data-to="0">0</div><div class="slbl">Tools to replace</div></div>
     </div>
     <p class="stat-cap">ONE INDEX OF RECORD · EVERYTHING ELSE STAYS WHERE IT LIVES</p>
   </div>
@@ -330,7 +354,7 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
 
 <section class="sec" id="projects" aria-labelledby="proj-h">
   <div class="wrap">
-    <div data-reveal>
+    <div class="headblock" data-reveal>
       <div class="seclbl"><span class="fig">FIG.01</span></div>
       <h2 class="sect" id="proj-h">Preview your projects at a glance</h2>
       <p class="intro">Every project as a live card — stage, health, progress and links in one board. Click any card to open its hub.</p>
@@ -341,7 +365,7 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
 
 <section class="sec" id="flow" data-flow aria-labelledby="flow-h">
   <div class="wrap">
-    <div data-reveal>
+    <div class="headblock" data-reveal>
       <div class="seclbl"><span class="fig">FIG.02</span></div>
       <h2 class="sect" id="flow-h">From first lead to long-term care</h2>
       <p class="intro">Every project moves through the same eight stages — each with an explicit gate it has to clear before it advances. Design, dev and QA loop in practice; the hub always shows where things really stand.</p>
