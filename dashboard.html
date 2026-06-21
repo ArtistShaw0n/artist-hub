@@ -39,8 +39,16 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .nlinks{display:flex;gap:4px}
 .nlink{font-size:13px;color:var(--tx2);padding:7px 11px;border-radius:9px;transition:.25s}
 .nlink:hover{color:var(--tx);background:rgba(255,255,255,.05)}
-.nlink.on{color:var(--tx);background:rgba(255,255,255,.07)}
+.nlink.on{color:var(--tx)}
 .nlink.off{opacity:.45;cursor:default}
+.nlinks .nlink:hover{background:transparent}
+/* liquid-glass morphing selector */
+.lg-group{position:relative}
+.lg-group > :not(.lg-pill){position:relative;z-index:1}
+.lg-pill{position:absolute;top:0;left:0;border-radius:10px;background:rgba(255,255,255,.10);backdrop-filter:blur(12px) saturate(170%);-webkit-backdrop-filter:blur(12px) saturate(170%);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 16px -8px rgba(0,0,0,.6);pointer-events:none;z-index:0;opacity:0;transition:transform .42s cubic-bezier(.34,1.4,.5,1),width .42s cubic-bezier(.34,1.4,.5,1),height .3s ease,opacity .25s}
+.iconset{display:flex;gap:9px}
+.iconset .ib{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-color:transparent!important}
+.iconset .ib:hover{background:transparent!important;transform:none!important}
 .nright{display:flex;align-items:center;gap:9px}
 .ib{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:transparent;color:var(--tx2);display:grid;place-items:center;cursor:pointer;transition:.25s;font-size:17px}
 .ib:hover{color:var(--tx);border-color:var(--line2);background:rgba(255,255,255,.04)}
@@ -118,7 +126,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .tabs{display:flex;gap:3px;padding:14px 20px 0;flex-wrap:wrap}
 .tab{font-size:12.5px;color:var(--tx2);padding:8px 13px;border-radius:9px 9px 0 0;background:transparent;border:none;cursor:pointer;font-family:inherit}
 .tab:hover{color:var(--tx)}
-.tab.on{color:var(--tx);background:var(--card2)}
+.tab.on{color:var(--tx)}
 .rows{padding:6px 20px 20px}
 .hr{display:flex;align-items:center;gap:12px;padding:14px 2px;border-bottom:1px solid var(--line)}
 .hr:last-child{border-bottom:none}
@@ -151,6 +159,7 @@ html.jsd .r.in{opacity:1;transform:none}
 
 @media (prefers-reduced-motion:reduce){
   html.jsd .r{opacity:1;transform:none}
+  .lg-pill{transition:none}
   .glow{animation:none}
   .stat,.pc,.chip{transition:none}
   .badge,.badge::after{transition:none}
@@ -177,8 +186,10 @@ html.jsd .r.in{opacity:1;transform:none}
     </div>
   </div>
   <div class="nright">
-    <button class="ib" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button>
-    <button class="ib" aria-label="Notifications"><i class="ti ti-bell" aria-hidden="true"></i></button>
+    <span class="iconset">
+      <button class="ib" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button>
+      <button class="ib" aria-label="Notifications"><i class="ti ti-bell" aria-hidden="true"></i></button>
+    </span>
     <button class="cta"><i class="ti ti-plus" aria-hidden="true"></i>New project</button>
     <div class="profile-slot" id="pslot" data-style="glass">
       <button class="styletoggle" id="pstyle" aria-label="Switch profile style" title="Switch profile style"><i class="ti ti-arrows-exchange-2" aria-hidden="true"></i></button>
@@ -254,6 +265,36 @@ html.jsd .r.in{opacity:1;transform:none}
 (function(){
   var root=document.querySelector('.ah');
   var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function liquidGroup(group, mode){
+    if(!group||rm) return;
+    var sel = mode==='tab' ? '[role="tab"]' : (mode==='icons' ? '.ib' : '.nlink');
+    var items = group.querySelectorAll(sel);
+    if(!items.length) return;
+    group.classList.add('lg-group');
+    var pill=document.createElement('span'); pill.className='lg-pill'; group.appendChild(pill);
+    var active=null; items.forEach(function(it){ if(it.matches('.on,[aria-selected="true"]')) active=it; });
+    if(!active) active=items[0];
+    var cur={set:false};
+    function box(el){ var g=group.getBoundingClientRect(), r=el.getBoundingClientRect(); return {x:r.left-g.left,y:r.top-g.top,w:r.width,h:r.height}; }
+    function settle(b){ pill.style.opacity='1'; pill.style.height=b.h+'px'; pill.style.width=b.w+'px'; pill.style.transform='translate('+b.x+'px,'+b.y+'px)'; }
+    function moveTo(el){
+      if(!el){ pill.style.opacity='0'; return; }
+      var b=box(el);
+      if(!cur.set){ settle(b); cur={set:true,x:b.x,y:b.y,w:b.w,h:b.h}; return; }
+      var sx=Math.min(cur.x,b.x), sw=Math.max(cur.x+cur.w,b.x+b.w)-sx;
+      pill.style.height=b.h+'px'; pill.style.width=sw+'px'; pill.style.transform='translate('+sx+'px,'+b.y+'px)';
+      clearTimeout(pill._t); pill._t=setTimeout(function(){ settle(b); cur={set:true,x:b.x,y:b.y,w:b.w,h:b.h}; },110);
+    }
+    requestAnimationFrame(function(){ moveTo(active); });
+    items.forEach(function(it){
+      it.addEventListener('pointerenter',function(){ moveTo(it); });
+      it.addEventListener('focus',function(){ moveTo(it); });
+      if(mode!=='icons') it.addEventListener('click',function(){ active=it; moveTo(it); });
+    });
+    group.addEventListener('pointerleave',function(){ moveTo(active); });
+    group.addEventListener('focusout',function(){ setTimeout(function(){ if(!group.contains(document.activeElement)) moveTo(active); },0); });
+    window.addEventListener('resize',function(){ cur.set=false; moveTo(active); });
+  }
   function go(){
     try{
       var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
@@ -288,6 +329,9 @@ html.jsd .r.in{opacity:1;transform:none}
       try{var sv=localStorage.getItem('ah-profile-style');if(sv)slot.setAttribute('data-style',sv);}catch(e){}
       tg.addEventListener('click',function(){var cur=slot.getAttribute('data-style')==='glass'?'motion':'glass';slot.setAttribute('data-style',cur);try{localStorage.setItem('ah-profile-style',cur);}catch(e){}});
     }
+    liquidGroup(root.querySelector('.nlinks'),'nav');
+    liquidGroup(root.querySelector('.iconset'),'icons');
+    liquidGroup(root.querySelector('[role="tablist"]'),'tab');
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 })();
