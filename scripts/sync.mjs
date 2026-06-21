@@ -83,9 +83,14 @@ function inferStage(type, deployState, lastActivity) {
 function inferProgress(stage) {
   return { lead: 10, planning: 25, proposal: 35, design: 30, development: 60, qa: 80, launch: 90, maintenance: 100 }[stage] ?? 50;
 }
-function bestAlias(prod) {
-  const a = (prod && prod.alias) || [];
-  return a.find((x) => x && !x.endsWith(".vercel.app")) || a[0] || "";
+function bestAlias(prod, name) {
+  const a = ((prod && prod.alias) || []).filter(Boolean);
+  const custom = a.find((x) => !x.endsWith(".vercel.app"));        // prefer a real custom domain
+  if (custom) return custom;
+  const canonical = a.find((x) => x === `${name}.vercel.app`);     // then the clean <name>.vercel.app
+  if (canonical) return canonical;
+  const va = a.filter((x) => x.endsWith(".vercel.app")).sort((x, y) => x.length - y.length);
+  return va[0] || a[0] || "";                                      // else the shortest (avoid team-scoped aliases)
 }
 
 async function main() {
@@ -103,7 +108,7 @@ async function main() {
     const link = v.link || {};
     const repoFull = link.org && link.repo ? `${link.org}/${link.repo}` : "";
     const prod = (v.targets && v.targets.production) || {};
-    const alias = bestAlias(prod);
+    const alias = bestAlias(prod, v.name);
     const live = alias ? `https://${alias}` : "";
     const deployState = prod.readyState || "—";
     const lastDeployed = prod.createdAt ? new Date(prod.createdAt).toISOString() : "";

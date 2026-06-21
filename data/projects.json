@@ -17,7 +17,7 @@
         "repo": "",
         "dev": "",
         "staging": "",
-        "live": "https://onnorokom-erp-artist-shaw0n-s-projects.vercel.app",
+        "live": "https://onnorokom-erp.vercel.app",
         "docs": ""
       },
       "repoInfo": {
@@ -30,8 +30,8 @@
       },
       "deploy": {
         "provider": "Vercel",
-        "url": "https://onnorokom-erp-artist-shaw0n-s-projects.vercel.app",
-        "state": "BUILDING",
+        "url": "https://onnorokom-erp.vercel.app",
+        "state": "READY",
         "lastDeployed": "2026-06-21T10:26:55.394Z"
       }
     },
