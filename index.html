@@ -11,7 +11,7 @@
 <meta property="og:description" content="Manage every web & app project end-to-end in one place — from brief to live.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://artist-shawon-hub.vercel.app">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -23,34 +23,31 @@
 </script>
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 html,body{margin:0;background:#08080b}
 body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#f4f4f6}
-.ah{--bg:#08080b;--card:#141419;--card2:#1b1b22;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.16);--tx:#f4f4f6;--tx2:#a3a3ae;--tx3:#6b6b78;--violet:#8b5cf6;--lime:#d6ff4f;--pink:#ec4899;--amber:#fbbf24;--spring:cubic-bezier(.34,1.56,.64,1);--ease-out:cubic-bezier(.22,1,.36,1);--grad:linear-gradient(100deg,#a78bfa,#ec4899 55%,#fbbf24);--grad-soft:linear-gradient(135deg,#8b5cf6,#ec4899);position:relative;z-index:1;line-height:1.5}
+.ah{--bg:#08080b;--card:#141419;--card2:#1b1b22;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.16);--tx:#f4f4f6;--tx2:#a3a3ae;--tx3:#8a8a96;--accent:#6d5efc;--accent-soft:#a78bfa;--violet:#6d5efc;--lime:#d6ff4f;--spring:cubic-bezier(.34,1.56,.64,1);--ease-out:cubic-bezier(.22,1,.36,1);--grad:linear-gradient(100deg,#a78bfa,#6d5efc);--grad-soft:linear-gradient(135deg,#6d5efc,#8b7cff);position:relative;z-index:1;line-height:1.5}
 .ah a{text-decoration:none;color:inherit}
 .wrap{max-width:1160px;margin:0 auto}
 .sec{padding:110px 24px}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* background layer */
 .bg{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none;background:#08080b}
 .glow{position:absolute;border-radius:50%;filter:blur(90px)}
-.ga{width:520px;height:520px;background:radial-gradient(circle,#7c5cff,transparent 70%);opacity:.42;top:-220px;left:-160px;animation:fa 16s ease-in-out infinite}
-.gb{width:460px;height:460px;background:radial-gradient(circle,#2dd4bf,transparent 70%);opacity:.24;top:38vh;right:-200px;animation:fb 20s ease-in-out infinite}
-.gc{width:460px;height:460px;background:radial-gradient(circle,#ec4899,transparent 70%);opacity:.18;top:128vh;left:-180px;animation:fa 22s ease-in-out infinite}
-.gd{width:440px;height:440px;background:radial-gradient(circle,#fbbf24,transparent 70%);opacity:.14;top:210vh;right:-160px;animation:fb 24s ease-in-out infinite}
+.ga{width:520px;height:520px;background:radial-gradient(circle,#7c5cff,transparent 70%);opacity:.40;top:-220px;left:-160px;animation:fa 16s ease-in-out infinite}
+.gb{width:460px;height:460px;background:radial-gradient(circle,#4f46e5,transparent 70%);opacity:.22;top:34vh;right:-200px;animation:fb 20s ease-in-out infinite}
+.gc{width:440px;height:440px;background:radial-gradient(circle,#6d5efc,transparent 70%);opacity:.16;top:60vh;left:-150px;animation:fa 22s ease-in-out infinite}
+.gd{width:420px;height:420px;background:radial-gradient(circle,#a78bfa,transparent 70%);opacity:.12;top:82vh;right:-130px;animation:fb 24s ease-in-out infinite}
 @keyframes fa{50%{transform:translate(40px,30px)}}
 @keyframes fb{50%{transform:translate(-34px,40px)}}
 
-/* skip + progress */
 .skip{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--card);border:1px solid var(--line2);padding:8px 14px;border-radius:10px;font-size:13px}
 .skip:focus{left:16px}
-.scroll-progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--lime),var(--violet));z-index:60}
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--lime),var(--accent));z-index:60}
 :focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:6px}
 
-/* shared atoms */
 .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:16px;letter-spacing:-.02em;color:var(--tx)}
-.logo{width:27px;height:27px;border-radius:8px;background:var(--grad-soft);display:grid;place-items:center;color:#fff;font-size:15px}
+.logomark{flex:none;color:var(--tx)}
 .cta{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:#0b0b0d;background:var(--lime);border:none;padding:10px 16px;border-radius:999px;cursor:pointer;transition:transform .35s var(--spring),filter .25s;white-space:nowrap}
 .cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
 .cta:active{transform:translateY(0) scale(.97)}
@@ -62,13 +59,11 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .eye{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:var(--tx3);margin:0 0 16px;display:flex;align-items:center;gap:10px}
 .eye::before{content:"";width:26px;height:1px;background:var(--line2)}
 .seclbl{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
-.fig{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;color:var(--violet)}
+.fig{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;color:var(--accent-soft)}
 .sect{font-size:clamp(28px,3.6vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.1;margin:0}
 .intro{font-size:16px;color:var(--tx2);max-width:620px;margin:18px 0 44px;line-height:1.6}
 
-/* nav */
-.nav{position:sticky;top:0;z-index:50;transition:background-color .3s var(--ease-out),backdrop-filter .3s,border-color .3s}
-.nav{border-bottom:1px solid transparent}
+.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid transparent;transition:background-color .3s var(--ease-out),backdrop-filter .3s,border-color .3s}
 .nav.solid{background:rgba(8,8,11,.72);backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:1160px;margin:0 auto;height:64px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:transform .3s var(--ease-out)}
 .nav.solid .nav-inner{transform:scale(.985)}
@@ -78,8 +73,13 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .nright{display:flex;align-items:center;gap:10px}
 .nright .sign{font-size:13.5px;color:var(--tx2);padding:8px 10px;transition:.2s}
 .nright .sign:hover{color:var(--tx)}
+.navtoggle{display:none}
+.navsheet{position:absolute;top:64px;left:0;right:0;background:rgba(8,8,11,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 24px 18px;flex-direction:column;gap:2px}
+.navsheet[hidden]{display:none}
+.navsheet a{font-size:15px;color:var(--tx2);padding:12px 4px;border-bottom:1px solid var(--line)}
+.navsheet a:last-child{border-bottom:none}
+.navsheet .cta{margin-top:12px;justify-content:center}
 
-/* hero */
 .hero{text-align:center;padding:128px 24px 96px;position:relative}
 .hero .eye{justify-content:center}
 .hero .eye::after{content:"";width:26px;height:1px;background:var(--line2)}
@@ -90,7 +90,6 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
 .trust{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--tx3);margin-top:22px;letter-spacing:.04em}
 
-/* hero visual */
 .hero-visual{margin:56px auto 0;max-width:980px;perspective:1400px;position:relative;will-change:transform}
 .hub{background:var(--card);border:1px solid var(--line2);border-radius:20px;overflow:hidden;position:relative;box-shadow:0 40px 120px -30px rgba(0,0,0,.7),0 0 0 1px var(--line) inset;text-align:left}
 .hub::before{content:"";position:absolute;left:0;right:0;top:0;height:120px;background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);pointer-events:none}
@@ -99,7 +98,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .pcl{font-size:12.5px;color:var(--tx2);margin-top:2px}
 .pills{display:flex;gap:8px;flex-wrap:wrap}
 .pill{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
-.pill.stage{background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.35)}
+.pill.stage{background:rgba(109,94,252,.16);color:#c4b9ff;border:1px solid rgba(109,94,252,.4)}
 .pill.warn{background:rgba(251,191,36,.12);color:#fcd34d;border:1px solid rgba(251,191,36,.3)}
 .lbar{display:flex;flex-wrap:wrap;gap:8px;padding:15px 19px;border-bottom:1px solid var(--line)}
 .chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--tx2);background:var(--card2);border:1px solid var(--line);padding:8px 12px;border-radius:10px;transition:.25s}
@@ -108,7 +107,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .steps{display:flex;flex-wrap:wrap;gap:7px;padding:17px 19px;border-bottom:1px solid var(--line)}
 .st{flex:1;min-width:64px;display:flex;flex-direction:column;gap:7px}
 .tk{height:4px;border-radius:999px;background:rgba(255,255,255,.08)}
-.st.done .tk{background:linear-gradient(90deg,#7c3aed,#a78bfa)}
+.st.done .tk{background:var(--grad-soft)}
 .st.cur .tk{background:var(--lime)}
 .sl{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--tx3)}
 .st.done .sl{color:var(--tx2)}.st.cur .sl{color:var(--tx)}
@@ -129,7 +128,6 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .float.a{top:-16px;right:34px}
 .float.b{bottom:34px;left:-14px}
 
-/* stat strip */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;transition:transform .4s var(--spring),border-color .3s}
 .stat:hover{transform:translateY(-4px);border-color:var(--line2)}
@@ -138,39 +136,34 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .slbl i{font-size:14px;vertical-align:-2px;margin-right:5px;color:var(--tx3)}
 .stat-cap{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--tx3);letter-spacing:.12em;text-align:center;margin-top:26px}
 
-/* features */
 .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.fcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:transform .4s var(--spring),border-color .3s;will-change:transform}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:transform .4s var(--spring),border-color .3s}
 .fcard:hover{border-color:var(--line2)}
 .fcard.wide{grid-column:span 2}
 .fi{width:40px;height:40px;border-radius:11px;background:var(--card2);border:1px solid var(--line);display:grid;place-items:center;color:var(--tx2);font-size:19px;transition:color .3s,border-color .3s;margin-bottom:15px}
-.fcard:hover .fi{color:var(--violet);border-color:rgba(139,92,246,.4)}
+.fcard:hover .fi{color:var(--accent-soft);border-color:rgba(109,94,252,.4)}
 .fh{font-size:17px;font-weight:600;letter-spacing:-.01em;margin:0 0 7px}
 .fb{font-size:14.5px;color:var(--tx2);line-height:1.6;margin:0}
 .fmeta{display:flex;gap:7px;margin-top:16px}
 .fmeta span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--tx3);border:1px solid var(--line);border-radius:999px;padding:3px 8px}
 
-/* flow */
 .flow-rail{position:relative;margin-top:30px}
 .flow-track{position:absolute;left:0;right:0;top:50%;height:2px;background:var(--line2);transform:translateY(-50%);border-radius:2px;overflow:hidden}
-.flow-fill{height:100%;width:100%;background:linear-gradient(90deg,var(--lime),var(--violet) 60%,var(--pink));transform:scaleX(0);transform-origin:left}
+.flow-fill{height:100%;width:100%;background:linear-gradient(90deg,var(--lime),#8b7cff 55%,var(--accent));transform:scaleX(0);transform-origin:left}
 .flow-nodes{position:relative;display:flex;justify-content:space-between;gap:8px}
 .flow-node{display:flex;flex-direction:column;align-items:center;gap:12px;flex:1;min-width:0}
 .flow-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 12px;width:100%;max-width:128px;transition:transform .4s var(--spring),border-color .3s}
 .flow-card:hover{transform:translateY(-4px);border-color:var(--line2)}
-.flow-no{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--violet);letter-spacing:.1em}
+.flow-no{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-soft);letter-spacing:.1em}
 .flow-name{font-size:12.5px;font-weight:500;margin-top:3px;letter-spacing:-.01em}
 .flow-desc{font-size:11px;color:var(--tx3);margin-top:3px;line-height:1.4}
 .dot{width:15px;height:15px;border-radius:50%;background:var(--card2);border:1px solid var(--line2);flex-shrink:0;position:relative;z-index:2}
-.flow-node.done .dot{background:var(--grad-soft);border-color:transparent;box-shadow:0 0 0 4px rgba(139,92,246,.15)}
-.flow-node.cur .dot{background:var(--lime);border-color:transparent;box-shadow:0 0 0 4px rgba(214,255,79,.18)}
-.flow-node.cur .dot{animation:pulse 2.2s ease-in-out infinite}
+.flow-node.done .dot{background:var(--grad-soft);border-color:transparent;box-shadow:0 0 0 4px rgba(109,94,252,.15)}
+.flow-node.cur .dot{background:var(--lime);border-color:transparent;box-shadow:0 0 0 4px rgba(214,255,79,.18);animation:pulse 2.2s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(214,255,79,.18)}50%{box-shadow:0 0 0 9px rgba(214,255,79,.05)}}
 .flow-close{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--tx3);text-align:center;margin-top:34px;letter-spacing:.04em}
 
-/* integrations */
 .mrq{position:relative;overflow:hidden;margin:6px 0 34px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.mrq+.mrq{margin-top:0}
 .track{display:flex;gap:12px;width:max-content;will-change:transform}
 .mrq.r1 .track{animation:ml 30s linear infinite}
 .mrq.r2 .track{animation:mr 34s linear infinite}
@@ -185,33 +178,31 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .intg h4{font-size:15px;font-weight:600;margin:0 0 3px;letter-spacing:-.01em}
 .intg p{font-size:13.5px;color:var(--tx2);line-height:1.55;margin:0}
 
-/* cta band */
-.cta-band{position:relative;background:linear-gradient(135deg,rgba(139,92,246,.10),rgba(236,72,153,.06));border:1px solid var(--line2);border-radius:28px;padding:72px 48px;text-align:center;overflow:hidden}
+.cta-band{position:relative;background:linear-gradient(135deg,rgba(109,94,252,.12),rgba(109,94,252,.04));border:1px solid var(--line2);border-radius:28px;padding:72px 48px;text-align:center;overflow:hidden}
 .cta-band h2{font-size:clamp(32px,4vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.08;margin:0 auto;max-width:640px}
 .cta-band p{font-size:16px;color:var(--tx2);max-width:480px;margin:18px auto 30px;line-height:1.6}
-.cta-band .cglow{position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,#fbbf24,transparent 70%);opacity:.12;filter:blur(80px);bottom:-160px;left:50%;transform:translateX(-50%)}
+.cta-band .cglow{position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,#6d5efc,transparent 70%);opacity:.14;filter:blur(80px);bottom:-160px;left:50%;transform:translateX(-50%)}
 .cta-band .row{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;position:relative}
 .txtlink{font-size:14px;color:var(--tx2);display:inline-flex;align-items:center;gap:6px;transition:.2s}
 .txtlink:hover{color:var(--tx)}
 
-/* footer */
 .lfoot{border-top:1px solid var(--line);padding:64px 24px 40px}
 .lfoot .cols{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:40px}
 .lfoot .ftag{font-size:13.5px;color:var(--tx2);margin:14px 0 16px;max-width:240px;line-height:1.55}
 .lfoot .socials{display:flex;gap:8px}
+.lfoot .socials .ib.dead{opacity:.4;pointer-events:none}
 .fcol h5{font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--tx3);margin:0 0 14px;text-transform:uppercase}
 .fcol a{display:block;font-size:13.5px;color:var(--tx2);padding:5px 0;transition:.2s}
 .fcol a:hover{color:var(--tx)}
+.fcol .fdead{display:block;font-size:13.5px;color:var(--tx3);padding:5px 0;cursor:default}
 .lfoot .base{max-width:1160px;margin:36px auto 0;padding-top:24px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--tx3);letter-spacing:.14em;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-/* reveal contract */
 [data-reveal]{opacity:1;transform:none}
 html.js-on:not(.reduce-motion):not(.motion-failed) [data-reveal]{opacity:0;transform:translateY(24px)}
-html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!important;transform:none!important}
+html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.motion-failed .flow-node,html.reduce-motion [data-reveal],html.reduce-motion [data-stagger-item],html.reduce-motion .flow-node{opacity:1!important;transform:none!important}
 
-/* responsive */
-@media(max-width:980px){.fcard.wide{grid-column:span 2}}
-@media(max-width:900px){.nlinks{display:none}.fgrid{grid-template-columns:repeat(2,1fr)}.fcard.wide{grid-column:span 2}}
+@media(max-width:900px){.nlinks{display:none}.navtoggle{display:grid}.fgrid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:901px){.navsheet{display:none!important}}
 @media(max-width:820px){
   .flow-track{display:none}
   .flow-nodes{flex-direction:column;align-items:stretch;gap:18px}
@@ -222,7 +213,13 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
 @media(max-width:700px){.lfoot .cols{grid-template-columns:1fr 1fr}.intg-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.fgrid{grid-template-columns:1fr}.fcard.wide{grid-column:span 1}}
 @media(max-width:480px){.sec{padding:56px 16px}.cta-band{padding:44px 22px}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.glow,.flow-node.cur .dot,.mrq .track{animation:none}.flow-fill{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;scroll-padding-top:0}
+  .glow,.flow-node.cur .dot,.mrq .track{animation:none}
+  .flow-fill{transform:scaleX(1)}
+  .cta,.stat,.flow-card{transition:none!important}
+  .cta:hover,.stat:hover,.flow-card:hover{transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -243,7 +240,15 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
     <div class="nright">
       <a class="sign" href="/dashboard.html">Sign in</a>
       <a class="cta" href="/dashboard.html">Open app <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      <button class="ib navtoggle" data-navtoggle aria-label="Menu" aria-expanded="false" aria-controls="navsheet"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
     </div>
+  </div>
+  <div class="navsheet" id="navsheet" hidden>
+    <a href="#features">Features</a>
+    <a href="#flow">The flow</a>
+    <a href="#integrations">Integrations</a>
+    <a href="/dashboard.html">Sign in</a>
+    <a class="cta" href="/dashboard.html">Open app <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
   </div>
 </header>
 
@@ -302,10 +307,10 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
 <section class="sec" style="padding-top:0" aria-label="At a glance">
   <div class="wrap">
     <div class="stats" data-stagger data-counters>
-      <div class="stat" data-stagger-item><div class="num" data-to="1">0</div><div class="slbl"><i class="ti ti-home"></i>Home page per project</div></div>
-      <div class="stat" data-stagger-item><div class="num" data-to="2">0</div><div class="slbl"><i class="ti ti-pointer"></i>Clicks to reach anything</div></div>
-      <div class="stat" data-stagger-item><div class="num" data-to="8">0</div><div class="slbl"><i class="ti ti-stack-2"></i>Lifecycle stages, gated</div></div>
-      <div class="stat" data-stagger-item><div class="num" data-to="0">0</div><div class="slbl"><i class="ti ti-plug-off"></i>Tools to replace</div></div>
+      <div class="stat" data-stagger-item><div class="num" data-to="1">0</div><div class="slbl"><i class="ti ti-home" aria-hidden="true"></i>Home page per project</div></div>
+      <div class="stat" data-stagger-item><div class="num" data-to="2">0</div><div class="slbl"><i class="ti ti-pointer" aria-hidden="true"></i>Clicks to reach anything</div></div>
+      <div class="stat" data-stagger-item><div class="num" data-to="8">0</div><div class="slbl"><i class="ti ti-stack-2" aria-hidden="true"></i>Lifecycle stages, gated</div></div>
+      <div class="stat" data-stagger-item><div class="num" data-to="0">0</div><div class="slbl"><i class="ti ti-plug-off" aria-hidden="true"></i>Tools to replace</div></div>
     </div>
     <p class="stat-cap">ONE INDEX OF RECORD · EVERYTHING ELSE STAYS WHERE IT LIVES</p>
   </div>
@@ -320,33 +325,33 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
     </div>
     <div class="fgrid" data-stagger>
       <article class="fcard wide" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-link"></i></div>
+        <div class="fi"><i class="ti ti-link" aria-hidden="true"></i></div>
         <h3 class="fh">The typed-link hub</h3>
         <p class="fb">One project page links straight to its Figma, repos, dev, staging, and live URLs — no more hunting across tabs.</p>
         <div class="fmeta"><span>FIGMA</span><span>GITHUB</span><span>VERCEL</span></div>
       </article>
       <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-stack-2"></i></div>
+        <div class="fi"><i class="ti ti-stack-2" aria-hidden="true"></i></div>
         <h3 class="fh">8-stage tracker with gates</h3>
         <p class="fb">Move from lead to maintenance through eight stages, each with a checkable gate that must clear before a project advances.</p>
       </article>
       <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-users"></i></div>
+        <div class="fi"><i class="ti ti-users" aria-hidden="true"></i></div>
         <h3 class="fh">Client portal</h3>
         <p class="fb">Share a clean, branded view where clients see only what they should — approvals and status, never your notes or credentials.</p>
       </article>
       <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-search"></i></div>
+        <div class="fi"><i class="ti ti-search" aria-hidden="true"></i></div>
         <h3 class="fh">Search everything</h3>
         <p class="fb">A global command bar jumps you to any project, doc, asset, or link in keystrokes.</p>
       </article>
       <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-lock"></i></div>
+        <div class="fi"><i class="ti ti-lock" aria-hidden="true"></i></div>
         <h3 class="fh">Credentials vault</h3>
         <p class="fb">Encrypted, role-gated secrets live with the project they belong to and stay invisible to clients and viewers.</p>
       </article>
       <article class="fcard" data-stagger-item data-tilt>
-        <div class="fi"><i class="ti ti-plug"></i></div>
+        <div class="fi"><i class="ti ti-plug" aria-hidden="true"></i></div>
         <h3 class="fh">Connected integrations</h3>
         <p class="fb">Figma, GitHub, Drive, and Vercel stay where they are — Artist Hub links and syncs them so the hub is always current.</p>
       </article>
@@ -363,16 +368,16 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
     </div>
     <div class="flow-rail">
       <div class="flow-track"><div class="flow-fill" data-flow-fill></div></div>
-      <div class="flow-nodes">
-        <div class="flow-node done"><div class="dot"></div><div class="flow-card"><div class="flow-no">01</div><div class="flow-name">Lead</div><div class="flow-desc">Qualify and capture intake</div></div></div>
-        <div class="flow-node done"><div class="dot"></div><div class="flow-card"><div class="flow-no">02</div><div class="flow-name">Planning</div><div class="flow-desc">Scope, sitemap, sign-off</div></div></div>
-        <div class="flow-node done"><div class="dot"></div><div class="flow-card"><div class="flow-no">03</div><div class="flow-name">Proposal</div><div class="flow-desc">Signed deal, deposit in</div></div></div>
-        <div class="flow-node done"><div class="dot"></div><div class="flow-card"><div class="flow-no">04</div><div class="flow-name">Design</div><div class="flow-desc">Wireframe to approved hi-fi</div></div></div>
-        <div class="flow-node cur"><div class="dot"></div><div class="flow-card"><div class="flow-no">05</div><div class="flow-name">Development</div><div class="flow-desc">Build, branches, staging URL</div></div></div>
-        <div class="flow-node"><div class="dot"></div><div class="flow-card"><div class="flow-no">06</div><div class="flow-name">QA / staging</div><div class="flow-desc">Test, fix, client UAT</div></div></div>
-        <div class="flow-node"><div class="dot"></div><div class="flow-card"><div class="flow-no">07</div><div class="flow-name">Launch</div><div class="flow-desc">Go live and verified</div></div></div>
-        <div class="flow-node"><div class="dot"></div><div class="flow-card"><div class="flow-no">08</div><div class="flow-name">Maintenance</div><div class="flow-desc">Retainer, monitor, support</div></div></div>
-      </div>
+      <ol class="flow-nodes">
+        <li class="flow-node done"><div class="dot" aria-hidden="true"></div><div class="flow-card"><div class="flow-no">01</div><div class="flow-name">Lead</div><div class="flow-desc">Qualify and capture intake</div></div></li>
+        <li class="flow-node done"><div class="dot" aria-hidden="true"></div><div class="flow-card"><div class="flow-no">02</div><div class="flow-name">Planning</div><div class="flow-desc">Scope, sitemap, sign-off</div></div></li>
+        <li class="flow-node done"><div class="dot" aria-hidden="true"></div><div class="flow-card"><div class="flow-no">03</div><div class="flow-name">Proposal</div><div class="flow-desc">Signed deal, deposit in</div></div></li>
+        <li class="flow-node done"><div class="dot" aria-hidden="true"></div><div class="flow-card"><div class="flow-no">04</div><div class="flow-name">Design</div><div class="flow-desc">Wireframe to approved hi-fi</div></div></li>
+        <li class="flow-node cur"><div class="dot" aria-hidden="true"></div><div class="flow-card"><div class="flow-no">05</div><div class="flow-name">Development</div><div class="flow-desc">Build, branches, staging URL</div></div></li>
+        <li class="flow-node"><div class="dot" aria-hidden="true"></div><div class="flow-card"><div class="flow-no">06</div><div class="flow-name">QA / staging</div><div class="flow-desc">Test, fix, client UAT</div></div></li>
+        <li class="flow-node"><div class="dot" aria-hidden="true"></div><div class="flow-card"><div class="flow-no">07</div><div class="flow-name">Launch</div><div class="flow-desc">Go live and verified</div></div></li>
+        <li class="flow-node"><div class="dot" aria-hidden="true"></div><div class="flow-card"><div class="flow-no">08</div><div class="flow-name">Maintenance</div><div class="flow-desc">Retainer, monitor, support</div></div></li>
+      </ol>
     </div>
     <p class="flow-close">Drag a project forward and the gate checklist appears — nothing slips a stage by accident.</p>
   </div>
@@ -390,10 +395,10 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
       <span class="mchip"><i class="ti ti-brand-figma"></i>Figma</span><span class="mchip"><i class="ti ti-brand-github"></i>GitHub</span><span class="mchip"><i class="ti ti-brand-vercel"></i>Vercel</span><span class="mchip"><i class="ti ti-brand-google-drive"></i>Google Drive</span><span class="mchip"><i class="ti ti-brand-gitlab"></i>GitLab</span><span class="mchip"><i class="ti ti-brand-notion"></i>Notion</span><span class="mchip"><i class="ti ti-brand-slack"></i>Slack</span><span class="mchip"><i class="ti ti-brand-stripe"></i>Stripe</span>
     </div></div>
     <div class="intg-grid" data-stagger>
-      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-figma"></i></span><div><h4>Figma</h4><p>Embed live design files right in the hub, with the client-approved version pinned.</p></div></div>
-      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-github"></i></span><div><h4>GitHub / GitLab</h4><p>Link every repo and surface last commit, open PRs, and CI status at a glance.</p></div></div>
-      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-google-drive"></i></span><div><h4>Google Drive</h4><p>Connect project folders and preview docs inline, without re-uploading a thing.</p></div></div>
-      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-vercel"></i></span><div><h4>Vercel / Netlify</h4><p>Show real deploy status for preview, staging, and production beside the live link.</p></div></div>
+      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-figma" aria-hidden="true"></i></span><div><h4>Figma</h4><p>Embed live design files right in the hub, with the client-approved version pinned.</p></div></div>
+      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-github" aria-hidden="true"></i></span><div><h4>GitHub / GitLab</h4><p>Link every repo and surface last commit, open PRs, and CI status at a glance.</p></div></div>
+      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-google-drive" aria-hidden="true"></i></span><div><h4>Google Drive</h4><p>Connect project folders and preview docs inline, without re-uploading a thing.</p></div></div>
+      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-vercel" aria-hidden="true"></i></span><div><h4>Vercel / Netlify</h4><p>Show real deploy status for preview, staging, and production beside the live link.</p></div></div>
     </div>
   </div>
 </section>
@@ -401,7 +406,7 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
 <section class="sec" aria-labelledby="cta-h">
   <div class="wrap">
     <div class="cta-band" data-reveal>
-      <div class="cglow"></div>
+      <div class="cglow" aria-hidden="true"></div>
       <h2 id="cta-h">Give every project <span class="grad">one home.</span></h2>
       <p>Stop stitching projects together from memory, email, and twelve open tabs. Set up your studio's command center and reach everything in two clicks.</p>
       <div class="row">
@@ -420,15 +425,15 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
       <a class="brand" href="/"><svg class="logomark" width="24" height="24" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".85"><line x1="24" y1="24" x2="24" y2="11"/><line x1="24" y1="24" x2="11.5" y2="34.5"/><line x1="24" y1="24" x2="36.5" y2="34.5"/></g><circle cx="24" cy="11" r="3.4" fill="currentColor"/><circle cx="11.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="36.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>Artist Hub</a>
       <p class="ftag">Every project, from brief to live — one home.</p>
       <div class="socials">
-        <a class="ib" href="https://github.com/ArtistShaw0n/artist-hub" aria-label="GitHub"><i class="ti ti-brand-github"></i></a>
-        <a class="ib" href="#" aria-label="X"><i class="ti ti-brand-x"></i></a>
-        <a class="ib" href="#" aria-label="Email"><i class="ti ti-mail"></i></a>
+        <a class="ib" href="https://github.com/ArtistShaw0n/artist-hub" aria-label="GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i></a>
+        <span class="ib dead" aria-hidden="true"><i class="ti ti-brand-x"></i></span>
+        <span class="ib dead" aria-hidden="true"><i class="ti ti-mail"></i></span>
       </div>
     </div>
     <div class="fcol"><h5>Product</h5><a href="#features">Features</a><a href="#flow">The flow</a><a href="#integrations">Integrations</a><a href="/dashboard.html">Open app</a></div>
     <div class="fcol"><h5>Lifecycle</h5><a href="#flow">Planning</a><a href="#flow">Design</a><a href="#flow">Development</a><a href="#flow">Launch &amp; care</a></div>
-    <div class="fcol"><h5>Studio</h5><a href="#">About</a><a href="#">Roadmap</a><a href="#">Contact</a><a href="#">Status</a></div>
-    <div class="fcol"><h5>Legal</h5><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></div>
+    <div class="fcol"><h5>Studio</h5><span class="fdead">About</span><span class="fdead">Roadmap</span><span class="fdead">Contact</span><span class="fdead">Status</span></div>
+    <div class="fcol"><h5>Legal</h5><span class="fdead">Privacy</span><span class="fdead">Terms</span><span class="fdead">Security</span></div>
   </div>
   <div class="base"><span>© 2026 ARTIST HUB</span><span>UI LANGUAGE FOLLOWS MOTION.DEV</span></div>
 </footer>
@@ -437,75 +442,88 @@ html.motion-failed [data-reveal],html.reduce-motion [data-reveal]{opacity:1!impo
 
 <script type="module">
 const ROOT=document.documentElement;
-async function loadMotion(){
-  try{return await import('https://cdn.jsdelivr.net/npm/motion@11/+esm');}
-  catch(e){return await import('https://esm.sh/motion@11');}
-}
-function revealAll(){document.querySelectorAll('[data-reveal]').forEach(el=>{el.style.opacity='1';el.style.transform='none';});}
-try{
-  const m=await loadMotion();
-  clearTimeout(window.__ahWatchdog);
-  ROOT.classList.add('js-motion');
-  if(ROOT.classList.contains('reduce-motion')){ revealAll(); initStatic(); }
-  else { initMotion(m); }
-}catch(err){
-  console.warn('[Artist Hub] Motion failed; static fallback.',err);
-  clearTimeout(window.__ahWatchdog);
-  ROOT.classList.add('motion-failed');
-  initStatic();
-}
-
 function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
 
+(function setupNav(){
+  const t=document.querySelector('[data-navtoggle]');const sheet=document.getElementById('navsheet');
+  if(!t||!sheet)return;
+  t.addEventListener('click',function(){
+    const closed=sheet.hasAttribute('hidden');
+    if(closed){sheet.removeAttribute('hidden');t.setAttribute('aria-expanded','true');}
+    else{sheet.setAttribute('hidden','');t.setAttribute('aria-expanded','false');}
+  });
+  sheet.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){sheet.setAttribute('hidden','');t.setAttribute('aria-expanded','false');});});
+})();
+
+function revealAll(){
+  document.querySelectorAll('[data-reveal],[data-stagger-item],.flow-node,.flow-card').forEach(function(el){el.style.opacity='1';el.style.transform='none';});
+  const h=document.querySelector('[data-hero]');
+  if(h){h.querySelectorAll('.eye,.h1 .line,.sub,.trust,.hero-visual,.cta-row > *').forEach(function(el){el.style.opacity='1';el.style.transform='none';});}
+  document.querySelectorAll('[data-to]').forEach(function(el){el.textContent=el.dataset.to;});
+  const ff=document.querySelector('[data-flow-fill]');if(ff)ff.style.transform='scaleX(1)';
+}
+
 function runCounters(scope){
-  scope.querySelectorAll('[data-to]').forEach(el=>{
+  const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  scope.querySelectorAll('[data-to]').forEach(function(el){
     const to=+el.dataset.to;
-    if(to===0){el.textContent='0';return;}
-    el.textContent='0';
-    const dur=1100;let s=null;
+    if(rm||to===0){el.textContent=String(to);return;}
+    el.textContent='0';const dur=1100;let s=null;
     function step(t){if(!s)s=t;const p=Math.min((t-s)/dur,1);el.textContent=Math.round(p*to);if(p<1)requestAnimationFrame(step);}
     requestAnimationFrame(step);
   });
 }
 
-function initStatic(){
-  // numbers already show real values via data-to fallback
-  document.querySelectorAll('[data-to]').forEach(el=>{el.textContent=el.dataset.to;});
-  bindScroll(true);
-}
-
-function bindScroll(staticMode){
+function bindScroll(staticMode,heroReadyFn){
   const prog=document.querySelector('.scroll-progress');
   const nav=document.querySelector('[data-nav]');
   const heroVis=document.querySelector('.hero-visual');
   const heroSec=document.querySelector('[data-hero]');
   const flowFill=document.querySelector('[data-flow-fill]');
-  const flowSec=document.querySelector('[data-flow]');
+  const flowNodes=document.querySelector('.flow-nodes');
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const wide=()=>window.innerWidth>=820;
+  const wide=function(){return window.innerWidth>=820;};
+  if(nav)nav.classList.toggle('solid',(window.scrollY||0)>30);
   function frame(){
     const st=window.scrollY||document.documentElement.scrollTop;
     const docH=document.documentElement.scrollHeight-window.innerHeight;
     if(prog)prog.style.transform='scaleX('+(docH>0?clamp(st/docH,0,1):0)+')';
     if(nav){if(st>40)nav.classList.add('solid');else if(st<20)nav.classList.remove('solid');}
     if(!staticMode&&!RM){
-      if(heroVis&&heroSec){const r=heroSec.getBoundingClientRect();const p=clamp(-r.top/(r.height||1),0,1);heroVis.style.transform='translateY('+(-90*p)+'px) scale('+(1+0.02*p)+')';}
-      if(flowFill&&flowSec&&wide()){const r=flowSec.getBoundingClientRect();const vh=window.innerHeight;const p=clamp((vh*0.85-r.top)/(r.height*0.7),0,1);flowFill.style.transform='scaleX('+p+')';}
+      if(heroVis&&heroSec&&heroReadyFn&&heroReadyFn()){const r=heroSec.getBoundingClientRect();const p=clamp(-r.top/(r.height||1),0,1);heroVis.style.transform='translateY('+(-90*p)+'px) scale('+(1+0.02*p)+')';}
+      if(flowFill&&flowNodes&&wide()){const r=flowNodes.getBoundingClientRect();const vh=window.innerHeight;const p=clamp((vh*0.85-r.top)/(r.height+vh*0.5),0,1);flowFill.style.transform='scaleX('+p+')';}
     }
   }
   let ticking=false;
-  function onScroll(){if(!ticking){requestAnimationFrame(()=>{frame();ticking=false;});ticking=true;}}
+  function onScroll(){if(!ticking){requestAnimationFrame(function(){frame();ticking=false;});ticking=true;}}
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll);
   frame();
 }
 
+function initStatic(){revealAll();bindScroll(true);}
+
 function initMotion(m){
-  const {animate,inView,stagger}=m;
+  const animate=m.animate,inView=m.inView,stagger=m.stagger;
   const POP={duration:.6,ease:[.34,1.56,.64,1]};
   const EO=[.22,1,.36,1];
+  const seen=new WeakSet();
+  let heroVisReady=false;
+  const coarse=matchMedia('(pointer:coarse)').matches;
 
-  // hero opening timeline
+  function attachTilt(els){
+    if(coarse)return;
+    els.forEach(function(card){
+      if(card.__tilt)return;card.__tilt=true;
+      card.addEventListener('pointerenter',function(){card.style.willChange='transform';});
+      card.addEventListener('pointermove',function(e){const r=card.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;card.style.transform='perspective(900px) rotateY('+(px*6)+'deg) rotateX('+(-py*6)+'deg) translateY(-6px)';});
+      const reset=function(){card.style.transform='';card.style.willChange='';};
+      card.addEventListener('pointerleave',reset);
+      card.addEventListener('pointercancel',reset);
+      card.addEventListener('lostpointercapture',reset);
+    });
+  }
+
   const hero=document.querySelector('[data-hero]');
   if(hero){
     const eye=hero.querySelector('.eye');
@@ -514,58 +532,67 @@ function initMotion(m){
     const ctas=hero.querySelectorAll('.cta-row > *');
     const vis=hero.querySelector('.hero-visual');
     const trust=hero.querySelector('.trust');
-    [eye,sub,trust,vis].forEach(e=>{if(e)e.style.opacity='0';});
-    lines.forEach(l=>{l.style.opacity='0';l.style.transform='translateY(110%)';});
-    ctas.forEach(c=>{c.style.opacity='0';});
+    [eye,sub,trust,vis].forEach(function(e){if(e)e.style.opacity='0';});
+    lines.forEach(function(l){l.style.opacity='0';});
+    ctas.forEach(function(c){c.style.opacity='0';});
     if(eye)animate(eye,{opacity:[0,1],y:[12,0]},{duration:.6,delay:.1,ease:EO});
-    if(lines.length)animate(lines,{opacity:[0,1],transform:['translateY(110%)','translateY(0)']},{delay:(i)=>0.28+i*0.09,duration:.9,ease:EO});
+    if(lines.length)animate(lines,{opacity:[0,1],y:['110%','0%']},{delay:function(i){return 0.28+i*0.09;},duration:.9,ease:EO});
     if(sub)animate(sub,{opacity:[0,1],y:[14,0]},{duration:.6,delay:.62,ease:EO});
-    if(ctas.length)animate(ctas,{opacity:[0,1],y:[14,0],scale:[.96,1]},{delay:(i)=>0.74+i*0.08,...POP});
-    if(vis)animate(vis,{opacity:[0,1],y:[48,0],scale:[.94,1]},{duration:.9,delay:.5,ease:EO});
+    if(ctas.length)animate(ctas,{opacity:[0,1],y:[14,0],scale:[.96,1]},{delay:function(i){return 0.74+i*0.08;},duration:.6,ease:[.34,1.56,.64,1]});
+    if(vis){const va=animate(vis,{opacity:[0,1],y:[48,0],scale:[.94,1]},{duration:.9,delay:.5,ease:EO});if(va&&va.finished){va.finished.then(function(){heroVisReady=true;}).catch(function(){heroVisReady=true;});}}
     if(trust)animate(trust,{opacity:[0,1],y:[10,0]},{duration:.5,delay:.95,ease:EO});
   }
+  setTimeout(function(){heroVisReady=true;},1800);
 
-  // simple reveals
-  document.querySelectorAll('[data-reveal]').forEach(el=>{
-    inView(el,()=>{animate(el,{opacity:[0,1],y:[24,0]},{duration:.7,ease:EO});},{amount:.2});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){
+    inView(el,function(){if(seen.has(el))return;seen.add(el);animate(el,{opacity:[0,1],y:[24,0]},{duration:.7,ease:EO});},{amount:.2});
   });
 
-  // staggered groups
-  document.querySelectorAll('[data-stagger]').forEach(group=>{
+  document.querySelectorAll('[data-stagger]').forEach(function(group){
     const items=group.querySelectorAll('[data-stagger-item]');
-    items.forEach(it=>{it.style.opacity='0';});
-    inView(group,()=>{
-      animate(items,{opacity:[0,1],y:[28,0],scale:[.97,1]},{delay:stagger(.07),...POP});
+    items.forEach(function(it){it.style.opacity='0';});
+    inView(group,function(){
+      if(seen.has(group))return;seen.add(group);
+      animate(items,{opacity:[0,1],y:[28,0],scale:[.97,1]},{delay:stagger(.07),duration:.6,ease:[.34,1.56,.64,1]});
       if(group.hasAttribute('data-counters'))runCounters(group);
-    },{amount:.3});
+      setTimeout(function(){attachTilt(group.querySelectorAll('[data-tilt]'));},720);
+    },{amount:.25});
   });
 
-  // flow nodes cascade
   const rail=document.querySelector('.flow-rail');
   if(rail){
     const nodes=rail.querySelectorAll('.flow-node');
     const cards=rail.querySelectorAll('.flow-card');
-    nodes.forEach(n=>{n.style.opacity='0';});
-    inView(rail,()=>{
-      animate(nodes,{opacity:[0,1],scale:[.4,1]},{delay:stagger(.1),...POP});
-      animate(cards,{opacity:[0,1],y:[12,0]},{delay:(i)=>0.05+i*0.1,duration:.5,ease:EO});
+    nodes.forEach(function(n){n.style.opacity='0';});
+    inView(rail,function(){
+      if(seen.has(rail))return;seen.add(rail);
+      animate(nodes,{opacity:[0,1],scale:[.4,1]},{delay:stagger(.1),duration:.6,ease:[.34,1.56,.64,1]});
+      animate(cards,{opacity:[0,1],y:[12,0]},{delay:function(i){return 0.05+i*0.1;},duration:.5,ease:EO});
     },{amount:.25});
   }
 
-  // card pointer-tilt
-  const coarse=matchMedia('(pointer:coarse)').matches;
-  if(!coarse){
-    document.querySelectorAll('[data-tilt]').forEach(card=>{
-      card.addEventListener('pointermove',e=>{
-        const r=card.getBoundingClientRect();
-        const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
-        card.style.transform='perspective(900px) rotateY('+(px*6)+'deg) rotateX('+(-py*6)+'deg) translateY(-6px)';
-      });
-      card.addEventListener('pointerleave',()=>{card.style.transform='';});
-    });
-  }
+  bindScroll(false,function(){return heroVisReady;});
+}
 
-  bindScroll(false);
+async function loadMotion(){
+  try{return await import('https://cdn.jsdelivr.net/npm/motion@11/+esm');}
+  catch(e){return await import('https://esm.sh/motion@11');}
+}
+try{
+  const m=await loadMotion();
+  if(!m||!m.animate||!m.inView||!m.stagger)throw new Error('motion exports missing');
+  clearTimeout(window.__ahWatchdog);
+  if(ROOT.classList.contains('reduce-motion')||ROOT.classList.contains('motion-failed')){initStatic();}
+  else{
+    ROOT.classList.add('js-motion');
+    try{initMotion(m);}
+    catch(e){console.warn('[Artist Hub] initMotion failed; static fallback.',e);ROOT.classList.add('motion-failed');initStatic();}
+  }
+}catch(err){
+  console.warn('[Artist Hub] Motion load failed; static fallback.',err);
+  clearTimeout(window.__ahWatchdog);
+  ROOT.classList.add('motion-failed');
+  initStatic();
 }
 </script>
 </body>

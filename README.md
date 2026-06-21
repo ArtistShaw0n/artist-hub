@@ -9,8 +9,10 @@ Single source of truth for every project (websites & apps) — from planning to 
 ## Structure
 
 ```
-index.html                       Live homepage (UI mockup)
-mockups/artist-hub-ui.html       Source mockup
+index.html                       Public landing page (animated, Motion)
+dashboard.html                   App / dashboard mockup
+logo.svg, favicon.svg            Brand mark (monochrome Hub)
+mockups/artist-hub-ui.html       Source mockup (mirrors dashboard.html)
 docs/master-plan.md              Full product master plan
 docs/information-architecture.md Data model / schema reference
 ```
