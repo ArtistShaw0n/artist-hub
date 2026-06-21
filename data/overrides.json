@@ -1,0 +1,3 @@
+{
+  "_readme": "Per-project manual edits that WIN over synced/inferred fields and survive re-sync. Key = project slug. Example: \"bangla-zoom\": { \"stage\": \"development\", \"health\": \"at_risk\", \"progress\": 40, \"name\": \"Bangla Zoom (v2)\", \"hidden\": false }"
+}

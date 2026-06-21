@@ -1,0 +1,10 @@
+{
+  "_readme": "Map a project slug -> its Figma file URL. Sync uses the first url for links.figma. Fill these in (Figma has no list-files API, so links are added by hand). Example: \"ignite-traders\": [{ \"label\": \"Storefront\", \"url\": \"https://www.figma.com/file/XXXX/Ignite\" }]",
+  "ignite-traders": [],
+  "onnorokom-erp": [],
+  "onnorokom-hris": [],
+  "udvash-unmesh-e-commerce": [],
+  "udvash-unmesh-student-portal": [],
+  "udvash-ds-storybook": [],
+  "bangla-zoom": []
+}

@@ -1,0 +1,32 @@
+name: sync-projects
+
+# Refresh data/projects.json from GitHub + Vercel and commit it (Vercel redeploys the static site).
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch: {}       # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Sync projects
+        run: node scripts/sync.mjs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+      - name: Commit if changed
+        run: |
+          git config user.name "artist-hub-sync"
+          git config user.email "sync@users.noreply.github.com"
+          git add data/projects.json
+          git diff --cached --quiet || git commit -m "chore: sync projects.json"
+          git push

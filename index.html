@@ -335,56 +335,7 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
       <h2 class="sect" id="proj-h">Preview your projects at a glance</h2>
       <p class="intro">Every project as a live card — stage, health, progress and links in one board. Click any card to open its hub.</p>
     </div>
-    <div class="fgrid" data-stagger>
-      <a class="pc" data-stagger-item href="/dashboard.html">
-        <div class="cov" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)"><span class="ptype">WEBSITE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
-        <div class="pb"><div class="pn">Lumen Studio</div><div class="pcl">Lumen Inc.</div>
-          <div class="pr"><span class="sp">Design</span><span class="pct">62%</span></div>
-          <div class="bar"><i style="width:62%"></i></div>
-          <div class="pl"><i class="ti ti-brand-figma" aria-hidden="true"></i><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-code" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jun 28</span></div>
-        </div>
-      </a>
-      <a class="pc" data-stagger-item href="/dashboard.html">
-        <div class="cov" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6)"><span class="ptype">MOBILE APP</span><span class="hp"><span class="d" style="background:#fbbf24"></span>At risk</span></div>
-        <div class="pb"><div class="pn">Nova Bank App</div><div class="pcl">Nova Financial</div>
-          <div class="pr"><span class="sp">Development</span><span class="pct">45%</span></div>
-          <div class="bar"><i style="width:45%"></i></div>
-          <div class="pl"><i class="ti ti-brand-figma" aria-hidden="true"></i><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-code" aria-hidden="true"></i><i class="ti ti-world" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jul 12</span></div>
-        </div>
-      </a>
-      <a class="pc" data-stagger-item href="/dashboard.html">
-        <div class="cov" style="background:linear-gradient(135deg,#0f766e,#14b8a6)"><span class="ptype">E-COMMERCE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
-        <div class="pb"><div class="pn">Verde Commerce</div><div class="pcl">Verde Co.</div>
-          <div class="pr"><span class="sp">QA / staging</span><span class="pct">80%</span></div>
-          <div class="bar"><i style="width:80%"></i></div>
-          <div class="pl"><i class="ti ti-brand-figma" aria-hidden="true"></i><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-world" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jun 24</span></div>
-        </div>
-      </a>
-      <a class="pc" data-stagger-item href="/dashboard.html">
-        <div class="cov" style="background:linear-gradient(135deg,#92400e,#f59e0b)"><span class="ptype">LANDING PAGE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
-        <div class="pb"><div class="pn">Atlas Agency</div><div class="pcl">Atlas Group</div>
-          <div class="pr"><span class="sp">Planning</span><span class="pct">20%</span></div>
-          <div class="bar"><i style="width:20%"></i></div>
-          <div class="pl"><i class="ti ti-brand-figma" aria-hidden="true"></i><i class="ti ti-file-text" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jul 02</span></div>
-        </div>
-      </a>
-      <a class="pc" data-stagger-item href="/dashboard.html">
-        <div class="cov" style="background:linear-gradient(135deg,#3730a3,#6d5efc)"><span class="ptype">BRAND SITE</span><span class="hp"><span class="d" style="background:#34d399"></span>On track</span></div>
-        <div class="pb"><div class="pn">Kite Studio</div><div class="pcl">Kite Labs</div>
-          <div class="pr"><span class="sp">Launch</span><span class="pct">95%</span></div>
-          <div class="bar"><i style="width:95%"></i></div>
-          <div class="pl"><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-world" aria-hidden="true"></i><span class="due"><i class="ti ti-calendar" aria-hidden="true"></i>Jun 22</span></div>
-        </div>
-      </a>
-      <a class="pc" data-stagger-item href="/dashboard.html">
-        <div class="cov" style="background:linear-gradient(135deg,#334155,#64748b)"><span class="ptype">WEB APP</span><span class="hp"><span class="d" style="background:#f87171"></span>Blocked</span></div>
-        <div class="pb"><div class="pn">Orbit SaaS</div><div class="pcl">Orbit Tech</div>
-          <div class="pr"><span class="sp">Maintenance</span><span class="pct">100%</span></div>
-          <div class="bar"><i style="width:100%"></i></div>
-          <div class="pl"><i class="ti ti-brand-github" aria-hidden="true"></i><i class="ti ti-world" aria-hidden="true"></i><span class="due"><i class="ti ti-infinity" aria-hidden="true"></i>Ongoing</span></div>
-        </div>
-      </a>
-    </div>
+    <div class="fgrid" data-projects-grid></div>
   </div>
 </section>
 
@@ -610,5 +561,6 @@ try{
   initStatic();
 }
 </script>
+<script src="/assets/render-projects.js"></script>
 </body>
 </html>
