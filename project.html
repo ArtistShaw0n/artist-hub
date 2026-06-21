@@ -288,7 +288,7 @@ body{margin:0;background:#08080b}
 .ah .idrow{display:flex;align-items:center;gap:16px}
 .ah .idtext{flex:1;min-width:0}
 .ah .idtext h1{margin:0;font-size:clamp(21px,3vw,26px);font-weight:600;letter-spacing:-.02em;color:var(--tx);line-height:1.15}
-.ah .idsub{margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--tx3)}
+.ah .idsub{margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--tx2)}
 
 /* progress ring */
 .ah .pring{flex:none;position:relative;display:grid;place-items:center;width:72px;height:72px}
@@ -471,6 +471,7 @@ body{margin:0;background:#08080b}
   var ORDER=['lead','planning','proposal','design','development','qa','launch','maintenance'];
   var ICON={lead:'ti-flag',planning:'ti-clipboard-list',proposal:'ti-file-description',design:'ti-palette',development:'ti-code',qa:'ti-flask',launch:'ti-rocket',maintenance:'ti-tool'};
   var HEALTH={on_track:['#34d399','On track'],at_risk:['#fbbf24','At risk'],blocked:['#f87171','Blocked']};
+  var HEALTH_IC={on_track:'ti-circle-check',at_risk:'ti-alert-triangle',blocked:'ti-ban'};
   var LINKS=[['figma','ti-brand-figma','Figma'],['repo','ti-brand-github','Repository'],['dev','ti-code','Dev'],['staging','ti-flask','Staging'],['live','ti-world','Live'],['docs','ti-file-text','Docs']];
   var LANG={TypeScript:'#3178c6',JavaScript:'#f1e05a',Python:'#3572A5',CSS:'#563d7c',HTML:'#e34c26',Svelte:'#ff3e00',Vue:'#41b883'};
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -505,11 +506,11 @@ body{margin:0;background:#08080b}
     $('psub').textContent=p.client+(p.type?' · '+p.type:'');
 
     if(p.progress==null){$('pring').style.display='none';}
-    else{var C=2*Math.PI*30;var arc=$('ringArc');arc.style.strokeDasharray=C;arc.style.strokeDashoffset=C*(1-p.progress/100);$('ringLbl').innerHTML='<b>'+p.progress+'</b>%';$('pring').setAttribute('aria-label',p.progress+' percent complete');}
+    else{var C=2*Math.PI*30;var arc=$('ringArc');arc.style.strokeDasharray=C;arc.style.strokeDashoffset=C*(1-p.progress/100);if(p.health&&HEALTH[p.health]){arc.style.stroke=HEALTH[p.health][0];}$('ringLbl').innerHTML='<b>'+p.progress+'</b>%';$('pring').setAttribute('aria-label',p.progress+' percent complete');}
 
     var h=HEALTH[p.health]||HEALTH.on_track;
-    var pills='<span class="pill stage"><i class="ti '+(ICON[p.stage]||'ti-flag')+'" aria-hidden="true"></i>'+esc(STAGE[p.stage]||p.stage)+'</span>';
-    pills+='<span class="pill health--'+esc(p.health||'on_track')+'"><span style="width:7px;height:7px;border-radius:50%;display:inline-block;background:'+h[0]+'"></span>'+h[1]+'</span>';
+    var pills='<span class="pill health--'+esc(p.health||'on_track')+'"><i class="ti '+(HEALTH_IC[p.health]||'ti-circle-check')+'" aria-hidden="true"></i>'+esc(h[1])+'</span>';
+    pills+='<span class="pill stage"><i class="ti '+(ICON[p.stage]||'ti-flag')+'" aria-hidden="true"></i>'+esc(STAGE[p.stage]||p.stage)+'</span>';
     if(p.progress!=null)pills+='<span class="pct-tag">'+p.progress+'%</span>';
     $('pills').innerHTML=pills;
     $('stripStage').innerHTML='<i class="ti '+(ICON[p.stage]||'ti-flag')+'" aria-hidden="true"></i>'+esc(STAGE[p.stage]||p.stage);

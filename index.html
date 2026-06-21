@@ -501,19 +501,6 @@ function initMotion(m){
   let heroVisReady=false;
   const coarse=matchMedia('(pointer:coarse)').matches;
 
-  function attachTilt(els){
-    if(coarse)return;
-    els.forEach(function(card){
-      if(card.__tilt)return;card.__tilt=true;
-      card.addEventListener('pointerenter',function(){card.style.willChange='transform';});
-      card.addEventListener('pointermove',function(e){const r=card.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;card.style.transform='perspective(900px) rotateY('+(px*6)+'deg) rotateX('+(-py*6)+'deg) translateY(-6px)';});
-      const reset=function(){card.style.transform='';card.style.willChange='';};
-      card.addEventListener('pointerleave',reset);
-      card.addEventListener('pointercancel',reset);
-      card.addEventListener('lostpointercapture',reset);
-    });
-  }
-
   const hero=document.querySelector('[data-hero]');
   if(hero){
     const eye=hero.querySelector('.eye');
@@ -545,7 +532,6 @@ function initMotion(m){
       if(seen.has(group))return;seen.add(group);
       animate(items,{opacity:[0,1],y:[28,0],scale:[.97,1]},{delay:stagger(.07),duration:.6,ease:[.34,1.56,.64,1]});
       if(group.hasAttribute('data-counters'))runCounters(group);
-      setTimeout(function(){attachTilt(group.querySelectorAll('[data-tilt]'));},720);
     },{amount:.25});
   });
 
