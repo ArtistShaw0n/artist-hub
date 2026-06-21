@@ -2,7 +2,7 @@
 
 Single source of truth for every project (websites & apps) — from planning to live and maintenance. Docs, Figma files, repos, dev/live links, assets, tasks and clients, all in one home per project.
 
-**Live:** https://artist-hub-app.vercel.app
+**Live:** https://artist-shawon-hub.vercel.app
 
 > This is the early-stage UI mockup. The visual language follows [motion.dev](https://motion.dev) (dark-first, bold typography, gradient accents, spring-physics motion); the content is Artist Hub's.
 
