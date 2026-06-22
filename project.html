@@ -277,17 +277,17 @@ body{margin:0;background:#08080b}
 .ah .ident-strip .pill{padding:3px 9px;font-size:10px}
 
 /* monogram avatar */
-.ah .mono-av{flex:none;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font:600 20px 'Inter',sans-serif;letter-spacing:-.01em;color:#fff;background:var(--proj);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px -10px var(--proj-c1);overflow:hidden;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.ah .mono-av{flex:none;width:60px;height:60px;border-radius:17px;display:grid;place-items:center;font:600 21px 'Inter',sans-serif;letter-spacing:-.01em;color:#fff;background:var(--proj);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px -10px var(--proj-c1);overflow:hidden;text-shadow:0 1px 3px rgba(0,0,0,.45);margin:0 auto}
 .ah .mono-av.sm{width:22px;height:22px;border-radius:7px;font-size:11px;box-shadow:none;text-shadow:none}
 
 /* identity console panel (glass) */
-.ah .console{position:relative;margin-top:24px;border-radius:18px;overflow:hidden;padding:22px;background:rgba(255,255,255,.055);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px -12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.22)}
+.ah .console{position:relative;margin-top:24px;border-radius:18px;overflow:hidden;padding:26px 22px;background:rgba(255,255,255,.055);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px -12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.22);text-align:center}
 .ah .console>*{position:relative;z-index:1}
-.ah .console::before{content:"";position:absolute;inset:0;z-index:0;background:var(--proj);opacity:.12;pointer-events:none;-webkit-mask-image:radial-gradient(120% 90% at 14% -10%,#000,transparent 60%);mask-image:radial-gradient(120% 90% at 14% -10%,#000,transparent 60%)}
+.ah .console::before{content:"";position:absolute;inset:0;z-index:0;background:var(--proj);opacity:.12;pointer-events:none;-webkit-mask-image:radial-gradient(120% 80% at 50% -12%,#000,transparent 62%);mask-image:radial-gradient(120% 80% at 50% -12%,#000,transparent 62%)}
 .ah .console::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;z-index:2;background:var(--proj)}
 .ah .idrow{display:flex;align-items:center;gap:16px}
 .ah .idtext{flex:1;min-width:0}
-.ah .idtext h1{margin:0;font-size:clamp(21px,3vw,26px);font-weight:600;letter-spacing:-.02em;color:var(--tx);line-height:1.15}
+.ah .console h1{margin:14px 0 0;font-size:clamp(21px,3vw,26px);font-weight:600;letter-spacing:-.02em;color:var(--tx);line-height:1.15}
 .ah .idsub{margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--tx2)}
 
 /* progress ring */
@@ -299,16 +299,16 @@ body{margin:0;background:#08080b}
 .ah .pring-lbl b{color:var(--tx);font-weight:600}
 
 /* pills line + health variants + pct tag */
-.ah .console .pills{margin-top:16px}
+.ah .console .pills{margin-top:16px;justify-content:center}
 .ah .pill.health--on_track{background:rgba(52,211,153,.12);color:#6ee7b7;border:1px solid rgba(52,211,153,.32)}
 .ah .pill.health--at_risk{background:rgba(251,191,36,.12);color:#fcd34d;border:1px solid rgba(251,191,36,.3)}
 .ah .pill.health--blocked{background:rgba(248,113,113,.12);color:#fca5a5;border:1px solid rgba(248,113,113,.34)}
 .ah .pct-tag{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;border:1px solid var(--line2);color:var(--tx2)}
-.ah .summary{margin:14px 0 0;font-size:13.5px;line-height:1.55;color:var(--tx2);max-width:70ch}
+.ah .summary{margin:14px auto 0;font-size:13.5px;line-height:1.55;color:var(--tx2);max-width:60ch;text-align:center}
 
 /* link bar */
-.ah .linkbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.ah .linkbar .chip{text-decoration:none}
+.ah .linkbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px;justify-content:center}
+.ah .linkbar .chip{text-decoration:none;font-size:13px;padding:10px 15px}
 .ah .nolinks{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--tx3);margin-top:18px}
 
 /* centered section eyebrow with tick motif */
@@ -410,20 +410,9 @@ body{margin:0;background:#08080b}
 
     <div id="content" hidden>
       <header class="console">
-        <div class="idrow">
-          <span class="mono-av" id="mono"></span>
-          <div class="idtext">
-            <h1 id="pname"></h1>
-            <div class="idsub" id="psub"></div>
-          </div>
-          <div class="pring" id="pring" role="img" aria-label="Progress">
-            <svg viewBox="0 0 72 72" width="72" height="72" aria-hidden="true">
-              <circle class="trk" cx="36" cy="36" r="30"></circle>
-              <circle class="arc" cx="36" cy="36" r="30" id="ringArc"></circle>
-            </svg>
-            <span class="pring-lbl" id="ringLbl"></span>
-          </div>
-        </div>
+        <span class="mono-av" id="mono"></span>
+        <h1 id="pname"></h1>
+        <div class="idsub" id="psub"></div>
         <div class="pills" id="pills"></div>
         <p class="summary" id="psum"></p>
       </header>
@@ -505,8 +494,8 @@ body{margin:0;background:#08080b}
     $('pname').textContent=p.name; $('stripName').textContent=p.name;
     $('psub').textContent=p.client+(p.type?' · '+p.type:'');
 
-    if(p.progress==null){$('pring').style.display='none';}
-    else{var C=2*Math.PI*30;var arc=$('ringArc');arc.style.strokeDasharray=C;arc.style.strokeDashoffset=C*(1-p.progress/100);if(p.health&&HEALTH[p.health]){arc.style.stroke=HEALTH[p.health][0];}$('ringLbl').innerHTML='<b>'+p.progress+'</b>%';$('pring').setAttribute('aria-label',p.progress+' percent complete');}
+    var pr=$('pring');
+    if(pr){if(p.progress==null){pr.style.display='none';}else{var C=2*Math.PI*30;var arc=$('ringArc');arc.style.strokeDasharray=C;arc.style.strokeDashoffset=C*(1-p.progress/100);if(p.health&&HEALTH[p.health]){arc.style.stroke=HEALTH[p.health][0];}$('ringLbl').innerHTML='<b>'+p.progress+'</b>%';pr.setAttribute('aria-label',p.progress+' percent complete');}}
 
     var h=HEALTH[p.health]||HEALTH.on_track;
     var pills='<span class="pill health--'+esc(p.health||'on_track')+'"><i class="ti '+(HEALTH_IC[p.health]||'ti-circle-check')+'" aria-hidden="true"></i>'+esc(h[1])+'</span>';

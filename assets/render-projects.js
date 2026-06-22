@@ -16,8 +16,11 @@
   function card(p, i) {
     var h = HEALTH[p.health] || HEALTH.on_track;
     var grad = esc(p.coverGradient || "linear-gradient(135deg,#6d5efc,#8b7cff)");
-    var links = LINKS.filter(function (l) { return p.links && p.links[l[0]]; }).map(function (l) {
-      return '<a class="picon" href="' + esc(p.links[l[0]]) + '" target="_blank" rel="noopener" aria-label="' + esc(p.name) + " — " + l[2] + '"><i class="ti ' + l[1] + '" aria-hidden="true"></i></a>';
+    var SHORT = { figma: "Figma", repo: "Repo", dev: "Dev", staging: "Staging", live: "Live", docs: "Docs" };
+    var linkBtns = LINKS.map(function (l) {
+      var u = l[0] === "live" ? ((p.links && p.links.live) || (p.deploy && p.deploy.url) || "") : ((p.links && p.links[l[0]]) || "");
+      if (!u) return "";
+      return '<a class="lbtn' + (l[0] === "live" ? " go" : "") + '" href="' + esc(u) + '" target="_blank" rel="noopener" aria-label="' + esc(p.name) + " — " + l[2] + '"><i class="ti ' + l[1] + '" aria-hidden="true"></i>' + SHORT[l[0]] + "</a>";
     }).join("");
     var date = fmt(p.deploy && p.deploy.lastDeployed) || fmt(p.repoInfo && p.repoInfo.lastCommitDate);
     var slug = encodeURIComponent(p.slug || "");
@@ -29,13 +32,13 @@
             '<div class="pav"><span class="pav-i">' + esc(initials(p.name)) + '</span></div>' +
             '<div class="pn">' + esc(p.name) + "</div>" +
             '<div class="pcl">' + esc(p.client) + (p.type ? " · " + esc(p.type) : "") + "</div>" +
-            '<div class="pchips">' +
-              '<span class="hpill health--' + esc(p.health || 'on_track') + '"><span class="d"></span>' + esc(h[1]) + '</span>' +
-              '<span class="sp">' + esc(STAGE[p.stage] || p.stage) + '</span>' +
-            '</div>' +
-            '<div class="barwrap"><span class="bar"><i style="width:' + (p.progress || 0) + '%"></i></span><span class="pct">' + (p.progress == null ? "" : p.progress + "%") + "</span></div>" +
           "</a>" +
-          (links ? '<div class="pl">' + links + "</div>" : "") +
+          (linkBtns ? '<div class="plinks">' + linkBtns + "</div>" : "") +
+          '<div class="pchips">' +
+            '<span class="hpill health--' + esc(p.health || 'on_track') + '"><span class="d"></span>' + esc(h[1]) + '</span>' +
+            '<span class="sp">' + esc(STAGE[p.stage] || p.stage) + '</span>' +
+          '</div>' +
+          '<div class="barwrap"><span class="bar"><i style="width:' + (p.progress || 0) + '%"></i></span><span class="pct">' + (p.progress == null ? "" : p.progress + "%") + "</span></div>" +
           (date ? '<div class="pfoot">updated ' + date + "</div>" : "") +
         "</div>" +
       "</div>";
@@ -69,12 +72,14 @@
       "[data-projects-grid] .pc .bar{flex:1;height:5px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin:0}" +
       "[data-projects-grid] .pc .bar i{display:block;height:100%;border-radius:999px;background:var(--grad-soft,linear-gradient(135deg,#6d5efc,#8b7cff))}" +
       "[data-projects-grid] .pc .pct{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--tx3,#71717a);min-width:30px;text-align:right}" +
-      "[data-projects-grid] .pc .pl{display:flex;justify-content:center;gap:13px;margin-top:15px;color:var(--tx3,#71717a);font-size:16px}" +
-      "[data-projects-grid] .pc .picon{display:inline-flex;color:inherit;text-decoration:none;border-radius:6px}" +
+      "[data-projects-grid] .pc .plinks{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:15px}" +
+      "[data-projects-grid] .pc .lbtn{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:500;color:var(--tx2,#a3a3ae);background:rgba(255,255,255,.06);border:1px solid var(--line2,rgba(255,255,255,.14));border-radius:9px;padding:7px 10px;text-decoration:none;transition:color .2s,background .2s,border-color .2s}" +
+      "[data-projects-grid] .pc .lbtn i{font-size:14px}" +
+      "[data-projects-grid] .pc .lbtn:hover{color:var(--tx,#f4f4f6);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.24)}" +
+      "[data-projects-grid] .pc .lbtn.go{color:var(--lime,#d6ff4f);border-color:rgba(214,255,79,.35);background:rgba(214,255,79,.07)}" +
+      "[data-projects-grid] .pc .lbtn.go:hover{color:var(--lime,#d6ff4f);background:rgba(214,255,79,.14);border-color:rgba(214,255,79,.5)}" +
       "[data-projects-grid] .pc .pcgo:focus-visible{outline:none;box-shadow:inset 0 0 0 2px var(--accent,#6d5efc);border-radius:14px}" +
-      "[data-projects-grid] .pc .picon:focus-visible{outline:none;box-shadow:0 0 0 2px var(--accent,#6d5efc)}" +
-      "[data-projects-grid] .pc:hover .picon i{color:var(--tx2,#a1a1aa)}" +
-      "[data-projects-grid] .pc .picon:hover i{color:var(--tx,#ededf2)}" +
+      "[data-projects-grid] .pc .lbtn:focus-visible{outline:none;box-shadow:0 0 0 2px var(--accent,#6d5efc)}" +
       "[data-projects-grid] .pc .pfoot{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--tx3,#71717a);letter-spacing:.1em;text-transform:uppercase;margin-top:13px}" +
       "@keyframes ah-cardin{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}" +
       "@media(prefers-reduced-motion:reduce){[data-projects-grid] .pc{animation:none}}";
