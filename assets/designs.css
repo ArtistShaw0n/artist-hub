@@ -1,9 +1,9 @@
 /* 10-design review gallery — injected into the dashboard FIG.01 area. Scoped so it can't leak into the app shell. */
 #design-gallery{display:flex;flex-direction:column;gap:42px;padding:0 24px}
-#design-gallery .cmp .hd{display:flex;align-items:baseline;gap:11px}
+#design-gallery .cmp .hd{display:flex;align-items:baseline;justify-content:center;gap:11px}
 #design-gallery .cmp .hd b{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;color:#a78bfa}
 #design-gallery .cmp .hd h2{font-size:16px;font-weight:600;margin:0;color:#f4f4f6;letter-spacing:-.01em}
-#design-gallery .deck{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;margin-top:12px}
+#design-gallery .deck{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;justify-content:center;margin-top:12px}
 @media(max-width:640px){#design-gallery{padding:0 16px}}
 
 /* Cover banner */
