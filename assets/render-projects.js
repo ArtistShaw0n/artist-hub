@@ -28,16 +28,16 @@
       '<div class="pc" data-slug="' + esc(p.slug || "") + '" style="animation-delay:' + (i * 55) + 'ms">' +
         '<div class="pglow" aria-hidden="true" style="background:' + grad + '"></div>' +
         '<div class="pb">' +
+          '<div class="pchips">' +
+            '<span class="hpill health--' + esc(p.health || 'on_track') + '"><span class="d"></span>' + esc(h[1]) + '</span>' +
+            '<span class="sp">' + esc(STAGE[p.stage] || p.stage) + '</span>' +
+          '</div>' +
           '<a class="pcgo" href="/project.html?slug=' + slug + '" aria-label="Open ' + esc(p.name) + '">' +
             '<div class="pav"><span class="pav-i">' + esc(initials(p.name)) + '</span></div>' +
             '<div class="pn">' + esc(p.name) + "</div>" +
             '<div class="pcl">' + esc(p.client) + (p.type ? " · " + esc(p.type) : "") + "</div>" +
           "</a>" +
           (linkBtns ? '<div class="plinks">' + linkBtns + "</div>" : "") +
-          '<div class="pchips">' +
-            '<span class="hpill health--' + esc(p.health || 'on_track') + '"><span class="d"></span>' + esc(h[1]) + '</span>' +
-            '<span class="sp">' + esc(STAGE[p.stage] || p.stage) + '</span>' +
-          '</div>' +
           '<div class="barwrap"><span class="bar"><i style="width:' + (p.progress || 0) + '%"></i></span><span class="pct">' + (p.progress == null ? "" : p.progress + "%") + "</span></div>" +
           (date ? '<div class="pfoot">updated ' + date + "</div>" : "") +
         "</div>" +
@@ -58,7 +58,7 @@
       "[data-projects-grid] .pc .pav-i{font:700 14px 'Inter',system-ui,sans-serif;letter-spacing:.02em;color:var(--accent-soft,#a78bfa)}" +
       "[data-projects-grid] .pc .pn{font-size:17px;line-height:1.25;font-weight:700;letter-spacing:-.015em;margin-top:14px;color:var(--tx,#f4f4f6)}" +
       "[data-projects-grid] .pc .pcl{font-size:11.5px;color:var(--tx2,#a3a3ae);margin-top:5px}" +
-      "[data-projects-grid] .pc .pchips{margin-top:12px;display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap}" +
+      "[data-projects-grid] .pc .pchips{margin:0 0 16px;display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap}" +
       "[data-projects-grid] .pc .hpill{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;border:1px solid transparent}" +
       "[data-projects-grid] .pc .hpill .d{width:6px;height:6px;border-radius:50%}" +
       "[data-projects-grid] .pc .hpill.health--on_track{color:#6ee7b7;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.30)}" +
