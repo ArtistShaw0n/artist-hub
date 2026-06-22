@@ -40,7 +40,7 @@
 
   var cover = AH.present(p.coverGradient) ? p.coverGradient : "linear-gradient(135deg, #6d5efc, #22d3ee)";
 
-  var stageHtml = stageLabel ? '<span class="stage"><i class="ti ' + AH.esc(stageIcon) + '"></i>' + AH.esc(stageLabel) + '</span>' : '';
+  var stageHtml = stageLabel ? '<span class="g-stage"><i class="ti ' + AH.esc(stageIcon) + '"></i>' + AH.esc(stageLabel) + '</span>' : '';
 
   var lang = AH.language(p);
   var prs = AH.openPRs(p);
@@ -68,9 +68,9 @@
       '</div>' +
       '<div class="progress">' +
         '<div class="progress-head"><span>Progress</span><b>' + prog + '%</b></div>' +
-        '<div class="bar"><span style="width:' + prog + '%"></span></div>' +
+        '<div class="g-bar"><span style="width:' + prog + '%"></span></div>' +
       '</div>' +
-      '<div class="foot">' +
+      '<div class="g-foot">' +
         '<i class="ti ti-clock"></i>' +
         '<span>' + AH.esc(AH.updated(p)) + '</span>' +
         (footExtra ? '<span class="ml">' + footExtra + '</span>' : '') +
@@ -182,22 +182,22 @@
     return '<a class="lnk' + live + '" href="' + AH.esc(l.url) + '" title="' + AH.esc(l.label) + '" aria-label="' + AH.esc(l.label) + '"><i class="ti ' + AH.esc(l.icon) + '"></i></a>';
   }).join('');
 
-  var stageHtml = stageLabel ? '<span class="stage"><i class="ti ' + AH.esc(stageIcon) + '"></i>' + AH.esc(stageLabel) + '</span>' : '';
+  var stageHtml = stageLabel ? '<span class="g-stage"><i class="ti ' + AH.esc(stageIcon) + '"></i>' + AH.esc(stageLabel) + '</span>' : '';
 
   return '<div class="row">'
     + '<div class="mono" style="background:' + AH.esc(grad) + '">' + AH.esc(AH.initials(p.name)) + '</div>'
     + '<div class="mid">'
       + '<div class="name">' + AH.esc(p.name || '') + '</div>'
-      + (sub ? '<div class="sub">' + sub + '</div>' : '')
+      + (sub ? '<div class="g-sub">' + sub + '</div>' : '')
       + '<div class="meta">'
         + '<span class="health" style="background:' + h.bg + ';color:' + h.color + '"><span class="dot" style="background:' + h.dot + ';box-shadow:0 0 7px 1px ' + h.dot + '"></span>' + AH.esc(h.label) + '</span>'
         + stageHtml
       + '</div>'
     + '</div>'
     + (linksHtml ? '<div class="links">' + linksHtml + '</div>' : '')
-    + '<div class="foot">'
-      + '<span class="pct">' + prog + '%</span>'
-      + '<span class="bar"><i style="width:' + prog + '%"></i></span>'
+    + '<div class="g-foot">'
+      + '<span class="g-pct">' + prog + '%</span>'
+      + '<span class="g-bar"><i style="width:' + prog + '%"></i></span>'
       + '<span class="upd">' + AH.esc(AH.updated(p)) + '</span>'
     + '</div>'
   + '</div>';
@@ -228,7 +228,7 @@
 
   var html =
   '<div class="card">'+
-    '<div class="glow"></div>'+
+    '<div class="g-glow"></div>'+
     '<div class="mono" style="background:'+AH.esc(grad)+'">'+AH.esc(AH.initials(p.name))+'</div>'+
     '<div class="name">'+AH.esc(p.name)+'</div>'+
     (meta ? '<div class="meta">'+meta+'</div>' : '')+
@@ -241,12 +241,12 @@
       '<div class="sep"></div>'+
       '<div class="blk">'+
         '<span class="lbl">Progress</span>'+
-        '<span class="val pct">'+prog+'%</span>'+
+        '<span class="val g-pct">'+prog+'%</span>'+
       '</div>'+
     '</div>'+
-    '<div class="bar"><span style="width:'+prog+'%"></span></div>'+
+    '<div class="g-bar"><span style="width:'+prog+'%"></span></div>'+
     linksBlock+
-    '<div class="foot"><i class="ti ti-clock"></i>Updated '+AH.esc(AH.updated(p))+'</div>'+
+    '<div class="g-foot"><i class="ti ti-clock"></i>Updated '+AH.esc(AH.updated(p))+'</div>'+
   '</div>';
   return html;
 },
@@ -341,14 +341,14 @@
         '</div>'+
       '</div>'+
 
-      '<div class="stage">'+
+      '<div class="g-stage">'+
         '<i class="ti '+esc(stageIcon)+'"></i><span>Stage</span> <b>'+esc(stageLabel)+'</b>'+
         extraHtml+
       '</div>'+
 
       linksBlock+
 
-      '<div class="foot">'+
+      '<div class="g-foot">'+
         '<span class="updated"><i class="ti ti-clock"></i>Updated '+esc(AH.updated(p))+'</span>'+
       '</div>'+
 
@@ -470,7 +470,7 @@
   var sub = [AH.esc(p.client||''), AH.esc(p.type||'')].filter(function(x){return x;}).join(' · ');
   var rows = '';
   rows += '<div class="row"><span class="k"><i class="ti ti-activity-heartbeat"></i>Health</span>'
-    + '<span class="pill" style="color:'+h.color+';background:'+h.bg+';border:1px solid '+h.border+';">'
+    + '<span class="g-pill" style="color:'+h.color+';background:'+h.bg+';border:1px solid '+h.border+';">'
     + '<span class="dot" style="background:'+h.dot+';box-shadow:0 0 6px '+h.dot+';"></span>'+AH.esc(h.label)+'</span></div>';
   rows += '<div class="row"><span class="k"><i class="ti '+(AH.STAGE_ICON[p.stage]||'ti-flag')+'"></i>Stage</span>'
     + '<span class="v">'+AH.esc(AH.STAGE[p.stage]||p.stage||'')+'</span></div>';
@@ -497,10 +497,10 @@
       + '<div class="mono" style="background:'+AH.esc(p.coverGradient||'linear-gradient(135deg,#6d5efc,#22d3ee)')+';">'+AH.esc(AH.initials(p.name))+'</div>'
       + '<div class="hd-txt">'
         + '<div class="nm">'+AH.esc(p.name||'')+'</div>'
-        + (sub ? '<div class="sub">'+sub+'</div>' : '')
+        + (sub ? '<div class="g-sub">'+sub+'</div>' : '')
       + '</div>'
     + '</div>'
-    + '<div class="rows">'+rows+'</div>'
+    + '<div class="g-rows">'+rows+'</div>'
     + '<div class="prow">'
       + '<div class="ptop"><span class="plbl">Progress</span>'
       + '<span class="pnum">'+prog+'<span>%</span></span></div>'
@@ -529,12 +529,12 @@
   html += '<div class="mono" style="background:'+AH.esc(p.coverGradient||'linear-gradient(135deg,#6d5efc,#22d3ee)')+'">'
         + AH.esc(AH.initials(p.name))+'</div>';
   html += '<div class="name">'+AH.esc(p.name||'')+'</div>';
-  if(sub){ html += '<div class="sub">'+sub+'</div>'; }
+  if(sub){ html += '<div class="g-sub">'+sub+'</div>'; }
 
   html += '<div class="chips">';
-  html += '<span class="chip health" style="color:'+h.color+';background:'+h.bg+';border-color:'+h.border+'">'
+  html += '<span class="g-chip health" style="color:'+h.color+';background:'+h.bg+';border-color:'+h.border+'">'
         + '<span class="dot" style="background:'+h.dot+';box-shadow:0 0 7px '+h.dot+'"></span>'+AH.esc(h.label)+'</span>';
-  if(stageKey){ html += '<span class="chip stage"><i class="ti '+AH.esc(stageIcon)+'"></i>'+AH.esc(stageLabel)+'</span>'; }
+  if(stageKey){ html += '<span class="g-chip g-stage"><i class="ti '+AH.esc(stageIcon)+'"></i>'+AH.esc(stageLabel)+'</span>'; }
   html += '</div>';
 
   html += '<div class="prog"><div class="prog-head">'
@@ -543,7 +543,7 @@
         + '<div class="track"><div class="fill" style="width:'+prog+'%"></div></div></div>';
 
   if(live){
-    html += '<a href="'+AH.esc(live.url)+'" class="cta"><i class="ti '+AH.esc(live.icon)+'"></i>Open '+AH.esc(live.label)+'</a>';
+    html += '<a href="'+AH.esc(live.url)+'" class="g-cta"><i class="ti '+AH.esc(live.icon)+'"></i>Open '+AH.esc(live.label)+'</a>';
   }
 
   if(rest.length){
@@ -591,7 +591,7 @@
   var foot = '<i class="ti ti-clock"></i>Updated ' + AH.esc(AH.updated(p));
   var prs = AH.openPRs(p);
   if (AH.present(p.repoInfo && p.repoInfo.openPRs)) {
-    foot += '<span class="pr"><i class="ti ti-git-pull-request"></i>' + prs + ' PRs</span>';
+    foot += '<span class="g-pr"><i class="ti ti-git-pull-request"></i>' + prs + ' PRs</span>';
   }
 
   return '<div class="card">' +
@@ -600,7 +600,7 @@
           '<div class="mono">' + AH.esc(AH.initials(p.name)) + '</div>' +
           '<div class="id-txt">' +
             '<div class="name">' + AH.esc(p.name) + '</div>' +
-            (sub ? '<div class="sub">' + sub + '</div>' : '') +
+            (sub ? '<div class="g-sub">' + sub + '</div>' : '') +
           '</div>' +
         '</div>' +
         '<span class="health" style="color:' + h.color + ';background:' + h.bg + ';">' +
@@ -611,11 +611,11 @@
       '<div class="bot">' +
         (linksHtml ? '<div class="links">' + linksHtml + '</div>' : '') +
         '<div class="prog-head">' +
-          '<span class="stage"><i class="ti ' + AH.esc(stageIcon) + '"></i>' + AH.esc(stageLabel) + '</span>' +
-          '<span class="pct">' + prog + '%</span>' +
+          '<span class="g-stage"><i class="ti ' + AH.esc(stageIcon) + '"></i>' + AH.esc(stageLabel) + '</span>' +
+          '<span class="g-pct">' + prog + '%</span>' +
         '</div>' +
-        '<div class="bar"><span style="width:' + prog + '%;"></span></div>' +
-        '<div class="foot">' + foot + '</div>' +
+        '<div class="g-bar"><span style="width:' + prog + '%;"></span></div>' +
+        '<div class="g-foot">' + foot + '</div>' +
       '</div>' +
     '</div>';
 }
