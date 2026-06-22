@@ -233,7 +233,7 @@
     '<div class="name">'+AH.esc(p.name)+'</div>'+
     (meta ? '<div class="meta">'+meta+'</div>' : '')+
     '<div class="health" style="color:'+h.color+';background:'+h.bg+';border:1px solid '+h.border+'"><span class="dot" style="background:'+h.dot+';box-shadow:0 0 8px '+h.dot+'"></span>'+AH.esc(h.label)+'</div>'+
-    '<div class="stat">'+
+    '<div class="d4stat">'+
       '<div class="blk">'+
         '<span class="lbl">Stage</span>'+
         '<span class="val"><i class="ti '+AH.esc(stageIcon)+'"></i>'+AH.esc(stageLabel)+'</span>'+
