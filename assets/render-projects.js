@@ -26,13 +26,10 @@
         '<div class="pglow" aria-hidden="true" style="background:' + grad + '"></div>' +
         '<div class="pb">' +
           '<a class="pcgo" href="/project.html?slug=' + slug + '" aria-label="Open ' + esc(p.name) + '">' +
-            '<div class="pav"><span class="pav-i">' + esc(initials(p.name)) + '</span></div>' +
+            '<div class="pav" style="background:' + grad + '">' + esc(initials(p.name)) + "</div>" +
             '<div class="pn">' + esc(p.name) + "</div>" +
             '<div class="pcl">' + esc(p.client) + (p.type ? " · " + esc(p.type) : "") + "</div>" +
-            '<div class="pchips">' +
-              '<span class="hpill health--' + esc(p.health || 'on_track') + '"><span class="d"></span>' + esc(h[1]) + '</span>' +
-              '<span class="sp">' + esc(STAGE[p.stage] || p.stage) + '</span>' +
-            '</div>' +
+            '<div class="pchips"><span class="sp"><span class="d" style="background:' + h[0] + '"></span>' + esc(STAGE[p.stage] || p.stage) + "</span></div>" +
             '<div class="barwrap"><span class="bar"><i style="width:' + (p.progress || 0) + '%"></i></span><span class="pct">' + (p.progress == null ? "" : p.progress + "%") + "</span></div>" +
           "</a>" +
           (links ? '<div class="pl">' + links + "</div>" : "") +
@@ -51,20 +48,12 @@
       "[data-projects-grid] .pc .pcgo{display:block;text-decoration:none;color:inherit}" +
       "[data-projects-grid] .pc .pglow{position:absolute;top:-12px;left:0;right:0;height:100px;opacity:.20;filter:blur(26px);pointer-events:none}" +
       "[data-projects-grid] .pc .pb{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:22px 18px 18px}" +
-      "[data-projects-grid] .pc .pav{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid var(--line,rgba(255,255,255,.08));box-shadow:none}" +
-      "[data-projects-grid] .pc .pav-i{font:700 14px 'Inter',system-ui,sans-serif;letter-spacing:.02em;color:var(--accent-soft,#a78bfa)}" +
-      "[data-projects-grid] .pc .pn{font-size:17px;line-height:1.25;font-weight:700;letter-spacing:-.015em;margin-top:14px;color:var(--tx,#f4f4f6)}" +
-      "[data-projects-grid] .pc .pcl{font-size:11.5px;color:var(--tx2,#a3a3ae);margin-top:5px}" +
-      "[data-projects-grid] .pc .pchips{margin-top:12px;display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap}" +
-      "[data-projects-grid] .pc .hpill{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;border:1px solid transparent}" +
-      "[data-projects-grid] .pc .hpill .d{width:6px;height:6px;border-radius:50%}" +
-      "[data-projects-grid] .pc .hpill.health--on_track{color:#6ee7b7;background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.30)}" +
-      "[data-projects-grid] .pc .hpill.health--on_track .d{background:#34d399}" +
-      "[data-projects-grid] .pc .hpill.health--at_risk{color:#fcd34d;background:rgba(251,191,36,.13);border-color:rgba(251,191,36,.32)}" +
-      "[data-projects-grid] .pc .hpill.health--at_risk .d{background:#fbbf24}" +
-      "[data-projects-grid] .pc .hpill.health--blocked{color:#fca5a5;background:rgba(248,113,113,.14);border-color:rgba(248,113,113,.34)}" +
-      "[data-projects-grid] .pc .hpill.health--blocked .d{background:#f87171}" +
-      "[data-projects-grid] .pc .sp{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid var(--line,rgba(255,255,255,.08));color:var(--tx3,#8a8a96);background:rgba(255,255,255,.03)}" +
+      "[data-projects-grid] .pc .pav{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font:600 15px 'Inter',system-ui,sans-serif;color:#fff;letter-spacing:.02em;border:1px solid rgba(255,255,255,.22);box-shadow:0 10px 22px -8px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.3)}" +
+      "[data-projects-grid] .pc .pn{font-size:15.5px;font-weight:600;letter-spacing:-.01em;margin-top:13px;color:var(--tx,#ededf2)}" +
+      "[data-projects-grid] .pc .pcl{font-size:12px;color:var(--tx2,#a1a1aa);margin-top:4px}" +
+      "[data-projects-grid] .pc .pchips{margin-top:12px}" +
+      "[data-projects-grid] .pc .sp{font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:4px 11px;border-radius:999px;border:1px solid var(--line2,rgba(255,255,255,.14));color:var(--tx2,#a1a1aa);display:inline-flex;align-items:center;gap:6px}" +
+      "[data-projects-grid] .pc .d{width:7px;height:7px;border-radius:50%}" +
       "[data-projects-grid] .pc .barwrap{display:flex;align-items:center;gap:9px;width:100%;margin-top:15px}" +
       "[data-projects-grid] .pc .bar{flex:1;height:5px;border-radius:999px;background:rgba(255,255,255,.09);overflow:hidden;margin:0}" +
       "[data-projects-grid] .pc .bar i{display:block;height:100%;border-radius:999px;background:var(--grad-soft,linear-gradient(135deg,#6d5efc,#8b7cff))}" +
