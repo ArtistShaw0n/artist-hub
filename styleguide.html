@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Artist Hub — Design System</title>
-<meta name="description" content="Artist Hub design system — master components, tokens and patterns. Single source of truth.">
+<meta name="description" content="Artist Hub design system — every master component, token and pattern. Single source of truth.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
 <link rel="stylesheet" href="/assets/tokens.css?v=1">
 <link rel="stylesheet" href="/assets/cards.css?v=1">
@@ -12,22 +12,28 @@
 <style>
 /* styleguide-only layout (catalog scaffolding, not a component) */
 body{background:var(--bg,#08080b);margin:0}
-.sg{max-width:1080px;margin:0 auto;padding:48px 24px 96px}
+.sg{max-width:1120px;margin:0 auto;padding:48px 24px 120px}
 .sg-h{font-size:var(--text-3xl,30px);font-weight:600;letter-spacing:-.02em;color:var(--tx,#f4f4f6);margin:0}
-.sg-lead{font-size:var(--text-md,16px);color:var(--tx2,#a3a3ae);margin:8px 0 0;line-height:1.6;max-width:60ch}
-.sg-sec{margin-top:56px}
+.sg-lead{font-size:var(--text-md,16px);color:var(--tx2,#a3a3ae);margin:8px 0 0;line-height:1.6;max-width:62ch}
+.sg-toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.sg-toc a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--tx3,#8a8a96);text-decoration:none;border:1px solid var(--line,rgba(255,255,255,.08));border-radius:999px;padding:4px 10px}
+.sg-toc a:hover{color:var(--tx,#f4f4f6);border-color:var(--line2,rgba(255,255,255,.16))}
+.sg-sec{margin-top:56px;scroll-margin-top:24px}
 .sg-sec>h2{font-family:'JetBrains Mono',monospace;font-size:var(--text-xs,11px);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-soft,#a78bfa);margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid var(--line,rgba(255,255,255,.08))}
 .sg-row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
 .sg-item{display:flex;flex-direction:column;gap:8px}
 .sg-cap{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--tx3,#8a8a96)}
+.sg-note{font-size:var(--text-sm,12px);color:var(--tx3,#8a8a96);margin:0 0 16px;line-height:1.6}
 .sg-swatch{width:120px}
 .sg-chip{height:56px;border-radius:var(--r-md,8px);border:1px solid var(--line2,rgba(255,255,255,.14))}
-.sg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
 .sg-typ{color:var(--tx,#f4f4f6);font-weight:600;letter-spacing:-.01em;line-height:1.1}
 .sg-rad{width:80px;height:56px;background:var(--card2,#1b1b22);border:1px solid var(--line2,rgba(255,255,255,.14))}
 .sg-space{background:var(--accent-soft,#a78bfa);height:16px;border-radius:2px}
-.sg-note{font-size:var(--text-sm,12px);color:var(--tx3,#8a8a96);margin:0 0 16px;line-height:1.6}
+.sg-demo{position:relative;background:var(--card,#141419);border:1px solid var(--line,rgba(255,255,255,.08));border-radius:var(--r-lg,12px);padding:24px;overflow:hidden;min-height:60px}
+.sg-glowbox{position:relative;height:120px;background:var(--bg,#08080b);border:1px solid var(--line,rgba(255,255,255,.08));border-radius:var(--r-lg,12px);overflow:hidden}
 [data-projects-grid]{margin-top:8px}
+.cmdk-static{position:relative;inset:auto;display:block;background:transparent;padding:0;visibility:visible;pointer-events:auto}
+.cmdk-static .cmdk-sheet{position:relative;transform:none;opacity:1;margin:0;max-width:520px}
 </style>
 </head>
 <body class="ah">
@@ -35,11 +41,22 @@ body{background:var(--bg,#08080b);margin:0}
 
   <header>
     <h1 class="sg-h">Artist Hub — Design System</h1>
-    <p class="sg-lead">Every component below is a <strong>master</strong>: its styling lives once in <code>tokens.css</code> + <code>components.css</code> + <code>cards.css</code>. Change it here and it changes on every page (landing, dashboard, project). This page is the catalog — the single source of truth.</p>
+    <p class="sg-lead">Every master component, wired to <code>tokens.css</code> + <code>components.css</code> + <code>cards.css</code> + <code>render-projects.js</code>. Change a master and it changes on every page. This is the complete catalog — the single source of truth.</p>
+    <nav class="sg-toc" aria-label="Sections">
+      <a href="#tokens">Tokens</a><a href="#type">Type</a><a href="#radius">Radius/Space</a>
+      <a href="#buttons">Buttons</a><a href="#links">Link buttons</a><a href="#chips">Chips/Tags</a>
+      <a href="#badges">Badges/Pills</a><a href="#health">Health</a>
+      <a href="#surfaces">Surfaces</a><a href="#card">Project card</a><a href="#states">Card states</a>
+      <a href="#progress">Progress</a><a href="#flow">Flow stepper</a>
+      <a href="#nav">Nav</a><a href="#tabs">Tabs</a><a href="#seclbl">Section label</a><a href="#hero">Hero</a>
+      <a href="#toasts">Toasts</a><a href="#cmdk">Command palette</a><a href="#tooltip">Tooltip</a>
+      <a href="#integrations">Integrations</a><a href="#meta">Meta row</a>
+      <a href="#avatars">Avatars</a><a href="#glows">Glows</a><a href="#skeleton">Skeleton</a>
+      <a href="#footer">Footer</a><a href="#skip">Skip link</a>
+    </nav>
   </header>
 
-  <!-- ============ TOKENS ============ -->
-  <section class="sg-sec">
+  <section class="sg-sec" id="tokens">
     <h2>Color tokens</h2>
     <div class="sg-row">
       <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--accent)"></div><span class="sg-cap">--accent #6d5efc</span></div>
@@ -48,24 +65,27 @@ body{background:var(--bg,#08080b);margin:0}
       <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--bg)"></div><span class="sg-cap">--bg #08080b</span></div>
       <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--card)"></div><span class="sg-cap">--card</span></div>
       <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--card2)"></div><span class="sg-cap">--card2</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--tx)"></div><span class="sg-cap">--tx</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--tx2)"></div><span class="sg-cap">--tx2</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--tx3)"></div><span class="sg-cap">--tx3</span></div>
       <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--health-on-dot,#34d399)"></div><span class="sg-cap">health · on_track</span></div>
       <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--health-risk-dot,#fbbf24)"></div><span class="sg-cap">health · at_risk</span></div>
       <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--health-blk-dot,#f87171)"></div><span class="sg-cap">health · blocked</span></div>
     </div>
   </section>
 
-  <!-- ============ TYPE ============ -->
-  <section class="sg-sec">
+  <section class="sg-sec" id="type">
     <h2>Type scale</h2>
     <div class="sg-item"><span class="sg-typ" style="font-size:var(--text-4xl,38px)">Display 38</span><span class="sg-cap">--text-4xl</span></div>
-    <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-2xl,24px)">Heading 24</span><span class="sg-cap">--text-2xl</span></div>
+    <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-3xl,30px)">Heading 30</span><span class="sg-cap">--text-3xl</span></div>
+    <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-2xl,24px)">Title 24</span><span class="sg-cap">--text-2xl</span></div>
     <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-lg,18px)">Subhead 18</span><span class="sg-cap">--text-lg</span></div>
-    <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-base,14px);font-weight:400;color:var(--tx2)">Body 14 — the quick brown fox</span><span class="sg-cap">--text-base</span></div>
+    <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-base,14px);font-weight:400;color:var(--tx2)">Body 14 — the quick brown fox jumps over the lazy dog</span><span class="sg-cap">--text-base</span></div>
+    <div class="sg-item" style="margin-top:12px"><span style="font-size:var(--text-sm,12px);color:var(--tx2)">Small 12 — secondary copy</span><span class="sg-cap">--text-sm</span></div>
     <div class="sg-item" style="margin-top:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:var(--text-xs,11px);letter-spacing:.1em;color:var(--tx3)">MONO LABEL 11 · JetBrains Mono</span><span class="sg-cap">--text-xs · mono</span></div>
   </section>
 
-  <!-- ============ RADIUS + SPACING ============ -->
-  <section class="sg-sec">
+  <section class="sg-sec" id="radius">
     <h2>Radius &amp; spacing</h2>
     <div class="sg-row">
       <div class="sg-item"><div class="sg-rad" style="border-radius:var(--r-sm,4px)"></div><span class="sg-cap">--r-sm 4</span></div>
@@ -74,80 +94,224 @@ body{background:var(--bg,#08080b);margin:0}
       <div class="sg-item"><div class="sg-rad" style="border-radius:var(--r-xl,16px)"></div><span class="sg-cap">--r-xl 16</span></div>
       <div class="sg-item"><div class="sg-rad" style="border-radius:var(--r-pill,999px)"></div><span class="sg-cap">--r-pill</span></div>
     </div>
-    <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;max-width:320px">
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;max-width:340px">
       <div class="sg-space" style="width:4px"></div><span class="sg-cap">--space-1 (4)</span>
       <div class="sg-space" style="width:8px"></div><span class="sg-cap">--space-2 (8)</span>
+      <div class="sg-space" style="width:12px"></div><span class="sg-cap">--space-3 (12)</span>
       <div class="sg-space" style="width:16px"></div><span class="sg-cap">--space-4 (16)</span>
       <div class="sg-space" style="width:24px"></div><span class="sg-cap">--space-6 (24)</span>
       <div class="sg-space" style="width:48px"></div><span class="sg-cap">--space-12 (48)</span>
     </div>
   </section>
 
-  <!-- ============ BUTTONS ============ -->
-  <section class="sg-sec">
+  <section class="sg-sec" id="buttons">
     <h2>Buttons</h2>
     <div class="sg-row" style="align-items:center">
       <div class="sg-item"><button class="cta"><i class="ti ti-plus" aria-hidden="true"></i>New project</button><span class="sg-cap">.cta — primary</span></div>
       <div class="sg-item"><button class="ib" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button><span class="sg-cap">.ib — icon</span></div>
+      <div class="sg-item"><a class="back" href="#"><i class="ti ti-arrow-left" aria-hidden="true"></i><span class="back-lbl">Dashboard</span></a><span class="sg-cap">.back — back link</span></div>
+      <div class="sg-item"><a class="txtlink" href="#">Text link →</a><span class="sg-cap">.txtlink</span></div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="links">
+    <h2>Link buttons (project card)</h2>
+    <p class="sg-note">Primary <code>.lbtn.go</code> stays labelled (Live); secondary links go icon-only <code>.lbtn.io</code>.</p>
+    <div class="sg-row" style="align-items:center">
+      <div class="sg-item"><a class="lbtn go" href="#"><i class="ti ti-world" aria-hidden="true"></i>Live</a><span class="sg-cap">.lbtn.go — primary</span></div>
+      <div class="sg-item"><a class="lbtn io" href="#" aria-label="Repository"><i class="ti ti-brand-github" aria-hidden="true"></i></a><span class="sg-cap">.lbtn.io — icon-only</span></div>
+      <div class="sg-item"><a class="lbtn io" href="#" aria-label="Docs"><i class="ti ti-file-text" aria-hidden="true"></i></a><span class="sg-cap">.lbtn.io — Docs</span></div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="chips">
+    <h2>Chips &amp; tags</h2>
+    <div class="sg-row" style="align-items:center">
       <div class="sg-item"><span class="chip"><i class="ti ti-filter" aria-hidden="true"></i>Filter</span><span class="sg-cap">.chip</span></div>
       <div class="sg-item"><span class="chip go"><i class="ti ti-check" aria-hidden="true"></i>Active</span><span class="sg-cap">.chip.go</span></div>
+      <div class="sg-item"><span class="tag">Public</span><span class="sg-cap">.tag</span></div>
+      <div class="sg-item"><span class="sp"><i class="ti ti-flask" aria-hidden="true"></i>QA / staging</span><span class="sg-cap">.sp — stage</span></div>
     </div>
   </section>
 
-  <!-- ============ CARD SURFACES ============ -->
-  <section class="sg-sec">
+  <section class="sg-sec" id="badges">
+    <h2>Badges &amp; pills</h2>
+    <div class="sg-row" style="align-items:center">
+      <div class="sg-item"><div class="profile-slot"><button class="badge" aria-label="Artist Shaw0n">Artist Shaw0n</button></div><span class="sg-cap">.badge — profile</span></div>
+      <div class="sg-item"><span class="pill stage"><i class="ti ti-progress" aria-hidden="true"></i>Development</span><span class="sg-cap">.pill.stage</span></div>
+      <div class="sg-item"><span class="pill warn"><i class="ti ti-alert-triangle" aria-hidden="true"></i>At risk</span><span class="sg-cap">.pill.warn</span></div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="health">
+    <h2>Health pills (.hpill / .health--*)</h2>
+    <div class="sg-row" style="align-items:center">
+      <div class="sg-item"><span class="hpill health--on_track"><span class="d"></span>On track</span><span class="sg-cap">on_track</span></div>
+      <div class="sg-item"><span class="hpill health--at_risk"><span class="d"></span>At risk</span><span class="sg-cap">at_risk</span></div>
+      <div class="sg-item"><span class="hpill health--blocked"><span class="d"></span>Blocked</span><span class="sg-cap">blocked</span></div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="surfaces">
     <h2>Surfaces — glass (.stat / .pc / .hub)</h2>
-    <p class="sg-note">One glass surface, defined in <code>cards.css</code>, shared by every card on every page.</p>
-    <div class="ah">
-      <div class="stats" style="max-width:none">
-        <div class="stat"><span class="schip"><i class="ti ti-folders" aria-hidden="true"></i></span><div class="num">7</div><div class="slbl">Active projects</div></div>
-        <div class="stat"><span class="schip"><i class="ti ti-palette" aria-hidden="true"></i></span><div class="num">3</div><div class="slbl">In design</div></div>
-        <div class="stat"><span class="schip"><i class="ti ti-rocket" aria-hidden="true"></i></span><div class="num">2</div><div class="slbl">Launching</div></div>
-        <div class="stat"><span class="schip"><i class="ti ti-alert-triangle" aria-hidden="true"></i></span><div class="num">1</div><div class="slbl">At risk</div></div>
-      </div>
+    <p class="sg-note">One glass surface in <code>cards.css</code>, shared by every card on every page.</p>
+    <div class="stats" style="max-width:none">
+      <div class="stat"><span class="schip"><i class="ti ti-folders" aria-hidden="true"></i></span><div class="num">7</div><div class="slbl">Active projects</div></div>
+      <div class="stat"><span class="schip"><i class="ti ti-palette" aria-hidden="true"></i></span><div class="num">3</div><div class="slbl">In design</div></div>
+      <div class="stat"><span class="schip"><i class="ti ti-rocket" aria-hidden="true"></i></span><div class="num">2</div><div class="slbl">Launching</div></div>
+      <div class="stat"><span class="schip"><i class="ti ti-alert-triangle" aria-hidden="true"></i></span><div class="num">1</div><div class="slbl">At risk</div></div>
     </div>
   </section>
 
-  <!-- ============ PRODUCTION CARD (live, render-projects.js) ============ -->
-  <section class="sg-sec">
-    <h2>Project card — .pc (live, render-projects.js)</h2>
-    <p class="sg-note">The master project card. Rendered from <code>/data/projects.json</code> by <code>render-projects.js</code> — same renderer used on landing and dashboard.</p>
+  <section class="sg-sec" id="card">
+    <h2>Project card — .pc (live)</h2>
+    <p class="sg-note">The master card, rendered from <code>/data/projects.json</code> by <code>render-projects.js</code> — identical on landing and dashboard.</p>
     <div data-projects-grid></div>
   </section>
 
-  <!-- ============ BADGES / PILLS ============ -->
-  <section class="sg-sec">
-    <h2>Badges &amp; pills</h2>
-    <div class="sg-row" style="align-items:center">
-      <div class="sg-item"><span class="pill stage"><i class="ti ti-progress" aria-hidden="true"></i>Development</span><span class="sg-cap">.pill.stage</span></div>
-      <div class="sg-item"><span class="pill warn"><i class="ti ti-alert-triangle" aria-hidden="true"></i>At risk</span><span class="sg-cap">.pill.warn</span></div>
-      <div class="sg-item"><span class="sp"><i class="ti ti-flask" aria-hidden="true"></i>QA</span><span class="sg-cap">.sp — stage</span></div>
+  <section class="sg-sec" id="states">
+    <h2>Card states (render-projects.js)</h2>
+    <div class="sg-row">
+      <div class="sg-item" style="width:236px"><div class="pc-state"><i class="ti ti-loader-2" aria-hidden="true"></i>Loading projects…</div><span class="sg-cap">loading</span></div>
+      <div class="sg-item" style="width:236px"><div class="pc-state"><i class="ti ti-folder-open" aria-hidden="true"></i>No projects yet</div><span class="sg-cap">empty</span></div>
+      <div class="sg-item" style="width:236px"><div class="pc-state"><i class="ti ti-alert-triangle" aria-hidden="true"></i>Couldn’t load projects<button class="pc-retry">Retry</button></div><span class="sg-cap">error + retry</span></div>
     </div>
   </section>
 
-  <!-- ============ NAV ============ -->
-  <section class="sg-sec">
+  <section class="sg-sec" id="progress">
+    <h2>Progress</h2>
+    <div style="max-width:300px">
+      <div class="progress"><div class="progress-head"><span>Progress</span><b>65%</b></div><div class="g-bar"><span style="width:65%"></span></div></div>
+      <span class="sg-cap" style="display:block;margin-top:8px">.progress · .g-bar</span>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="flow">
+    <h2>Flow stepper (.flow-rail)</h2>
+    <div class="flow-rail">
+      <div class="flow-track"><div class="flow-fill" style="transform:scaleX(.55)"></div></div>
+      <ol class="flow-nodes">
+        <li class="flow-node done"><div class="dot"></div><div class="flow-card"><div class="flow-no">01</div><div class="flow-name">Lead</div><div class="flow-desc">Qualify and capture intake</div></div></li>
+        <li class="flow-node done"><div class="dot"></div><div class="flow-card"><div class="flow-no">02</div><div class="flow-name">Planning</div><div class="flow-desc">Scope, sitemap, sign-off</div></div></li>
+        <li class="flow-node cur"><div class="dot"></div><div class="flow-card"><div class="flow-no">03</div><div class="flow-name">Development</div><div class="flow-desc">Build, branches, staging URL</div></div></li>
+        <li class="flow-node"><div class="dot"></div><div class="flow-card"><div class="flow-no">04</div><div class="flow-name">Launch</div><div class="flow-desc">Go live and verified</div></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="nav">
     <h2>Nav</h2>
-    <p class="sg-note">Brand, nav links, icon set, CTA, profile — assembled per page; styles shared.</p>
     <nav class="nav" style="position:relative">
       <a class="brand" href="#"><svg class="logomark" width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".85"><line x1="24" y1="24" x2="24" y2="11"/><line x1="24" y1="24" x2="11.5" y2="34.5"/><line x1="24" y1="24" x2="36.5" y2="34.5"/></g><circle cx="24" cy="11" r="3.4" fill="currentColor"/><circle cx="11.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="36.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>Artist Hub</a>
       <span class="nright">
-        <span class="iconset"><button class="ib" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button><button class="ib" aria-label="Notifications"><i class="ti ti-bell" aria-hidden="true"></i></button></span>
+        <span class="iconset"><button class="ib" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button><button class="ib" aria-label="Notifications"><i class="ti ti-bell" aria-hidden="true"></i></button><a class="ib" href="/styleguide.html" aria-label="Design system"><i class="ti ti-color-swatch" aria-hidden="true"></i></a></span>
         <button class="cta"><i class="ti ti-plus" aria-hidden="true"></i>New project</button>
-        <div class="profile-slot"><button class="badge" aria-label="Artist Shaw0n — your profile">Artist Shaw0n</button></div>
+        <div class="profile-slot"><button class="badge" aria-label="Artist Shaw0n">Artist Shaw0n</button></div>
       </span>
     </nav>
   </section>
 
-  <!-- ============ SECTION LABEL ============ -->
-  <section class="sg-sec">
+  <section class="sg-sec" id="tabs">
+    <h2>Tabs (.tabs / .tab)</h2>
+    <div class="tabs"><button class="tab on">Overview</button><button class="tab">Files</button><button class="tab">Tasks</button><button class="tab">Activity</button></div>
+  </section>
+
+  <section class="sg-sec" id="seclbl">
     <h2>Section label (.seclbl / .fig / .sect)</h2>
-    <div class="ah">
-      <div class="seclbl" style="padding:0"><span class="fig">FIG.01</span><h3 class="sect" style="margin:0">Active projects</h3></div>
+    <div class="seclbl" style="padding:0"><span class="fig">FIG.01</span><h3 class="sect" style="margin:0">Active projects</h3></div>
+  </section>
+
+  <section class="sg-sec" id="hero">
+    <h2>Hero text (.h1 / .grad / .eye)</h2>
+    <div style="text-align:center;padding:8px 0">
+      <div class="eye" style="justify-content:center"><span>Artist Hub · Studio command center</span></div>
+      <div class="h1" style="margin:12px auto">Every project, from brief to live — <span class="grad">one home.</span></div>
     </div>
   </section>
 
-  <footer class="foot" style="padding:48px 0 0;text-align:left">Artist Hub design system · single source of truth · edit a master, every page follows.</footer>
+  <section class="sg-sec" id="toasts">
+    <h2>Toasts (.toast)</h2>
+    <div class="sg-row">
+      <div class="toast ok" style="position:relative;opacity:1;transform:none"><span class="toast-ic"><i class="ti ti-check"></i></span>Saved successfully<button class="toast-x" aria-label="Dismiss"><i class="ti ti-x"></i></button></div>
+      <div class="toast info" style="position:relative;opacity:1;transform:none"><span class="toast-ic"><i class="ti ti-info-circle"></i></span>You’re all caught up<button class="toast-x" aria-label="Dismiss"><i class="ti ti-x"></i></button></div>
+      <div class="toast warn" style="position:relative;opacity:1;transform:none"><span class="toast-ic"><i class="ti ti-alert-triangle"></i></span>Project at risk<button class="toast-x" aria-label="Dismiss"><i class="ti ti-x"></i></button></div>
+      <div class="toast error" style="position:relative;opacity:1;transform:none"><span class="toast-ic"><i class="ti ti-alert-circle"></i></span>Something went wrong<button class="toast-x" aria-label="Dismiss"><i class="ti ti-x"></i></button></div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="cmdk">
+    <h2>Command palette (.cmdk)</h2>
+    <p class="sg-note">Cmd/Ctrl+K search. Shown here as a static panel.</p>
+    <div class="cmdk cmdk-static">
+      <div class="cmdk-sheet" role="document">
+        <div class="cmdk-top"><i class="ti ti-search" aria-hidden="true"></i><input class="cmdk-in" type="text" placeholder="Search projects…" value=""><span class="cmdk-kbd">ESC</span></div>
+        <div class="cmdk-list">
+          <div class="cmdk-row" aria-selected="true"><span class="cmdk-sw" style="background:linear-gradient(135deg,#6d5efc,#8b7cff)"></span><span class="cmdk-meta"><span class="cmdk-nm">Onnorokom ERP</span><span class="cmdk-sub">Onnorokom · ERP</span></span><span class="cmdk-stg">Launch</span></div>
+          <div class="cmdk-row"><span class="cmdk-sw" style="background:linear-gradient(135deg,#0ea5e9,#22d3ee)"></span><span class="cmdk-meta"><span class="cmdk-nm">Bangla Zoom</span><span class="cmdk-sub">Internal · Wireframes</span></span><span class="cmdk-stg">Design</span></div>
+        </div>
+        <div class="cmdk-foot"><span><b>↑↓</b> navigate</span><span><b>↵</b> open</span><span><b>esc</b> close</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="tooltip">
+    <h2>Tooltip (.gtip)</h2>
+    <p class="sg-note">Auto-attached to icon buttons from their aria-label (shown on hover).</p>
+    <div class="sg-demo" style="display:flex;justify-content:center;padding:48px 24px">
+      <span class="tipwrap" style="position:relative"><button class="ib"><i class="ti ti-search"></i></button><span class="gtip" style="opacity:1;transform:none">Search</span></span>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="integrations">
+    <h2>Integration card (.intg)</h2>
+    <div class="intg-grid">
+      <div class="intg"><span class="hi"><i class="ti ti-brand-figma" aria-hidden="true"></i></span><div><h3>Figma</h3><p>Embed live design files right in the hub, client-approved version pinned.</p></div></div>
+      <div class="intg"><span class="hi"><i class="ti ti-brand-github" aria-hidden="true"></i></span><div><h3>GitHub / GitLab</h3><p>Link every repo and surface last commit, open PRs and CI at a glance.</p></div></div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="meta">
+    <h2>Hub meta row (.mhead)</h2>
+    <div class="sg-demo">
+      <div class="mhead"><span class="hi"><i class="ti ti-brand-github" aria-hidden="true"></i></span><span class="ht2">Repository</span><span class="tag">Public</span></div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="avatars">
+    <h2>Avatars &amp; monogram</h2>
+    <div class="sg-row" style="align-items:center">
+      <div class="sg-item"><div class="pav"><span class="pav-i">OE</span></div><span class="sg-cap">.pav — card monogram</span></div>
+      <div class="sg-item"><span class="schip"><i class="ti ti-folders" aria-hidden="true"></i></span><span class="sg-cap">.schip — stat icon</span></div>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="glows">
+    <h2>Background glows (.glow)</h2>
+    <div class="sg-glowbox"><span class="glow ga" style="position:absolute"></span><span class="glow gb" style="position:absolute"></span></div>
+    <span class="sg-cap" style="display:block;margin-top:8px">.glow.ga / .glow.gb — ambient blurred orbs · .scroll-progress (top bar)</span>
+  </section>
+
+  <section class="sg-sec" id="skeleton">
+    <h2>Skeleton / loading shimmer (.skel)</h2>
+    <div class="sg-demo" style="display:flex;flex-direction:column;gap:12px;max-width:320px">
+      <span class="skel" style="height:14px;width:60%;display:block;border-radius:4px"></span>
+      <span class="skel" style="height:14px;width:90%;display:block;border-radius:4px"></span>
+      <span class="skel" style="height:14px;width:75%;display:block;border-radius:4px"></span>
+    </div>
+  </section>
+
+  <section class="sg-sec" id="footer">
+    <h2>Footer (.foot)</h2>
+    <div class="foot" style="padding:24px 0;text-align:center">Artist Hub · single source of truth · edit a master, every page follows.</div>
+  </section>
+
+  <section class="sg-sec" id="skip">
+    <h2>Skip link (.skip)</h2>
+    <p class="sg-note">Hidden until keyboard-focused (a11y). Shown here forced-visible.</p>
+    <a class="skip" href="#main" style="position:relative;left:auto;top:auto">Skip to content</a>
+  </section>
+
+  <footer class="foot" style="padding:56px 0 0;text-align:left">Artist Hub design system · complete component catalog · single source of truth.</footer>
 
 </div>
 <script src="/assets/render-projects.js?v=1"></script>
