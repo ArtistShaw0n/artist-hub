@@ -57,7 +57,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .ib:hover{color:var(--tx);border-color:var(--line2);background:rgba(255,255,255,.04)}
 .cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#0b0b0d;background:var(--lime);border:none;padding:8px 16px;border-radius:999px;cursor:pointer;transition:transform .4s var(--spring),filter .25s}
 .cta:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.badge{position:relative;isolation:isolate;display:grid;place-items:center;width:42px;height:34px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:1.1px;color:var(--lime);background:transparent;background-image:repeating-linear-gradient(119deg,rgba(214,255,79,.14) 0 1px,transparent 1px 5px);border:none;border-radius:0;padding:0;cursor:pointer;transition:color .2s .15s}
+.badge{position:relative;isolation:isolate;display:grid;place-items:center;height:34px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.4px;color:var(--lime);background:transparent;background-image:repeating-linear-gradient(119deg,rgba(214,255,79,.14) 0 1px,transparent 1px 5px);border:none;border-radius:0;padding:0 12px;cursor:pointer;transition:color .2s .15s}
 .badge::before{content:"";position:absolute;inset:-1px;pointer-events:none;z-index:1;background-image:linear-gradient(to right,var(--lime) 8px,transparent 8px,transparent calc(100% - 8px),var(--lime) calc(100% - 8px)),linear-gradient(to right,var(--lime) 8px,transparent 8px,transparent calc(100% - 8px),var(--lime) calc(100% - 8px)),linear-gradient(var(--lime) 8px,transparent 8px,transparent calc(100% - 8px),var(--lime) calc(100% - 8px)),linear-gradient(var(--lime) 8px,transparent 8px,transparent calc(100% - 8px),var(--lime) calc(100% - 8px));background-size:100% 1px,100% 1px,1px 100%,1px 100%;background-position:0 0,0 100%,0 0,100% 0;background-repeat:no-repeat}
 .badge::after{content:"";position:absolute;inset:0;background:var(--lime);clip-path:polygon(-1% 0,-1% 0,-100% 100%,-1% 100%);transition:clip-path .4s cubic-bezier(.25,0,0,1);z-index:-1;pointer-events:none}
 .badge:hover,.badge:focus-visible{color:#0b0b0d}
@@ -67,8 +67,6 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .profile-slot[data-style="glass"] .badge{display:none}
 .profile-slot[data-style="glass"] .badge-ios{display:grid}
 .styletoggle{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--tx3);display:grid;place-items:center;cursor:pointer;font-size:16px;transition:.25s}
-.pname{font-size:14px;font-weight:500;color:var(--tx,#f4f4f6);letter-spacing:-.01em;white-space:nowrap}
-@media(max-width:600px){.pname{display:none}}
 .styletoggle:hover{color:var(--tx);border-color:var(--line2);background:rgba(255,255,255,.04)}
 .badge-ios{position:relative;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:#fff;background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.06));backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);border:1px solid rgba(255,255,255,.25);box-shadow:0 8px 22px -6px rgba(0,0,0,.55),inset 0 1px 1px rgba(255,255,255,.55),inset 0 -7px 12px -7px rgba(214,255,79,.25);overflow:hidden;cursor:pointer;transition:transform .55s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease,background .4s ease;-webkit-tap-highlight-color:transparent}
 .badge-ios::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(120% 80% at 30% 12%,rgba(255,255,255,.55),transparent 55%);opacity:.7;pointer-events:none;transition:opacity .4s ease,transform .6s cubic-bezier(.32,.72,0,1)}
@@ -285,8 +283,7 @@ html.jsd .r.in{opacity:1;transform:none}
     </span>
     <button class="cta"><i class="ti ti-plus" aria-hidden="true"></i>New project</button>
     <div class="profile-slot" id="pslot">
-      <span class="pname">Artist Shaw0n</span>
-      <button class="badge" aria-label="Artist Shaw0n — your profile">AS</button>
+      <button class="badge" aria-label="Artist Shaw0n — your profile">Artist Shaw0n</button>
     </div>
   </div>
 </nav>
