@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FILES = [];
-for (const f of ['index.html', 'dashboard.html', 'project.html', 'designs.html', 'favicon.svg', 'logo.svg']) {
+for (const f of ['index.html', 'dashboard.html', 'project.html', 'designs.html', 'styleguide.html', 'favicon.svg', 'logo.svg']) {
   if (fs.existsSync(path.join(ROOT, f))) FILES.push(f);
 }
 for (const d of ['assets', 'data']) {

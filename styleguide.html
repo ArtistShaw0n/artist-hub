@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Artist Hub — Design System</title>
+<meta name="description" content="Artist Hub design system — master components, tokens and patterns. Single source of truth.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="/assets/tokens.css?v=1">
+<link rel="stylesheet" href="/assets/cards.css?v=1">
+<link rel="stylesheet" href="/assets/app.css?v=1">
+<style>
+/* styleguide-only layout (catalog scaffolding, not a component) */
+body{background:var(--bg,#08080b);margin:0}
+.sg{max-width:1080px;margin:0 auto;padding:48px 24px 96px}
+.sg-h{font-size:var(--text-3xl,30px);font-weight:600;letter-spacing:-.02em;color:var(--tx,#f4f4f6);margin:0}
+.sg-lead{font-size:var(--text-md,16px);color:var(--tx2,#a3a3ae);margin:8px 0 0;line-height:1.6;max-width:60ch}
+.sg-sec{margin-top:56px}
+.sg-sec>h2{font-family:'JetBrains Mono',monospace;font-size:var(--text-xs,11px);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-soft,#a78bfa);margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid var(--line,rgba(255,255,255,.08))}
+.sg-row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.sg-item{display:flex;flex-direction:column;gap:8px}
+.sg-cap{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--tx3,#8a8a96)}
+.sg-swatch{width:120px}
+.sg-chip{height:56px;border-radius:var(--r-md,8px);border:1px solid var(--line2,rgba(255,255,255,.14))}
+.sg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.sg-typ{color:var(--tx,#f4f4f6);font-weight:600;letter-spacing:-.01em;line-height:1.1}
+.sg-rad{width:80px;height:56px;background:var(--card2,#1b1b22);border:1px solid var(--line2,rgba(255,255,255,.14))}
+.sg-space{background:var(--accent-soft,#a78bfa);height:16px;border-radius:2px}
+.sg-note{font-size:var(--text-sm,12px);color:var(--tx3,#8a8a96);margin:0 0 16px;line-height:1.6}
+[data-projects-grid]{margin-top:8px}
+</style>
+</head>
+<body class="ah">
+<div class="sg">
+
+  <header>
+    <h1 class="sg-h">Artist Hub — Design System</h1>
+    <p class="sg-lead">Every component below is a <strong>master</strong>: its styling lives once in <code>tokens.css</code> + <code>app.css</code> + <code>cards.css</code>. Change it here and it changes on every page (landing, dashboard, project). This page is the catalog — the single source of truth.</p>
+  </header>
+
+  <!-- ============ TOKENS ============ -->
+  <section class="sg-sec">
+    <h2>Color tokens</h2>
+    <div class="sg-row">
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--accent)"></div><span class="sg-cap">--accent #6d5efc</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--accent-soft)"></div><span class="sg-cap">--accent-soft #a78bfa</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--lime)"></div><span class="sg-cap">--lime #d6ff4f</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--bg)"></div><span class="sg-cap">--bg #08080b</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--card)"></div><span class="sg-cap">--card</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--card2)"></div><span class="sg-cap">--card2</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--health-on-dot,#34d399)"></div><span class="sg-cap">health · on_track</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--health-risk-dot,#fbbf24)"></div><span class="sg-cap">health · at_risk</span></div>
+      <div class="sg-item sg-swatch"><div class="sg-chip" style="background:var(--health-blk-dot,#f87171)"></div><span class="sg-cap">health · blocked</span></div>
+    </div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section class="sg-sec">
+    <h2>Type scale</h2>
+    <div class="sg-item"><span class="sg-typ" style="font-size:var(--text-4xl,38px)">Display 38</span><span class="sg-cap">--text-4xl</span></div>
+    <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-2xl,24px)">Heading 24</span><span class="sg-cap">--text-2xl</span></div>
+    <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-lg,18px)">Subhead 18</span><span class="sg-cap">--text-lg</span></div>
+    <div class="sg-item" style="margin-top:12px"><span class="sg-typ" style="font-size:var(--text-base,14px);font-weight:400;color:var(--tx2)">Body 14 — the quick brown fox</span><span class="sg-cap">--text-base</span></div>
+    <div class="sg-item" style="margin-top:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:var(--text-xs,11px);letter-spacing:.1em;color:var(--tx3)">MONO LABEL 11 · JetBrains Mono</span><span class="sg-cap">--text-xs · mono</span></div>
+  </section>
+
+  <!-- ============ RADIUS + SPACING ============ -->
+  <section class="sg-sec">
+    <h2>Radius &amp; spacing</h2>
+    <div class="sg-row">
+      <div class="sg-item"><div class="sg-rad" style="border-radius:var(--r-sm,4px)"></div><span class="sg-cap">--r-sm 4</span></div>
+      <div class="sg-item"><div class="sg-rad" style="border-radius:var(--r-md,8px)"></div><span class="sg-cap">--r-md 8</span></div>
+      <div class="sg-item"><div class="sg-rad" style="border-radius:var(--r-lg,12px)"></div><span class="sg-cap">--r-lg 12</span></div>
+      <div class="sg-item"><div class="sg-rad" style="border-radius:var(--r-xl,16px)"></div><span class="sg-cap">--r-xl 16</span></div>
+      <div class="sg-item"><div class="sg-rad" style="border-radius:var(--r-pill,999px)"></div><span class="sg-cap">--r-pill</span></div>
+    </div>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;max-width:320px">
+      <div class="sg-space" style="width:4px"></div><span class="sg-cap">--space-1 (4)</span>
+      <div class="sg-space" style="width:8px"></div><span class="sg-cap">--space-2 (8)</span>
+      <div class="sg-space" style="width:16px"></div><span class="sg-cap">--space-4 (16)</span>
+      <div class="sg-space" style="width:24px"></div><span class="sg-cap">--space-6 (24)</span>
+      <div class="sg-space" style="width:48px"></div><span class="sg-cap">--space-12 (48)</span>
+    </div>
+  </section>
+
+  <!-- ============ BUTTONS ============ -->
+  <section class="sg-sec">
+    <h2>Buttons</h2>
+    <div class="sg-row" style="align-items:center">
+      <div class="sg-item"><button class="cta"><i class="ti ti-plus" aria-hidden="true"></i>New project</button><span class="sg-cap">.cta — primary</span></div>
+      <div class="sg-item"><button class="ib" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button><span class="sg-cap">.ib — icon</span></div>
+      <div class="sg-item"><span class="chip"><i class="ti ti-filter" aria-hidden="true"></i>Filter</span><span class="sg-cap">.chip</span></div>
+      <div class="sg-item"><span class="chip go"><i class="ti ti-check" aria-hidden="true"></i>Active</span><span class="sg-cap">.chip.go</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CARD SURFACES ============ -->
+  <section class="sg-sec">
+    <h2>Surfaces — glass (.stat / .pc / .hub)</h2>
+    <p class="sg-note">One glass surface, defined in <code>cards.css</code>, shared by every card on every page.</p>
+    <div class="ah">
+      <div class="stats" style="max-width:none">
+        <div class="stat"><span class="schip"><i class="ti ti-folders" aria-hidden="true"></i></span><div class="num">7</div><div class="slbl">Active projects</div></div>
+        <div class="stat"><span class="schip"><i class="ti ti-palette" aria-hidden="true"></i></span><div class="num">3</div><div class="slbl">In design</div></div>
+        <div class="stat"><span class="schip"><i class="ti ti-rocket" aria-hidden="true"></i></span><div class="num">2</div><div class="slbl">Launching</div></div>
+        <div class="stat"><span class="schip"><i class="ti ti-alert-triangle" aria-hidden="true"></i></span><div class="num">1</div><div class="slbl">At risk</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTION CARD (live, render-projects.js) ============ -->
+  <section class="sg-sec">
+    <h2>Project card — .pc (live, render-projects.js)</h2>
+    <p class="sg-note">The master project card. Rendered from <code>/data/projects.json</code> by <code>render-projects.js</code> — same renderer used on landing and dashboard.</p>
+    <div data-projects-grid></div>
+  </section>
+
+  <!-- ============ BADGES / PILLS ============ -->
+  <section class="sg-sec">
+    <h2>Badges &amp; pills</h2>
+    <div class="sg-row" style="align-items:center">
+      <div class="sg-item"><span class="pill stage"><i class="ti ti-progress" aria-hidden="true"></i>Development</span><span class="sg-cap">.pill.stage</span></div>
+      <div class="sg-item"><span class="pill warn"><i class="ti ti-alert-triangle" aria-hidden="true"></i>At risk</span><span class="sg-cap">.pill.warn</span></div>
+      <div class="sg-item"><span class="sp"><i class="ti ti-flask" aria-hidden="true"></i>QA</span><span class="sg-cap">.sp — stage</span></div>
+    </div>
+  </section>
+
+  <!-- ============ NAV ============ -->
+  <section class="sg-sec">
+    <h2>Nav</h2>
+    <p class="sg-note">Brand, nav links, icon set, CTA, profile — assembled per page; styles shared.</p>
+    <nav class="nav" style="position:relative">
+      <a class="brand" href="#"><svg class="logomark" width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".85"><line x1="24" y1="24" x2="24" y2="11"/><line x1="24" y1="24" x2="11.5" y2="34.5"/><line x1="24" y1="24" x2="36.5" y2="34.5"/></g><circle cx="24" cy="11" r="3.4" fill="currentColor"/><circle cx="11.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="36.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>Artist Hub</a>
+      <span class="nright">
+        <span class="iconset"><button class="ib" aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button><button class="ib" aria-label="Notifications"><i class="ti ti-bell" aria-hidden="true"></i></button></span>
+        <button class="cta"><i class="ti ti-plus" aria-hidden="true"></i>New project</button>
+        <div class="profile-slot"><button class="badge" aria-label="Artist Shaw0n — your profile">Artist Shaw0n</button></div>
+      </span>
+    </nav>
+  </section>
+
+  <!-- ============ SECTION LABEL ============ -->
+  <section class="sg-sec">
+    <h2>Section label (.seclbl / .fig / .sect)</h2>
+    <div class="ah">
+      <div class="seclbl" style="padding:0"><span class="fig">FIG.01</span><h3 class="sect" style="margin:0">Active projects</h3></div>
+    </div>
+  </section>
+
+  <footer class="foot" style="padding:48px 0 0;text-align:left">Artist Hub design system · single source of truth · edit a master, every page follows.</footer>
+
+</div>
+<script src="/assets/render-projects.js?v=1"></script>
+</body>
+</html>
