@@ -4,8 +4,9 @@
    contrast (AA), overflow/clip, element overlap, tap-target size, console errors.
    Prints one defect list and exits non-zero if anything fails (so a git/CI gate
    can block a bad deploy).  Run:  npm --prefix tools run audit
-   Optional: AUDIT_URL=https://... node tools/audit.mjs  (audit a live URL). */
-import { chromium } from 'playwright';
+   Optional: AUDIT_URL=https://... node tools/audit.mjs  (audit a live URL).
+   Cross-browser (pre-launch sweep): BROWSERS=chromium,firefox,webkit npm --prefix tools run audit */
+import { chromium, firefox, webkit } from 'playwright';
 import * as AxePkg from '@axe-core/playwright';
 const AxeBuilder = AxePkg.AxeBuilder || AxePkg.default;
 import http from 'node:http';
@@ -101,8 +102,13 @@ function pageAudit() {
 // ---- run ----
 let server = null, base = process.env.AUDIT_URL;
 if (!base) { server = await startServer(); base = `http://localhost:${server.address().port}`; }
-const browser = await chromium.launch();
+const ENGINES = { chromium, firefox, webkit };
+const BROWSERS = (process.env.BROWSERS || 'chromium').split(',').map((x) => x.trim()).filter(Boolean);
 const all = [];
+for (const bname of BROWSERS) {
+  const engine = ENGINES[bname];
+  if (!engine) { console.log('  (skipping unknown browser: ' + bname + ')'); continue; }
+  const browser = await engine.launch();
 for (const route of ROUTES) {
   for (const vp of VIEWPORTS) {
     const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
@@ -119,15 +125,16 @@ for (const route of ROUTES) {
         const axeRes = await new AxeBuilder({ page }).disableRules(["color-contrast"]).analyze(); // contrast handled by custom check above (axe unreliable with backdrop-filter glass)
         for (const v of axeRes.violations) for (const node of v.nodes.slice(0, 4)) defects.push({ type: 'a11y', el: (node.target || []).join(' ').slice(0, 50), detail: v.id + ' [' + (v.impact || '?') + ']' });
       } catch (e) { defects.push({ type: 'a11y-error', el: '-', detail: String(e).slice(0, 100) }); }
-      defects.forEach((d) => all.push({ route: route.name, vp: vp.name, ...d }));
+      defects.forEach((d) => all.push({ browser: bname, route: route.name, vp: vp.name, ...d }));
     } catch (err) {
-      all.push({ route: route.name, vp: vp.name, type: 'load-error', el: '-', detail: String(err).slice(0, 120) });
+      all.push({ browser: bname, route: route.name, vp: vp.name, type: 'load-error', el: '-', detail: String(err).slice(0, 120) });
     }
     await page.close();
     await context.close();
   }
 }
-await browser.close();
+  await browser.close();
+}
 if (server) server.close();
 
 // ---- report ----
@@ -139,10 +146,10 @@ let total = 0;
 for (const t of order) {
   const list = byType[t]; if (!list || !list.length) continue;
   const seen = new Set(); const uniq = [];
-  for (const d of list) { const k = d.route + '|' + d.el + '|' + (d.detail || ''); if (!seen.has(k)) { seen.add(k); uniq.push(d); } }
+  for (const d of list) { const k = (d.browser || '') + '|' + d.route + '|' + d.el + '|' + (d.detail || ''); if (!seen.has(k)) { seen.add(k); uniq.push(d); } }
   total += uniq.length;
   console.log(`\n[${t}]  ${uniq.length} unique`);
-  for (const d of uniq.slice(0, 40)) console.log(`  ${d.route}/${d.vp}: ${d.el}${d.detail ? ' — ' + d.detail : ''}`);
+  for (const d of uniq.slice(0, 40)) console.log(`  ${d.browser || 'chromium'}/${d.route}/${d.vp}: ${d.el}${d.detail ? ' — ' + d.detail : ''}`);
   if (uniq.length > 40) console.log(`  …and ${uniq.length - 40} more`);
 }
 console.log(`\n${total === 0 ? '✅ PASS — no defects' : '❌ FAIL — ' + total + ' unique defects'}\n`);
