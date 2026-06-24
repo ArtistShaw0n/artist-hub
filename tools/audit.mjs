@@ -39,6 +39,7 @@ const ROUTES = [
 ];
 const VIEWPORTS = [
   { name: 'desktop', width: 1280, height: 900 },
+  { name: 'tablet', width: 768, height: 1024 },
   { name: 'mobile', width: 390, height: 844 },
 ];
 
