@@ -4,10 +4,13 @@
   "type": "module",
   "description": "Dev-only QA tooling for Artist Hub (not part of the deployed site).",
   "scripts": {
-    "audit": "node audit.mjs"
+    "audit": "node audit.mjs",
+    "visual": "node visual.mjs"
   },
   "devDependencies": {
     "playwright": "^1.48.0",
-    "@axe-core/playwright": "^4.10.1"
+    "@axe-core/playwright": "^4.10.1",
+    "pixelmatch": "^6.0.0",
+    "pngjs": "^7.0.0"
   }
 }

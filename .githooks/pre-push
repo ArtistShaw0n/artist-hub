@@ -1,21 +1,29 @@
 #!/usr/bin/env bash
 # Artist Hub — pre-push design gate.
-# Runs the design-rule audit before every push; blocks the push on any defect.
+# Runs the design-rule audit + visual-regression before every push; blocks on any defect/change.
 # One-time activation:  git config core.hooksPath .githooks
 # Bypass for one push:  git push --no-verify
 set -uo pipefail
 
 if [ ! -d tools/node_modules/playwright ]; then
-  echo "⚠  Audit tooling not installed — skipping the design gate."
+  echo "⚠  QA tooling not installed — skipping the design gate."
   echo "   Set up once:  npm --prefix tools install && tools/node_modules/.bin/playwright install chromium"
   exit 0
 fi
 
-echo "▶  Design-rule audit (pre-push gate)…"
-if npm --prefix tools run --silent audit; then
-  echo "✓  Audit passed — pushing."
-  exit 0
-else
+echo "▶  Design-rule audit…"
+if ! npm --prefix tools run --silent audit; then
   echo "✗  Audit failed — push blocked. Fix the defects above, or override with:  git push --no-verify"
   exit 1
 fi
+
+echo "▶  Visual-regression…"
+if ! npm --prefix tools run --silent visual; then
+  echo "✗  Visual changes detected — push blocked. Review tools/diffs/, then accept intended changes with:"
+  echo "     npm --prefix tools run visual -- --update   (and commit the updated baselines)"
+  echo "   …or override with:  git push --no-verify"
+  exit 1
+fi
+
+echo "✓  Audit + visual passed — pushing."
+exit 0
