@@ -25,5 +25,11 @@ if ! npm --prefix tools run --silent visual; then
   exit 1
 fi
 
-echo "✓  Audit + visual passed — pushing."
+echo "▶  Performance budget…"
+if ! npm --prefix tools run --silent perf; then
+  echo "✗  Performance over budget — push blocked. See the table above, or override with:  git push --no-verify"
+  exit 1
+fi
+
+echo "✓  Audit + visual + perf passed — pushing."
 exit 0
