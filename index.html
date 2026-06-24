@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="/assets/tokens.css?v=1">
 <script>
 (function(){var d=document.documentElement;d.classList.add('js-on');
  try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('reduce-motion');}catch(e){}
@@ -56,7 +57,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .cta.ghost:hover{background:rgba(255,255,255,.05);filter:none}
 .ah a.cta{color:#0b0b0d}
 .ah a.cta.ghost{color:var(--tx)}
-.ib{width:36px;height:36px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--tx2);display:grid;place-items:center;cursor:pointer;transition:.25s;font-size:18px}
+.ib{width:36px;height:36px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--tx2);display:grid;place-items:center;padding:0;cursor:pointer;transition:.25s;font-size:18px}
 .ib:hover{color:var(--tx);border-color:var(--line2);background:rgba(255,255,255,.04)}
 .eye{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--tx3);margin:0 0 16px;display:flex;align-items:center;gap:12px}
 .eye::before{content:"";width:26px;height:1px;background:var(--line2)}
@@ -174,7 +175,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .intg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 32px;max-width:900px;margin:0 auto}
 .intg{display:flex;gap:12px;align-items:flex-start}
 .intg .hi{margin:0}
-.intg h4{font-size:16px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em}
+.intg h3{font-size:16px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em}
 .intg p{font-size:14px;color:var(--tx2);line-height:1.55;margin:0}
 
 .cta-band{position:relative;background:linear-gradient(135deg,rgba(109,94,252,.12),rgba(109,94,252,.04));border:1px solid var(--line2);border-radius:16px;padding:80px 48px;text-align:center;overflow:hidden}
@@ -205,7 +206,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .lfoot .ftag{font-size:14px;color:var(--tx2);margin:16px 0 16px;max-width:240px;line-height:1.55}
 .lfoot .socials{display:flex;gap:8px}
 .lfoot .socials .ib.dead{opacity:.4;pointer-events:none}
-.fcol h5{font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--tx3);margin:0 0 16px;text-transform:uppercase}
+.fcol .fcol-h{font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--tx3);margin:0 0 16px;text-transform:uppercase}
 .fcol a{display:block;font-size:14px;color:var(--tx2);padding:4px 0;transition:.2s}
 .fcol a:hover{color:var(--tx)}
 .fcol .fdead{display:block;font-size:14px;color:var(--tx3);padding:4px 0;cursor:default}
@@ -399,10 +400,10 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
       <span class="mchip"><i class="ti ti-brand-figma"></i>Figma</span><span class="mchip"><i class="ti ti-brand-github"></i>GitHub</span><span class="mchip"><i class="ti ti-brand-vercel"></i>Vercel</span><span class="mchip"><i class="ti ti-brand-google-drive"></i>Google Drive</span><span class="mchip"><i class="ti ti-brand-gitlab"></i>GitLab</span><span class="mchip"><i class="ti ti-brand-notion"></i>Notion</span><span class="mchip"><i class="ti ti-brand-slack"></i>Slack</span><span class="mchip"><i class="ti ti-brand-stripe"></i>Stripe</span>
     </div></div>
     <div class="intg-grid" data-stagger>
-      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-figma" aria-hidden="true"></i></span><div><h4>Figma</h4><p>Embed live design files right in the hub, with the client-approved version pinned.</p></div></div>
-      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-github" aria-hidden="true"></i></span><div><h4>GitHub / GitLab</h4><p>Link every repo and surface last commit, open PRs, and CI status at a glance.</p></div></div>
-      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-google-drive" aria-hidden="true"></i></span><div><h4>Google Drive</h4><p>Connect project folders and preview docs inline, without re-uploading a thing.</p></div></div>
-      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-vercel" aria-hidden="true"></i></span><div><h4>Vercel / Netlify</h4><p>Show real deploy status for preview, staging, and production beside the live link.</p></div></div>
+      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-figma" aria-hidden="true"></i></span><div><h3>Figma</h3><p>Embed live design files right in the hub, with the client-approved version pinned.</p></div></div>
+      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-github" aria-hidden="true"></i></span><div><h3>GitHub / GitLab</h3><p>Link every repo and surface last commit, open PRs, and CI status at a glance.</p></div></div>
+      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-google-drive" aria-hidden="true"></i></span><div><h3>Google Drive</h3><p>Connect project folders and preview docs inline, without re-uploading a thing.</p></div></div>
+      <div class="intg" data-stagger-item><span class="hi"><i class="ti ti-brand-vercel" aria-hidden="true"></i></span><div><h3>Vercel / Netlify</h3><p>Show real deploy status for preview, staging, and production beside the live link.</p></div></div>
     </div>
   </div>
 </section>
@@ -420,10 +421,10 @@ html.motion-failed [data-reveal],html.motion-failed [data-stagger-item],html.mot
         <span class="ib dead" aria-hidden="true"><i class="ti ti-mail"></i></span>
       </div>
     </div>
-    <div class="fcol"><h5>Product</h5><a href="#projects">Projects</a><a href="#flow">The flow</a><a href="#integrations">Integrations</a><a href="/dashboard.html">Open app</a></div>
-    <div class="fcol"><h5>Lifecycle</h5><a href="#flow">Planning</a><a href="#flow">Design</a><a href="#flow">Development</a><a href="#flow">Launch &amp; care</a></div>
-    <div class="fcol"><h5>Studio</h5><span class="fdead">About</span><span class="fdead">Roadmap</span><span class="fdead">Contact</span><span class="fdead">Status</span></div>
-    <div class="fcol"><h5>Legal</h5><span class="fdead">Privacy</span><span class="fdead">Terms</span><span class="fdead">Security</span></div>
+    <div class="fcol"><h3 class="fcol-h">Product</h3><a href="#projects">Projects</a><a href="#flow">The flow</a><a href="#integrations">Integrations</a><a href="/dashboard.html">Open app</a></div>
+    <div class="fcol"><h3 class="fcol-h">Lifecycle</h3><a href="#flow">Planning</a><a href="#flow">Design</a><a href="#flow">Development</a><a href="#flow">Launch &amp; care</a></div>
+    <div class="fcol"><h3 class="fcol-h">Studio</h3><span class="fdead">About</span><span class="fdead">Roadmap</span><span class="fdead">Contact</span><span class="fdead">Status</span></div>
+    <div class="fcol"><h3 class="fcol-h">Legal</h3><span class="fdead">Privacy</span><span class="fdead">Terms</span><span class="fdead">Security</span></div>
   </div>
   <div class="base"><span>© 2026 ARTIST HUB</span><span>UI LANGUAGE FOLLOWS MOTION.DEV</span></div>
 </footer>
@@ -571,6 +572,6 @@ try{
   initStatic();
 }
 </script>
-<script src="/assets/render-projects.js?v=8"></script>
+<script src="/assets/render-projects.js?v=10"></script>
 </body>
 </html>

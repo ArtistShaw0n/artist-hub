@@ -179,25 +179,28 @@
 
   var linksHtml = AH.links(p).map(function(l){
     var live = l.key === 'live' ? ' live' : '';
-    return '<a class="lnk' + live + '" href="' + AH.esc(l.url) + '" title="' + AH.esc(l.label) + '" aria-label="' + AH.esc(l.label) + '"><i class="ti ' + AH.esc(l.icon) + '"></i></a>';
+    var lbl = l.key === 'live' ? '<span class="lbl">' + AH.esc(l.label) + '</span>' : '';
+    return '<a class="lnk' + live + '" href="' + AH.esc(l.url) + '" title="' + AH.esc(l.label) + '" aria-label="' + AH.esc(l.label) + '"><i class="ti ' + AH.esc(l.icon) + '"></i>' + lbl + '</a>';
   }).join('');
 
   var stageHtml = stageLabel ? '<span class="g-stage"><i class="ti ' + AH.esc(stageIcon) + '"></i>' + AH.esc(stageLabel) + '</span>' : '';
 
   return '<div class="row">'
-    + '<div class="mono" style="background:' + AH.esc(grad) + '">' + AH.esc(AH.initials(p.name)) + '</div>'
-    + '<div class="mid">'
-      + '<div class="name">' + AH.esc(p.name || '') + '</div>'
-      + (sub ? '<div class="g-sub">' + sub + '</div>' : '')
-      + '<div class="meta">'
-        + '<span class="health" style="background:' + h.bg + ';color:' + h.color + '"><span class="dot" style="background:' + h.dot + ';box-shadow:0 0 7px 1px ' + h.dot + '"></span>' + AH.esc(h.label) + '</span>'
-        + stageHtml
+    + '<div class="top">'
+      + '<div class="mono" style="background:' + AH.esc(grad) + '">' + AH.esc(AH.initials(p.name)) + '</div>'
+      + '<div class="mid">'
+        + '<div class="name">' + AH.esc(p.name || '') + '</div>'
+        + (sub ? '<div class="g-sub">' + sub + '</div>' : '')
+        + '<div class="meta">'
+          + '<span class="health" style="background:' + h.bg + ';color:' + h.color + '"><span class="dot" style="background:' + h.dot + ';box-shadow:0 0 7px 1px ' + h.dot + '"></span>' + AH.esc(h.label) + '</span>'
+          + stageHtml
+        + '</div>'
       + '</div>'
     + '</div>'
-    + (linksHtml ? '<div class="links">' + linksHtml + '</div>' : '')
     + '<div class="g-foot">'
       + '<span class="g-pct">' + prog + '%</span>'
       + '<span class="g-bar"><i style="width:' + prog + '%"></i></span>'
+      + (linksHtml ? '<div class="links">' + linksHtml + '</div>' : '')
       + '<span class="upd">' + AH.esc(AH.updated(p)) + '</span>'
     + '</div>'
   + '</div>';
@@ -547,11 +550,11 @@
   }
 
   if(rest.length){
-    html += '<nav class="seg" style="grid-template-columns:repeat('+rest.length+',1fr)">';
+    html += '<div class="seg" style="grid-template-columns:repeat('+rest.length+',1fr)">';
     rest.forEach(function(l){
       html += '<a href="'+AH.esc(l.url)+'"><i class="ti '+AH.esc(l.icon)+'"></i>'+AH.esc(l.label)+'</a>';
     });
-    html += '</nav>';
+    html += '</div>';
   }
 
   var metaParts = [];

@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="/assets/tokens.css?v=1">
 <script>document.documentElement.classList.add('jsd')</script>
 <style>
 *{box-sizing:border-box}
@@ -345,7 +346,7 @@ body{margin:0;background:#08080b}
 .ah .tag.warn{color:#fcd34d;border-color:rgba(251,191,36,.3)}
 
 /* footer bottom back link */
-.ah .footlink{display:block;text-align:center;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--accent-soft);text-decoration:none}
+.ah .footlink{display:block;text-align:center;margin-top:4px;padding:8px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--accent-soft);text-decoration:none}
 
 /* states */
 .ah .skel-wrap{margin-top:24px}
@@ -392,7 +393,7 @@ body{margin:0;background:#08080b}
   <nav class="nav" aria-label="Primary">
     <div style="display:flex;align-items:center;gap:16px;min-width:0">
       <a class="brand" href="/"><svg class="logomark" width="24" height="24" viewBox="0 0 48 48" aria-hidden="true"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".85"><line x1="24" y1="24" x2="24" y2="11"/><line x1="24" y1="24" x2="11.5" y2="34.5"/><line x1="24" y1="24" x2="36.5" y2="34.5"/></g><circle cx="24" cy="11" r="3.4" fill="currentColor"/><circle cx="11.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="36.5" cy="34.5" r="3.4" fill="currentColor"/><circle cx="24" cy="24" r="6" fill="currentColor"/></svg>Artist Hub</a>
-      <a class="back" href="/dashboard.html#projects"><i class="ti ti-arrow-left" aria-hidden="true"></i><span class="back-lbl">Dashboard</span></a>
+      <a class="back" href="/dashboard.html#projects" aria-label="Back to dashboard"><i class="ti ti-arrow-left" aria-hidden="true"></i><span class="back-lbl">Dashboard</span></a>
     </div>
     <div class="ident-strip" id="identStrip" aria-hidden="true">
       <span class="mono-av sm" id="stripMono"></span>

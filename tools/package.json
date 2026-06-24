@@ -1,0 +1,13 @@
+{
+  "name": "artist-hub-tools",
+  "private": true,
+  "type": "module",
+  "description": "Dev-only QA tooling for Artist Hub (not part of the deployed site).",
+  "scripts": {
+    "audit": "node audit.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0",
+    "@axe-core/playwright": "^4.10.1"
+  }
+}
